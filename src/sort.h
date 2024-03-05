@@ -13,8 +13,7 @@ private:
 
 public:
     Sort();
-    ~Sort();
-    
+
     void setNom() const;
     void setCoutMana() const;
     void setPuissance() const;

@@ -12,7 +12,9 @@ private:
     int puissance;  //Les dégâts infligés par le sort
 
 public:
-    getNom;
-    getMana;
+    Sort
+    string getNom() const;
+    int getCoutMana() const;
+    int getPuissance() const;
 }
 #endif

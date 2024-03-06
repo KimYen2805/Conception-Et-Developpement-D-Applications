@@ -8,7 +8,7 @@ Joueur :: Joueur() {
     pointDeVieMax = 200;
     mana = 0;
     maxMana=  10;
-    tabSort = new Sort[NBSORT];
+    tabSort = new Sort[NBSORT]; 
 }
 
 Joueur :: ~Joueur() {

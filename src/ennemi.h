@@ -5,7 +5,7 @@
 
 class Ennemi {
     private:
-        int point_de_vie ; 
+        int point_de_vie;
         int puissance; 
         Sort *tab_Sort;
     public:

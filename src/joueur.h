@@ -4,9 +4,9 @@
 #include "sort.h"
 using namespace std;
 const int NBSORT=50;
+
 class Joueur{
     private :
-
     string nom;        // Nom du joueur
     int pointsDeVie;       // Points de vie du joueur actuelle
     int pointDeVieMax;
@@ -16,9 +16,9 @@ class Joueur{
 
 
     public :
-    //contructeur
+    //Contructeur
     Joueur();
-    //decontructeur
+    //Decontructeur
     ~Joueur();
     string getNom() const ;
     int getPoint_de_vie() ;

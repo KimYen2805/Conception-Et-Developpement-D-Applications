@@ -7,7 +7,7 @@ class Joueur{
     private :
 
     string nom;        // Nom du joueur
-    int pointsDeVie;        // Points de vie du joueur actuelle
+    int pointsDeVie;       // Points de vie du joueur actuelle
     int pointDeVieMax;
     int mana;
     int maxMana;
@@ -22,9 +22,11 @@ class Joueur{
     string getNom() const ;
     int getPoint_de_vie() ;
     void setPoint_de_vie(int pointsDeVie);
+    int getMana();
+    void setMana(int mana);
     
 };
-
+#endif
 
 
 

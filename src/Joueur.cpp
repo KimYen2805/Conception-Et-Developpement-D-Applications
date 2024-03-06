@@ -4,8 +4,10 @@ using namespace std;
 
 Joueur :: Joueur() {
     nom = "";
-    pointsDeVie = 100;
+    pointsDeVie = 0;
+    pointDeVieMax = 200;
     mana = 0;
+    maxMana=  10;
     tabSort = NULL;
 }
 
@@ -18,4 +20,9 @@ int Joueur ::getPoint_de_vie() {
 }
 void Joueur::setPoint_de_vie(int pointsDeVie) {
     
+}
+int Joueur ::getMana() {
+    return mana;
+}
+void Joueur::setMana(int mana) {
 }

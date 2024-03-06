@@ -12,7 +12,7 @@ class Joueur{
     int pointDeVieMax;
     int mana;
     int maxMana;
-    Sort tabSort[NBSORT];   // Tableau de sorts 
+    Sort *tabSort;   // Tableau de sorts 
 
 
     public :

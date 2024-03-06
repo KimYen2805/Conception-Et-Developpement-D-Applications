@@ -21,5 +21,5 @@ public:
     string getNom() const;
     int getCoutMana() const;
     int getPuissance() const;
-}
+};
 #endif

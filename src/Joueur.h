@@ -3,6 +3,7 @@
 #include <string>
 #include "sort.h"
 using namespace std;
+const int NBSORT=50;
 class Joueur{
     private :
 
@@ -11,7 +12,7 @@ class Joueur{
     int pointDeVieMax;
     int mana;
     int maxMana;
-    Sort* tabSort;   // Tableau de sorts 
+    Sort tabSort[NBSORT];   // Tableau de sorts 
 
 
     public :

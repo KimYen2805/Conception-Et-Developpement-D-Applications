@@ -7,14 +7,19 @@ class Sort
 {
 
 private:
-    string nom;     //nom du sort
+    string nom;     //Nom du sort
     int coutMana;   //Le coup en mana du sort
     int puissance;  //Les dégâts infligés par le sort
 
 public:
-    Sort
+    Sort();
+
+    void setNom() const;
+    void setCoutMana() const;
+    void setPuissance() const;
+
     string getNom() const;
     int getCoutMana() const;
     int getPuissance() const;
-};
+}
 #endif

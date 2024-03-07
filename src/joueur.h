@@ -2,6 +2,7 @@
 #define _JOUEUR_H
 #include <string>
 #include "sort.h"
+#include "objet.h"
 using namespace std;
 const int NBSORT=50;
 

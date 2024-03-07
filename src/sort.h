@@ -7,14 +7,14 @@ class Sort
 {
 
 private:
-    string nom;     //Nom du sort
+    string nomSort;     //Nom du sort
     int coutMana;   //Le coup en mana du sort
     int puissance; //Les dégâts infligés par le sort
 
 public:
     Sort();
 
-    void setNom(string nom);
+    void setNomSort(string nvnom);
     void setCoutMana(int nvCout);
     void setPuissance(int nvPuissance);
 

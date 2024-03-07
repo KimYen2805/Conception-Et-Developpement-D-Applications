@@ -5,7 +5,7 @@ using namespace std;
 
 Sort::Sort()
 {
-    nom='Agidyne';
+    nomSort='Agidyne';
     coutMana=7;
     puissance=16;
 
@@ -13,9 +13,9 @@ Sort::Sort()
 
 
     
-void Sort::setNom(string nvNom) 
+void Sort::setNomSort(string nvNomSort) 
 {
-    nom=nvNom;
+    nomSort=nvNomSort;
 }
 
 void Sort::setCoutMana(int nvCout) 
@@ -28,9 +28,9 @@ void Sort::setPuissance(int nvPuissance)
     puissance=nvPuissance;
 }
 
-string Sort::getNom() const
+string Sort::getNomSort() const
 {
-    return nom;
+    return nomSort;
 }
 
 int Sort::getCoutMana() const

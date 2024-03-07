@@ -14,11 +14,11 @@ private:
 public:
     Sort();
 
-    void setNomSort(string nvnom);
+    void setNomSort(string nvnomSort);
     void setCoutMana(int nvCout);
     void setPuissance(int nvPuissance);
 
-    string getNom() const;
+    string getNomSort() const;
     int getCoutMana() const;
     int getPuissance() const;
 };

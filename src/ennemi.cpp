@@ -5,7 +5,7 @@
 using namespace std;
 
 Ennemi::Ennemi() {
-    point_de_vie = 200;
+    point_de_vie = 100;
     puissance = 20;
     tab_Sort = new Sort[10];  // un nombre de sorts fictif
 }

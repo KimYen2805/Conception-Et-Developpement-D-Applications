@@ -1,19 +1,44 @@
 #include <iostream>
+#include "sort.h"
+#include <string>
+using namespace std;
 
 Sort::Sort()
 {
     nom='Agidyne';
     coutMana=7;
-    puissance=13;
+    puissance=16;
 
 }
 
 
     
-    /*void setNom() const;
-    void setCoutMana() const;
-    void setPuissance() const;
+void Sort::setNom(string nvNom) 
+{
+    nom=nvNom;
+}
 
-    string getNom() const;
-    int getCoutMana() const;
-    int getPuissance() const;*/
+void Sort::setCoutMana(int nvCout) 
+{
+    coutMana=nvCout;
+}
+
+void Sort::setPuissance(int nvPuissance)
+{
+    puissance=nvPuissance;
+}
+
+string Sort::getNom() const
+{
+    return nom;
+}
+
+int Sort::getCoutMana() const
+{
+    return coutMana;
+}
+
+int Sort::getPuissance() const
+{
+    return puissance;
+}

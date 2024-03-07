@@ -18,16 +18,16 @@ class Ennemi {
     // Destructeur
     ~Ennemi();
     // Getter pour pointDeVie
-    int getPointDeVie() const;
+    int getPointDeVieEnnemi() const;
 
     // Setter pour pointDeVie
-    void setPointDeVie(int points);
+    void setPointDeVieEnnemi(int points);
 
     // Getter pour puissance
-    int getPuissance() const;
+    int getPuissanceEnnemi() const;
 
     // Setter pour puissance
-    void setPuissance(int power);
+    void setPuissanceEnnemi(int power);
 
     // Fonction pour attaquer le joueur ?
     void attaquerJoueur();

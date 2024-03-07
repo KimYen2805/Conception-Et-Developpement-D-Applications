@@ -8,7 +8,7 @@ const int NBSORT=50;
 
 class Joueur{
     private :
-    string nom;        // Nom du joueur
+    string nomJoueur;        // Nom du joueur
     int pointsDeVie;       // Points de vie du joueur actuelle
     int pointDeVieMax;
     int mana;
@@ -19,9 +19,9 @@ class Joueur{
     Joueur();
     //Decontructeur
     ~Joueur();
-    string getNom() const ;
-    int getPoint_de_vie() ;
-    void setPoint_de_vie(int pointsDeVie);
+    string getNomJoueur() const ;
+    int getPoint_de_vie_Joueur() ;
+    void setPoint_de_vie_Jouer(int pointsDeVie);
     int getMana();
     void setMana(int mana);
 

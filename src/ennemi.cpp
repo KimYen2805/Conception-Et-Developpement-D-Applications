@@ -15,19 +15,19 @@ Ennemi::~Ennemi() {
     delete[] tab_Sort;
 }
 
-int Ennemi::getPointDeVie() const {
+int Ennemi::getPointDeVieEnnemi() const {
     return point_de_vie;
 }
 
-void Ennemi::setPointDeVie(int points) {
+void Ennemi::setPointDeVieEnnemi(int points) {
     point_de_vie = points;
 }
 
-int Ennemi::getPuissance() const {
+int Ennemi::getPuissanceEnnemi() const {
     return puissance;
 }
 
-void Ennemi::setPuissance(int pu) {
+void Ennemi::setPuissanceEnnemi(int pu) {
     puissance = pu;
 }
 

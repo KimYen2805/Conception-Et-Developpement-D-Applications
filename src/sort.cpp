@@ -7,7 +7,7 @@ Sort::Sort()
 {
     nomSort='Agidyne';
     coutMana=7;
-    puissance=16;
+    effetSort=effet;
 
 }
 
@@ -23,9 +23,9 @@ void Sort::setCoutMana(int nvCout)
     coutMana=nvCout;
 }
 
-void Sort::setPuissance(int nvPuissance)
+void Sort::setEffetSort(Effet nvEffetSort)
 {
-    puissance=nvPuissance;
+    effetSort=nvEffetSort;
 }
 
 string Sort::getNomSort() const
@@ -38,7 +38,7 @@ int Sort::getCoutMana() const
     return coutMana;
 }
 
-int Sort::getPuissance() const
+Effet Sort::getEffetSort() const
 {
-    return puissance;
+    return effetSort;
 }

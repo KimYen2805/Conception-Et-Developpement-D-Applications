@@ -14,9 +14,9 @@ private:
 public:
     Sort();
 
-    void setNom() const;
-    void setCoutMana() const;
-    void setPuissance() const;
+    void setNom(string nom);
+    void setCoutMana(int nvCout);
+    void setPuissance(int nvPuissance);
 
     string getNom() const;
     int getCoutMana() const;

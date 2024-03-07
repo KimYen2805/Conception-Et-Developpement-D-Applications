@@ -4,7 +4,7 @@ using namespace std;
 
 Joueur :: Joueur() {
     nom = "";
-    pointsDeVie = 0;
+    pointsDeVie = 100;
     pointDeVieMax = 200;
     mana = 0;
     maxMana=  10;

@@ -1,5 +1,6 @@
 // Ennemi.cpp
 #include "ennemi.h"
+
 #include <iostream>
 
 using namespace std;
@@ -31,4 +32,5 @@ void Ennemi::setPuissance(int pu) {
 }
 
 void Ennemi::attaquerJoueur() {
+    
 }

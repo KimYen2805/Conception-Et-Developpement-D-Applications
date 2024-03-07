@@ -1,6 +1,9 @@
 #ifndef _ENNEMI_H
 #define _ENNEMI_H
 #include "sort.h"
+#include "objet.h"
+#include "combat.h"
+
 #include <string>
 
 class Ennemi {

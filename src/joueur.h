@@ -13,8 +13,6 @@ class Joueur{
     int mana;
     int maxMana;
     Sort *tabSort;   // Tableau de sorts 
-
-
     public :
     //Contructeur
     Joueur();
@@ -25,6 +23,7 @@ class Joueur{
     void setPoint_de_vie(int pointsDeVie);
     int getMana();
     void setMana(int mana);
+
     
 };
 #endif

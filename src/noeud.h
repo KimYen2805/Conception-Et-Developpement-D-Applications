@@ -7,5 +7,9 @@ class Noeud {
 private:
     int indice;
 
+public:
+    Noeud();
+    void parcourirNoeud();
+
 };
 #endif

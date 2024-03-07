@@ -8,9 +8,9 @@ class Sort
 {
 
 private:
-    string nomSort;     //Nom du sort
-    int coutMana;   //Le coup en mana du sort
-    Effet effetSort; //Les effets causé par le sort
+    string nomSort;
+    int coutMana;
+    Effet effetSort;
 
 public:
     Sort();

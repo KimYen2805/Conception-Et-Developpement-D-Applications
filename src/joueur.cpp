@@ -2,26 +2,37 @@
 #include "joueur.h"
 using namespace std; 
 
-Joueur :: Joueur() {
+
+Joueur::Joueur() {
+
     nomJoueur = "";
-    pointsDeVie = 100;
-    pointDeVieMax = 200;
-    mana = 0;
-    maxMana=  10;
-    tabSort = new Sort[NBSORT]; 
+    pointDeVieMax = 0;
+    pointsDeVie = pointDeVieMax;
+    maxMana = 0;
+    mana = maxMana;
+    for(int i=0; i<=NBSORT;i++)
+    {
+        tabSort[i] = Sort(); 
+    }
+
+    for(int i=0; i<=NBOBJ;i++)
+    {
+        tabObjet[i] = Objet(); 
+    }  
 }
 
 Joueur :: ~Joueur() {
     delete[] tabSort;
+    delete[] tabObjet;
 }
 string Joueur ::getNomJoueur()const {
     return nomJoueur; 
 }
-int Joueur ::getPoint_de_vie_Joueur() {
+int Joueur ::getPVJoueur() {
     return pointsDeVie;
 }
-void Joueur::setPoint_de_vie_Jouer(int points) {
-    pointsDeVie= points; 
+void Joueur::setPVJoueur(int pv) {
+    pointsDeVie= pv; 
 }
 int Joueur ::getMana() {
     return mana;

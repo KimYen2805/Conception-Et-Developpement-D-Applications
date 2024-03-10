@@ -6,8 +6,7 @@ using namespace std;
 class Dialogue{
  private: 
     string demande; 
-    string reponse; //des mot qui depende de la commande 
-public: 
+    string reponse; 
 
 };
 #endif

@@ -22,6 +22,5 @@ public:
     string getNomSort() const;
     int getCoutMana() const;
     Effet getEffetSort() const;
-    void testRegression();
 };
 #endif

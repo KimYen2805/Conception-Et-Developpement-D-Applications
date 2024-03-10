@@ -31,7 +31,7 @@ class Ennemi {
 
     // Fonction pour attaquer le joueur ?
     void attaquerJoueur();
-
+    void testRegression();
 
 };
 #endif

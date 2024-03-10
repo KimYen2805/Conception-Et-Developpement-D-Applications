@@ -1,27 +1,30 @@
+all: bin/test
 
-# all: bin/exemple bin/test
+bin/test: obj/mainTest.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o
+	g++ -g obj/mainTest.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o -o bin/test
 
+obj/mainTest.o: src/mainTest.cpp src/joueur.h src/ennemi.h #src/sort.h src/objet.h
+	g++ -g -Wall -c src/mainTest.cpp -o obj/mainTest.o
 
-# bin/exemple: obj/mainExemple.o obj/image.o 
-# 	g++ -g obj/mainExemple.o obj/image.o -o bin/exemple
+obj/joueur.o: src/joueur.cpp src/joueur.h src/sort.h src/objet.h
+	g++ -g -Wall -c src/joueur.cpp -o obj/joueur.o
 
-# bin/test: obj/mainTest.o obj/image.o 
-# 	g++ -g obj/mainTest.o obj/image.o -o bin/test
-	
-# obj/mainExemple.o: src/mainExemple.cpp src/pixel.h src/image.h 
-# 	g++ -g -Wall -c src/mainExemple.cpp -o obj/mainExemple.o
+obj/ennemi.o: src/ennemi.cpp src/ennemi.h src/sort.h
+	g++ -g -Wall -c src/ennemi.cpp -o obj/ennemi.o
 
-# obj/mainTest.o: src/mainTest.cpp src/pixel.h src/image.h 
-# 	g++ -g -Wall -c src/mainTest.cpp -o obj/mainTest.o
+obj/sort.o: src/sort.cpp src/effet.cpp src/sort.h src/effet.h
+	g++ -g -Wall -c src/sort.cpp -o obj/sort.o
 
-# obj/image.o: src/image.h src/image.cpp src/pixel.h
-# 	g++ -g -Wall -c src/image.cpp -o obj/image.o
+obj/objet.o: src/objet.cpp src/effet.cpp src/objet.h src/effet.h
+	g++ -g -Wall -c src/objet.cpp -o obj/objet.o
+obj/effet.o: src/effet.cpp src/effet.h
+	g++ -g -Wall -c src/effet.cpp -o obj/effet.o
 
 # doc: doc/doxyfile
 #   doxygen doc/doxyfile
-	
+
 clean:
 	rm obj/*.o
-	
+
 veryclean: clean
 	rm src/*.out

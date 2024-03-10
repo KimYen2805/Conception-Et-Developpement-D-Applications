@@ -22,7 +22,7 @@ private :
     int maxMana;
 
     Sort tabSort[NBSORT];          // Tableau de sorts 
-    Objet tabObjet[];
+    Objet tabObjet[NBOBJ];
 
 public :
     //Contructeur
@@ -35,7 +35,8 @@ public :
 
     int getMana();
     void setMana(int mana);
-
+//test 
+    void testRegression();
     
 };
 #endif

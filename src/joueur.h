@@ -4,24 +4,35 @@
 #include "sort.h"
 #include "objet.h"
 using namespace std;
+
 const int NBSORT=50;
+const int NBOBJ=50;
+
 
 class Joueur{
-    private :
-    string nomJoueur;        // Nom du joueur
-    int pointsDeVie;       // Points de vie du joueur actuelle
+private :
+   
+
+    string nomJoueur;       // Nom du joueur
+
+    int pointsDeVie;        // Points de vie du joueur actuelle
     int pointDeVieMax;
+
     int mana;
     int maxMana;
-    Sort *tabSort;   // Tableau de sorts 
-    public :
+
+    Sort tabSort[NBSORT];          // Tableau de sorts 
+    Objet tabObjet[];
+
+public :
     //Contructeur
     Joueur();
     //Decontructeur
     ~Joueur();
     string getNomJoueur() const ;
-    int getPoint_de_vie_Joueur() ;
-    void setPoint_de_vie_Jouer(int pointsDeVie);
+    int getPVJoueur() ;
+    void setPVJoueur(int pv);
+
     int getMana();
     void setMana(int mana);
 

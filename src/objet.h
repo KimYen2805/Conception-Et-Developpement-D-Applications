@@ -1,23 +1,23 @@
 #ifndef _OBJET_H
 #define _OBJET_H
 
+#include "effet.h"
 #include <string>
 using namespace std;
-
 class Objet
 {
 
 private:
-    string nomObjet;    //Nom du sort
-    int coutMana;       //Le coup en mana du sort
-    int puissance;      //Les dégâts infligés par le sort
+    string nomObjet;    //Nom de l'objet
+    int quantite;       //Le coup en mana du sort
+    Effet effetObjet;      //Les dégâts infligés par le sort
 
 public:
     Objet();
 
-    void setNom(string nom);
-    void setCoutMana(int nvCout);
-    void setPuissance(int nvPuissance);
+    void setNomObjet(string nom);
+    void setQuantite(int nvCout);
+    void setEffetObjet(int nvPuissance);
 
     string getNom() const;
     int getCoutMana() const;

@@ -4,10 +4,10 @@
 using namespace std;
 
 Sort::Sort()
-{
-    nomSort='Agidyne';
+{ Effet effet;
+    nomSort="Agidyne";
     coutMana=7;
-    effetSort=effet;
+   effetSort= effet;
 
 }
 

@@ -22,6 +22,8 @@ public:
     string getNom() const;
     int getCoutMana() const;
     int getPuissance() const;
+   // Objet &operator=(const Objet &other);
 };
 
 #endif
+

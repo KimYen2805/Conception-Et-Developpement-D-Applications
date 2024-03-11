@@ -3,7 +3,7 @@
 #include "sort.h"
 #include "objet.h"
 #include "combat.h"
-
+#include <iostream>
 #include <string>
 
 class Ennemi {

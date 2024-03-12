@@ -3,14 +3,14 @@
 using namespace std; 
 
 
-Joueur::Joueur() {
+Joueur::Joueur()  {
 
     nomJoueur = "abc";
     pointDeVieMax = 100;
     pointsDeVie = pointDeVieMax;
     maxMana = 20;
     mana = maxMana;
-    for(int i=0; i<=NBSORT;i++)
+   /* for(int i=0; i<=NBSORT;i++)
     {
         tabSort[i] = Sort(); 
     }
@@ -18,12 +18,12 @@ Joueur::Joueur() {
    for(int i=0; i<=NBOBJ;i++)
     {
         tabObjet[i] = Objet(); 
-    }  
+    }  */
 }
 
 Joueur :: ~Joueur() {
-    delete[] tabSort;
-    delete[] tabObjet;
+   // delete[] tabSort;
+   // delete[] tabObjet;
 }
 string Joueur ::getNomJoueur()const {
     return nomJoueur; 

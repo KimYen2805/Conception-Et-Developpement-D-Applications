@@ -12,7 +12,7 @@ int main() {
     Joueur joueur;
     joueur.testRegression();  
 
-    cout << "\nInformations sur le Joueur après le test : " << endl;
+    cout << "\nInformations sur le Joueur : " << endl;
     cout << "Nom du Joueur : " << joueur.getNomJoueur() << endl;
     cout << "Points de vie du Joueur : " << joueur.getPVJoueur() << endl;
     cout << "Mana du Joueur : " << joueur.getMana() << endl;

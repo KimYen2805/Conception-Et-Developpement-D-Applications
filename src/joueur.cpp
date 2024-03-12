@@ -19,6 +19,9 @@ Joueur::Joueur()  {
     {
         tabObjet[i] = Objet(); 
     }  */
+    //Je l'ai mis dans les commentaires pour qu'au 
+    //moins le programme fonctionne et que nous puissions 
+    //afficher quelques informations sur le joueur et les ennemis
 }
 
 Joueur :: ~Joueur() {

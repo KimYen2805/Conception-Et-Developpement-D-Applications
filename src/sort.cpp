@@ -4,13 +4,12 @@
 using namespace std;
 
 Sort::Sort()
-{ Effet effet;
+{ 
+    Effet effet;
     nomSort="Agidyne";
     coutMana=7;
-   effetSort= effet;
-
+    effetSort= effet;
 }
-
 
     
 void Sort::setNomSort(string nvNomSort) 

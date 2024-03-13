@@ -8,7 +8,7 @@
 
 class Ennemi {
     private:
-        int point_de_vie;
+        int pointDeVie;
         int puissance; 
         Sort *tab_Sort;
     public:
@@ -21,7 +21,7 @@ class Ennemi {
     int getPointDeVieEnnemi() const;
 
     // Setter pour pointDeVie
-    void setPointDeVieEnnemi(int points);
+    void setPointDeVieEnnemi(int pv);
 
     // Getter pour puissance
     int getPuissanceEnnemi() const;
@@ -30,7 +30,8 @@ class Ennemi {
     void setPuissanceEnnemi(int power);
 
     // Fonction pour attaquer le joueur ?
-    void attaquerJoueur();
+    //void attaquerJoueur(); Plutôt une fonction qui sera dans combat
+
     //test 
     void testRegression();
 

@@ -1,15 +1,16 @@
 #ifndef _NOEUD_H
 #define _NOEUD_H
-#include "dialogue.h"
-#include "combat.h"
+#include "joueur.h"
 
 class Noeud {
 private:
     int indice;
+    string nomNoeud;
+    Joueur joueur;
 
 public:
     Noeud();
-    void parcourirNoeud();
+    void parcourirNoeud(Joueur J);
 
 };
 #endif

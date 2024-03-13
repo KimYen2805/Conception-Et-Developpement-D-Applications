@@ -30,12 +30,16 @@ public :
     //Decontructeur
     ~Joueur();
     string getNomJoueur() const ;
+
     int getPVJoueur() ;
     void setPVJoueur(int pv);
+    void updatePVJoueur(int pv);
 
     int getMana();
-    void setMana(int mana);
-    //test 
+    void setMana(int ma);
+    void updateMana(int ma);
+
+    //test
     void testRegression();
     
 };

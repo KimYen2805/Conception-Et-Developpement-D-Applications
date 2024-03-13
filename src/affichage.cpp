@@ -21,6 +21,7 @@ if (renderer == nullptr)
     cerr << "Erreur de création de renderer SDL: " << SDL_GetError() << endl;
 }
 }
+
 /**
  * @brief Destructeur
 */
@@ -30,6 +31,7 @@ ImageAffichage::~ImageAffichage()
  SDL_DestroyRenderer(renderer); // Libère la mémoire associée au renderer
  SDL_DestroyWindow(window); // Libère la mémoire associée à la fenêtre
 }
+
 /**
  * @brief Affiche l'image dans la fenêtre
  * @param im : l'image
@@ -73,7 +75,7 @@ void ImageAffichage::Afficher() {
         SDL_FreeSurface(image);
 
       }
-   // SDL_RenderPresent(renderer);
 }
-}
+   // SDL_RenderPresent(renderer){}
+
 

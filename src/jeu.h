@@ -11,5 +11,5 @@ class Jeu{
     //...
     void afficherConsole();//affichage de l'image
     
-}
+};
 #endif

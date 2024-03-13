@@ -1,14 +1,14 @@
 // Ennemi.cpp
-#include "ennemi.h"
-
 #include <iostream>
-
+#include "ennemi.h"
 using namespace std;
 
+int const EMAXSORT = 10;
+
 Ennemi::Ennemi() {
-    point_de_vie = 100;
+    pointDeVie = 100;
     puissance = 20;
-    tab_Sort = new Sort[10];  // un nombre de sorts fictif
+    tab_Sort = new Sort[EMAXSORT];  // un nombre de sorts fictif
 }
 
 Ennemi::~Ennemi() {
@@ -16,11 +16,11 @@ Ennemi::~Ennemi() {
 }
 
 int Ennemi::getPointDeVieEnnemi() const {
-    return point_de_vie;
+    return pointDeVie;
 }
 
 void Ennemi::setPointDeVieEnnemi(int points) {
-    point_de_vie = points;
+    pointDeVie = points;
 }
 
 int Ennemi::getPuissanceEnnemi() const {
@@ -31,9 +31,9 @@ void Ennemi::setPuissanceEnnemi(int pu) {
     puissance = pu;
 }
 
-void Ennemi::attaquerJoueur() {
+/*void Ennemi::attaquerJoueur() {
     
-}
+}*/
 void Ennemi::testRegression() {
     cout << "Exécution du test de régression pour la classe Ennemi..." << endl;
 

@@ -37,12 +37,32 @@ int Joueur ::getPVJoueur() {
 void Joueur::setPVJoueur(int pv) {
     pointsDeVie= pv; 
 }
+void Joueur::updatePVJoueur(int pv){
+    if ((pointsDeVie + pv) >= pointDeVieMax)
+    {
+        pointsDeVie = pointDeVieMax;
+    }else if((pointsDeVie + pv) <= 0)
+    {
+        pointsDeVie = 0;
+    }else pointsDeVie += pv;
+}
+
 int Joueur ::getMana() {
     return mana;
 }
 void Joueur::setMana(int ma) {
     mana= ma ;
 }
+void Joueur::updateMana(int ma){
+    if ((mana + ma) >= maxMana)
+    {
+        mana = maxMana;
+    }else if((mana + ma) <= 0)
+    {
+        mana = 0;
+    }else mana += ma;
+}
+
 void Joueur::testRegression() {
     cout << "Exécution du test de régression pour la classe Joueur..." << endl;
 

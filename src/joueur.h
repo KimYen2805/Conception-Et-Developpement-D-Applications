@@ -5,7 +5,7 @@
 #include "objet.h"
 using namespace std;
 
-const int NBSORT=50;
+const int NBSORT=3;
 const int NBOBJ=50;
 
 
@@ -15,11 +15,11 @@ private :
 
     string nomJoueur;       // Nom du joueur
 
-    int pointsDeVie;        // Points de vie du joueur actuelle
     int pointDeVieMax;
+    int pointsDeVie;        // Points de vie du joueur actuelle
 
-    int mana;
     int maxMana;
+    int mana;
 
     Sort tabSort[NBSORT];          // Tableau de sorts 
     Objet tabObjet[NBOBJ];
@@ -27,6 +27,7 @@ private :
 public :
     //Contructeur
     Joueur();
+    Joueur(string nom, int pvMx, int mnMx, Sort inSort, Objet inObj);
     //Decontructeur
     ~Joueur();
     string getNomJoueur() const ;

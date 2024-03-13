@@ -9,11 +9,12 @@ class Combat : public Noeud{
 
 private:
 
-    Ennemi ennGroup[MAXENNEMI];
+    //Ennemi ennGroup[MAXENNEMI];
 
 public:    
     Combat();
     ~Combat();
+    void castSort();
     void ennHitPlay(Sort sort);
     void playHitEnn(Sort sort);
     void ennTurn();

@@ -1,0 +1,12 @@
+fonction fight()
+boucle while pvPlay = 0 OU ennGroup[] pv = 0
+
+playTurn()
+Le Joueur entre un sort au clavier avec castSort
+castSort va décomposer et vérifier la validité du sort puis utilise une fonction en conséquence
+	soinVie va utiliser updatePointDeVie
+	soinMana va utiliser updateMana
+	degat va utiliser playHitEnn
+	
+playHitEnn va réduire la vie des ennemies selon les paramètres du sort
+	

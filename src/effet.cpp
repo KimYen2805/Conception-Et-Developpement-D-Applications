@@ -4,9 +4,10 @@
 using namespace std; 
 
 Effet::Effet() {
-    nomEffet = "abc";  // Default value for nomEffet
+    nomEffet = "degat";  // Default value for nomEffet
     puissanceEffet = 10;
 }
+
 void Effet::setPuissanceEffet(int nvPuissance) {
     puissanceEffet = nvPuissance;
 }
@@ -14,3 +15,5 @@ void Effet::setPuissanceEffet(int nvPuissance) {
 int Effet::getPuissanceEffet() const {
     return puissanceEffet;
 }
+
+

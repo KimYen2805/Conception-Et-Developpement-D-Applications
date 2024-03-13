@@ -5,10 +5,31 @@ using namespace std;
 
 Joueur::Joueur()  {
 
-    nomJoueur = "abc";
-    pointDeVieMax = 100;
+    nomJoueur = "";
+    pointDeVieMax = 0;
     pointsDeVie = pointDeVieMax;
-    maxMana = 20;
+    maxMana = 0;
+    mana = maxMana;
+   /* for(int i=0; i<=NBSORT;i++)
+    {
+        tabSort[i] = Sort(); 
+    }
+
+   for(int i=0; i<=NBOBJ;i++)
+    {
+        tabObjet[i] = Objet(); 
+    }  */
+    //Je l'ai mis dans les commentaires pour qu'au 
+    //moins le programme fonctionne et que nous puissions 
+    //afficher quelques informations sur le joueur et les ennemis
+}
+
+Joueur::Joueur(string nom, int pvMx, int mnMx, Sort inSort, Objet inObj)  {
+
+    nomJoueur = nom;
+    pointDeVieMax = pvMx;
+    pointsDeVie = pointDeVieMax;
+    maxMana = mnMx;
     mana = maxMana;
    /* for(int i=0; i<=NBSORT;i++)
     {

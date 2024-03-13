@@ -6,9 +6,11 @@ using namespace std;
 
 class Jeu{
     private:
+    Noeud jeu;
+    Joueur joueur;
 
     public: 
-    //...
+    void initGame();
     void afficherConsole();//affichage de l'image
     
 };

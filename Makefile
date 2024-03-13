@@ -23,6 +23,7 @@ obj/sort.o: src/sort.cpp src/effet.cpp src/sort.h src/effet.h
 
 obj/objet.o: src/objet.cpp src/effet.cpp src/objet.h src/effet.h
 	g++ -g -Wall -c src/objet.cpp -o obj/objet.o
+	
 obj/effet.o: src/effet.cpp src/effet.h
 	g++ -g -Wall -c src/effet.cpp -o obj/effet.o
 

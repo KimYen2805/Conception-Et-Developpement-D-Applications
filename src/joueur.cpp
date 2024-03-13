@@ -33,7 +33,7 @@ Joueur::Joueur(string nom, int pvMx, int mnMx, Sort inSort, Objet inObj)  {
     mana = maxMana;
    /* for(int i=0; i<=NBSORT;i++)
     {
-        tabSort[i] = Sort(); 
+        tabSort[i] = inSort[i]; 
     }
 
    for(int i=0; i<=NBOBJ;i++)

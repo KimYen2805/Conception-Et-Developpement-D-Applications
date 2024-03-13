@@ -9,7 +9,7 @@ class Combat : public Noeud{
 
 private:
 
-    //Ennemi ennGroup[MAXENNEMI];
+    Ennemi ennGroup[MAXENNEMI];
 
 public:    
     Combat();
@@ -20,7 +20,6 @@ public:
     void ennTurn();
     void playTurn();
     void fight();
-
 };
 
 

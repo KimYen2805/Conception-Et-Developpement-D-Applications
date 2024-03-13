@@ -1,3 +1,7 @@
-iAgidyne Mazionga Kougaon Makajama
+Agidyne Mazionga Kougaon Makajama
 
-//i est un indice de ciblage des ennemis
+//i est un indice de ciblage des ennemis rien si un seul ennemi
+//Agidyne une seule cible peut avoir un indice i devant le sort
+//Mazionga tout les ennemis
+//Kougaon Soigne le joueur
+// Makajama retire 1/4 des point de vie actuelle du joueur et inflige à tous les ennemis la quantité perdu fois 3 

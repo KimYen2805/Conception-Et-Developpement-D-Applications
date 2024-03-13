@@ -9,18 +9,18 @@ class Sort
 
 private:
     string nomSort;
-    int coutMana;
+    int cout;
     Effet effetSort;
 
 public:
     Sort();
 
     void setNomSort(string nvnomSort);
-    void setCoutMana(int nvCout);
+    void setCout(int nvCout);
     void setEffetSort(Effet nvEffetSort);
 
     string getNomSort() const;
-    int getCoutMana() const;
+    int getCout() const;
     Effet getEffetSort() const;
 };
 #endif

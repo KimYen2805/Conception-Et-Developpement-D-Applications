@@ -7,7 +7,7 @@ Sort::Sort()
 { 
     Effet effet;
     nomSort="Agidyne";
-    coutMana=7;
+    cout=4;
     effetSort= effet;
 }
 
@@ -17,9 +17,9 @@ void Sort::setNomSort(string nvNomSort)
     nomSort=nvNomSort;
 }
 
-void Sort::setCoutMana(int nvCout) 
+void Sort::setCout(int nvCout) 
 {
-    coutMana=nvCout;
+    cout=nvCout;
 }
 
 void Sort::setEffetSort(Effet nvEffetSort)
@@ -32,9 +32,9 @@ string Sort::getNomSort() const
     return nomSort;
 }
 
-int Sort::getCoutMana() const
+int Sort::getCout() const
 {
-    return coutMana;
+    return cout;
 }
 
 Effet Sort::getEffetSort() const

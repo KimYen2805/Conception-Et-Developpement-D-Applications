@@ -4,7 +4,7 @@
 using namespace std; 
 
 Effet::Effet() {
-    nomEffet = "degat";  // Default value for nomEffet
+    nomEffet = "degatMana";  // Default value for nomEffet
     puissanceEffet = 10;
 }
 

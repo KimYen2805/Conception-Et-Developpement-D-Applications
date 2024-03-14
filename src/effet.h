@@ -9,12 +9,16 @@ class Effet
 
 private:
     string nomEffet;     //Nom de l'effet
-    int puissanceEffet; 
+    float puissanceEffet; 
 
 public:
     Effet();
-    void setPuissanceEffet(int nvPuissance);
-    int getPuissanceEffet() const; 
+
+    void setNomEffet(string nvNom);
+    void setPuissanceEffet(float nvPuissance);
+
+    string getNomEffet() const; 
+    float getPuissanceEffet() const; 
 };
 
 #endif

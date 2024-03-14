@@ -8,11 +8,19 @@ Effet::Effet() {
     puissanceEffet = 10;
 }
 
-void Effet::setPuissanceEffet(int nvPuissance) {
+void Effet::setNomEffet(string nvNom){
+    nomEffet=nvNom;
+}
+
+void Effet::setPuissanceEffet(float nvPuissance) {
     puissanceEffet = nvPuissance;
 }
 
-int Effet::getPuissanceEffet() const {
+string Effet::getNomEffet() const {
+    return nomEffet;
+}
+
+float Effet::getPuissanceEffet() const {
     return puissanceEffet;
 }
 

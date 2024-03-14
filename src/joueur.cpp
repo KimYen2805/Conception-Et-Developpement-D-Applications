@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "joueur.h"
 using namespace std; 
 
@@ -9,52 +10,77 @@ Joueur::Joueur()  {
     pointDeVieMax = 0;
     pointsDeVie = pointDeVieMax;
     maxMana = 0;
-    mana = maxMana;
-   /* for(int i=0; i<=NBSORT;i++)
-    {
-        tabSort[i] = Sort(); 
-    }
-
-   for(int i=0; i<=NBOBJ;i++)
-    {
-        tabObjet[i] = Objet(); 
-    }  */
-    //Je l'ai mis dans les commentaires pour qu'au 
-    //moins le programme fonctionne et que nous puissions 
-    //afficher quelques informations sur le joueur et les ennemis
+    mana = maxMana;  
 }
 
-Joueur::Joueur(string nom, int pvMx, int mnMx, Sort inSort, Objet inObj)  {
+Joueur::Joueur(string nom, int pvMx, int mnMx, Sort inSort[NBSORT])  {
 
     nomJoueur = nom;
     pointDeVieMax = pvMx;
     pointsDeVie = pointDeVieMax;
     maxMana = mnMx;
     mana = maxMana;
-   /* for(int i=0; i<=NBSORT;i++)
+    for(int i=0; i<=NBSORT;i++)
     {
         tabSort[i] = inSort[i]; 
     }
 
-   for(int i=0; i<=NBOBJ;i++)
-    {
-        tabObjet[i] = Objet(); 
-    }  */
-    //Je l'ai mis dans les commentaires pour qu'au 
-    //moins le programme fonctionne et que nous puissions 
-    //afficher quelques informations sur le joueur et les ennemis
 }
 
-Joueur :: ~Joueur() {
-   // delete[] tabSort;
-   // delete[] tabObjet;
+Joueur::Joueur(const string &filename)  {
+    ifstream fichier(filename.c_str());
+    if(!fichier.is_open()){ cout<<"file not open"<<endl;
+    }else{cout<<"fileOpen"<<endl;
+    string nom, sort, effet;
+    int pvMx, mnMx;
+    float coutS, puissanceEffet;
+    Sort inSort[NBSORT];
+    
+    fichier >> nom >> pvMx >> mnMx ;
+    cout<<nom<<" "<<pvMx<<" "<<mnMx<<endl;
+    nomJoueur=nom;
+    pointDeVieMax=pointsDeVie = pvMx;
+    maxMana=mana = mnMx;
+
+    for (int i = 0; i < NBSORT; ++i)
+    {
+            fichier >> sort >> coutS >> effet >> puissanceEffet; 
+            
+            inSort[i].setNomSort(sort) ;
+            inSort[i].setCout(coutS) ;
+            inSort[i].getEffetSort().setNomEffet(effet) ;
+            inSort[i].getEffetSort().setPuissanceEffet(puissanceEffet) ;
+    }
+    
+    fichier.close();
+    
+    cout << "Lecture du joueur " << filename << " ... OK\n";
+    }
 }
+Joueur :: ~Joueur() {
+    //delete[] tabSort;
+    //delete[] tabObjet;
+}
+
+
 string Joueur ::getNomJoueur()const {
     return nomJoueur; 
 }
+void Joueur::setNomJoueur(string nom){
+    nomJoueur=nom;
+}
+
 int Joueur ::getPVJoueur() {
     return pointsDeVie;
 }
+int Joueur::getPVMAXJoueur(){
+    return pointDeVieMax;
+}
+void Joueur::setPVMAXJoueur(int pv){
+    pointDeVieMax=pv;
+    pointsDeVie= pv; 
+}
+
 void Joueur::setPVJoueur(int pv) {
     pointsDeVie= pv; 
 }
@@ -70,6 +96,13 @@ void Joueur::updatePVJoueur(int pv){
 
 int Joueur ::getMana() {
     return mana;
+}
+int Joueur::getMAXMana(){
+    return maxMana;
+}
+void Joueur::setMAXMana(int ma){
+    maxMana=ma;
+    mana= ma ;
 }
 void Joueur::setMana(int ma) {
     mana= ma ;

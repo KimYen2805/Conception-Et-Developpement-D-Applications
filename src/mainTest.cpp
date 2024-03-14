@@ -1,15 +1,15 @@
 // mainTest.cpp
-#include <iostream>
+
 #include "joueur.h"
 #include "ennemi.h"
-#include "sort.h"
-#include "objet.h"
 
-using namespace std;
+//#include "jeu.h"
+
+
 
 int main() {
     // Test Joueur
-    Joueur joueur;
+    Joueur joueur("./data/Joueur");
     joueur.testRegression();  
 
     cout << "\nInformations sur le Joueur : " << endl;

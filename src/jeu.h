@@ -12,7 +12,6 @@ class Jeu{
 
     public: 
     Jeu(const string &filename);
-    void afficherConsole();//affichage de l'image
     
 };
 #endif

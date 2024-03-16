@@ -28,6 +28,23 @@ int main() {
 
     cout << "\nInformations sur l'Ennemi apres l'attaque : " << endl;
     cout << "Points de vie de l'Ennemi : " << ennemi.getPointDeVieEnnemi() << endl;
+    //tests supplémentaires en utilisant cin
+    int choix;
+    cout << "\nMenu de test :" << endl;
+    cout << "1. Effectuer une action" << endl;
+    cout << "2. Quitter" << endl;
+    cout << "Votre choix : ";
+    cin >> choix;
+
+    switch (choix) {
+        case 1:
+            break;
+        case 2:
+            return 0;
+        default:
+            cout << "Choix invalide. Veuillez choisir à nouveau." << endl;
+            break;
+    }
 
     return 0;
 }

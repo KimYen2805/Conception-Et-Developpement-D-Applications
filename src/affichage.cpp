@@ -8,7 +8,7 @@
 */
 ImageAffichage::ImageAffichage()
 {
-window=SDL_CreateWindow("Jeu",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,500,500,SDL_WINDOW_SHOWN);
+window=SDL_CreateWindow("ProjetCDKA",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,500,500,SDL_WINDOW_SHOWN);
 
 if (window == nullptr) 
 {
@@ -31,51 +31,59 @@ ImageAffichage::~ImageAffichage()
  SDL_DestroyRenderer(renderer); // Libère la mémoire associée au renderer
  SDL_DestroyWindow(window); // Libère la mémoire associée à la fenêtre
 }
-
-/**
- * @brief Affiche l'image dans la fenêtre
- * @param im : l'image
-*/
 void ImageAffichage::Afficher() {
 	// initialisation boucle
 	SDL_Event events;
 	bool quit = false;
-	unsigned int zoom = 1;
 	// boucle
-	while (!quit) {
+	while (!quit && !SDL_QuitRequested()) {
 		// recuperation taille fenetre
 		int dimxFenetre, dimyFenetre;
 		SDL_GetWindowSize(window, &dimxFenetre, &dimyFenetre);
 		// gestion evenements
 		while (SDL_PollEvent(&events)) {
-			if (events.type == SDL_QUIT) quit = true;
-			else if (events.type == SDL_KEYDOWN) {
-				switch (events.key.keysym.scancode) {
-				case SDL_SCANCODE_T:
-					zoom++;
-					break;
-				case SDL_SCANCODE_G:
-					if (zoom > 1) zoom--;
-					break;
-				case SDL_SCANCODE_ESCAPE:
-					quit = true;
-					break;
-				default:
-					break;
-				}
+			if (events.type == SDL_QUIT) 
+			{ 
+				quit = true;
 			}
-		}
-		// affichage image
-        SDL_Surface *image= IMG_Load("data/annemi.png");
-      if (!image)
+			else if (events.type== SDL_KEYDOWN && events.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+			{
+				quit= true;
+			}
+			}
+	
+		// Affichage de l'image ennemi
+        SDL_Surface *image1= IMG_Load("data/ennemi.png");
+      if (!image1)
       {
          cerr << "Erreur de chargement de l'image: " << SDL_GetError() << endl;
         }
-        SDL_Texture *textureImage= SDL_CreateTextureFromSurface(renderer, image);
-        SDL_FreeSurface(image);
-
+        SDL_Texture *textureImage1= SDL_CreateTextureFromSurface(renderer, image1);
+        SDL_FreeSurface(image1);
+		//affichage de l'image joueur 
+		SDL_Surface *image2= IMG_Load("data/joueur.png");
+		if ( !image2)
+		{
+			cerr<< "Erreur de chargement de l'image: " << SDL_GetError() << endl;
+		}
+		SDL_Texture *textureImage2 = SDL_CreateTextureFromSurface(renderer, image2);
+		SDL_FreeSurface(image2);
+		//Positionnement et affichage d'image 1
+		SDL_Rect posIma1;
+		posIma1.x = 100; 
+		posIma1.y= 100;
+		SDL_QueryTexture(textureImage1, NULL, NULL, &posIma1.w, &posIma1.h);
+		SDL_RenderCopy(renderer, textureImage1,NULL, &posIma1);
+		//Positionnement et affichage d'image 2
+		SDL_Rect posIma2;
+		posIma2.x = 300; 
+		posIma2.y= 300;
+		SDL_QueryTexture(textureImage2, NULL, NULL, &posIma2.w, &posIma2.h);
+		SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
+		//Affichage à l'écran
+		SDL_RenderPresent(renderer);
       }
 }
-   // SDL_RenderPresent(renderer){}
+  
 
 

@@ -7,9 +7,8 @@
 
 class ImageAffichage {
         private:
-            SDL_Window* window;
-             SDL_Renderer* renderer;
-
+        SDL_Window* window;
+        SDL_Renderer* renderer;
         public:
 /**
  * @brief Constructeur

@@ -5,7 +5,7 @@ using namespace std;
 
 Effet::Effet() {
     nomEffet = "degatMana";  // Default value for nomEffet
-    puissanceEffet = 10;
+    puissanceEffet = 9;
 }
 
 void Effet::setNomEffet(string nvNom){

@@ -26,7 +26,7 @@ int main() {
 
     //ennemi.attaquerJoueur();  // Simuler une attaque de l'ennemi
 
-    cout << "\nInformations sur l'Ennemi après l'attaque : " << endl;
+    cout << "\nInformations sur l'Ennemi apres l'attaque : " << endl;
     cout << "Points de vie de l'Ennemi : " << ennemi.getPointDeVieEnnemi() << endl;
 
     return 0;

@@ -1,0 +1,10 @@
+bin/test.exe
+obj/effet.o
+obj/ennemi.o
+obj/joueur.o
+obj/mainTest.o
+obj/objet.o
+obj/sort.o
+.vscode/launch.json
+.vscode/settings.json
+

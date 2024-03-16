@@ -4,7 +4,7 @@
 #include "objet.h"
 using namespace std;
 
-const int NBSORT=3;
+const int NBSORT=4;
 const int NBOBJ=50;
 
 

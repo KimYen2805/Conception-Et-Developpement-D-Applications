@@ -59,6 +59,7 @@ Joueur::Joueur(const string &filename)  {
     cout << "Lecture du joueur " << filename << " ... OK\n";
     }
 }
+
 Joueur :: ~Joueur() {
     //delete[] tabSort;
     //delete[] tabObjet;
@@ -120,7 +121,7 @@ void Joueur::updateMana(int ma){
 }
 
 void Joueur::testRegression() {
-    std::cout << "Execution du test de regression pour la classe Joueur..." << endl;
+    std::cout<<endl << "Execution du test de regression pour la classe Joueur..." << endl;
 
     // Test 1: Vérifiez si les points de vie initiaux sont égaux à pointDeVieMax
     if (getPVJoueur() == pointDeVieMax) {
@@ -135,9 +136,10 @@ void Joueur::testRegression() {
     } else {
         std::cout << "Test 2 echoue : Le mana initial n'est pas égal a maxMana." << endl;
     }
+    cout<<nomJoueur<<" "<<pointDeVieMax<<endl;
     for (int i=0;i<NBSORT;i++)
     {
-        std::cout << tabSort[i].getNomSort() << " ";
+        std::cout <<"testReg" <<tabSort[i].getNomSort() << " ";
         std::cout << tabSort[i].getCout() << " ";
         std::cout << tabSort[i].getEffetSort().getNomEffet() << " ";
         std::cout << tabSort[i].getEffetSort().getPuissanceEffet() << endl;

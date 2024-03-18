@@ -8,7 +8,6 @@ int const EMAXSORT = 10;
 Ennemi::Ennemi() {
     pointDeVie = 100;
     puissance = 20;
-    tab_Sort = new Sort[EMAXSORT];  // un nombre de sorts fictif
 }
 
 Ennemi::~Ennemi() {

@@ -1,7 +1,7 @@
 all: bin/test bin/affichage bin/CDKA
 
 bin/CDKA: obj/mainCDKA.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o obj/noeud.o obj/combat.o obj/dialogue.o obj/jeu.o
-	g++ -g obj/mainTest.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o obj/noeud.o obj/combat.o obj/dialogue.o obj/jeu.o -o bin/CDKA
+	g++ -g obj/mainCDKA.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o obj/noeud.o obj/combat.o obj/dialogue.o obj/jeu.o -o bin/CDKA
 
 bin/test: obj/mainTest.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o
 	g++ -g obj/mainTest.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o -o bin/test

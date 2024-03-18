@@ -12,3 +12,9 @@ bin/affichage
 bin/test
 obj/affichage.o
 obj/mainAffichage.o
+bin/CDKA
+obj/combat.o
+obj/dialogue.o
+obj/jeu.o
+obj/mainCDKA.o
+obj/noeud.o

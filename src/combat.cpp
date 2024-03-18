@@ -2,9 +2,9 @@
 
 
 Combat::Combat(){
-    //Ennemi ennGroup[0]= Ennemi();
-
+    Ennemi ennGroup[0]= Ennemi();
 }
+
 Combat::~Combat(){
 
 }

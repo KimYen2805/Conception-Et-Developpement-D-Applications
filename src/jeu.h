@@ -12,6 +12,7 @@ class Jeu{
 
     public: 
     Jeu(const string &filename);
+    Joueur getJoueur();
     
 };
 #endif

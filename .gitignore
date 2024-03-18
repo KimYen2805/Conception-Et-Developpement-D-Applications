@@ -8,3 +8,7 @@ obj/sort.o
 .vscode/launch.json
 .vscode/settings.json
 
+bin/affichage
+bin/test
+obj/affichage.o
+obj/mainAffichage.o

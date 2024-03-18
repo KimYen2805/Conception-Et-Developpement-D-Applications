@@ -11,7 +11,6 @@ Combat::Combat(Ennemi eg[MAXENNEMI], int gs, int ind){
         {
             ennGroup[i]=eg[i];
         }
-    Ennemi ennGroup[0]= Ennemi();
 }
 /*
 Combat::~Combat(){
@@ -19,13 +18,16 @@ Combat::~Combat(){
 }
 
 void Combat::castSort(){
-
+    
+    float joueur.getSort(sort)
+    if()
 }
 
 void Combat::ennHitPlay(Sort sort){
 
 }
 void Combat::playHitEnn(Sort sort){
+    
 
 }
 

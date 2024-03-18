@@ -1,10 +1,10 @@
 #include "jeu.h"
 
-Jeu::Jeu(const string &filename){
+Jeu::Jeu(const string &j){
     
-    ifstream fichier(filename.c_str());
+    ifstream fichier(j.c_str());
     if(!fichier.is_open()){ cout<<"file not open"<<endl;
-    }else{
+    }
     string nom, sort, effet;
     int pvMx, mnMx;
     float coutS, puissanceEffet;
@@ -23,7 +23,8 @@ Jeu::Jeu(const string &filename){
     }
     Joueur(nom, pvMx, mnMx, inSort);
     fichier.close();
-    cout << "Lecture du joueur " << filename << " ... OK\n";
-    }
+    cout << "Lecture du joueur " << j << " ... OK\n";
+
+    Noeud Noeud(joueur);
 }
 

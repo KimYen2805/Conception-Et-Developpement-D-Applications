@@ -29,22 +29,26 @@ int main() {
     cout << "\nInformations sur l'Ennemi apres l'attaque : " << endl;
     cout << "Points de vie de l'Ennemi : " << ennemi.getPointDeVieEnnemi() << endl;
     //tests supplémentaires en utilisant cin
-    int choix;
+    string choix;
     cout << "\nMenu de test :" << endl;
     cout << "1. Effectuer une action" << endl;
     cout << "2. Quitter" << endl;
+    bool c=false;
+    while(c==false){
+        
     cout << "Votre choix : ";
     cin >> choix;
 
-    switch (choix) {
-        case 1:
-            break;
-        case 2:
-            return 0;
-        default:
-            cout << "Choix invalide. Veuillez choisir à nouveau." << endl;
-            break;
+    if (choix=="Action"){ 
+        cout<<"choix 1: action"<<endl;
+        c=true;
+    }else if (choix=="Quitter"){
+        cout<<"choix 2: quitter"<<endl;
+        c=true;
+    }else{
+        cout << "Choix invalide. Veuillez choisir à nouveau." << endl;
     }
+    } 
 
     return 0;
 }

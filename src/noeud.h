@@ -11,7 +11,8 @@ private:
 
 public:
     Noeud();
-    void parcourirNoeud(Joueur J);
+    Noeud(Joueur j);
+    void parcourirNoeud(Joueur j);
 
 };
 #endif

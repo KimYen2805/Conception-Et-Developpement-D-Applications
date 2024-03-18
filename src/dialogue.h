@@ -5,7 +5,7 @@
 const int MAXREP= 5;
 
 using namespace std; 
-class Dialogue{
+class Dialogue : public Noeud{
  private: 
     string texte; 
     string reponse[MAXREP]; 

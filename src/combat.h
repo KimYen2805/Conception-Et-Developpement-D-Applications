@@ -1,18 +1,24 @@
 #ifndef _COMBAT_H
 #define _COMBAT_H
 #include "noeud.h"
-#include "joueur.h"
+
 #include "ennemi.h"
 int const MAXENNEMI = 5;
 
 class Combat : public Noeud{
 
 private:
-
     Ennemi ennGroup[MAXENNEMI];
 
 public:    
     Combat();
+    /**
+     * @brief
+     * @param eg Rempli ennGroup 
+     * @param gs Taille de eg
+     * @param ind Indice du noeud
+    */
+    Combat(Ennemi eg[MAXENNEMI], int gs, int ind);
     ~Combat();
     void castSort();
     void ennHitPlay(Sort sort);

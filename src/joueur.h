@@ -49,6 +49,12 @@ public :
 
     void updateMana(int ma);
 
+    /**
+    *@brief renvoie l'indice d'un sort si le nom est valide, -1 sinon
+    *@param so nom d'un sort potentiel 
+    *@return un entier entre -1 et NBSORT-1
+    */
+    int getSort(string so);
     //test
     void testRegression();
     

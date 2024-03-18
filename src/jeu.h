@@ -7,7 +7,7 @@ using namespace std;
 
 class Jeu{
     private:
-    Noeud jeu;
+    Noeud jeu[10];
     Joueur joueur;
 
     public: 

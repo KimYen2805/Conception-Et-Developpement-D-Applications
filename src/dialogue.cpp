@@ -2,6 +2,7 @@
 
 
 Dialogue::Dialogue(){
+    indice=0;
     texte="Ce jeu ce joue exclusivement au clavier.\n Tout les choix ne seront pas explicites mais une aide et toujours disponible en entrant 'Aide'.\n Souhaitez-vous commencer le jeu?";
     reponse[0]="Oui";
     reponse[1]="Non";

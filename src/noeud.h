@@ -4,7 +4,7 @@
 #include "joueur.h"
 
 class Noeud {
-private:
+protected:
     int indice;
     string nomNoeud;
     Joueur joueur;

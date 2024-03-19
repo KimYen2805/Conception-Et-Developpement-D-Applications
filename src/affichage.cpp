@@ -86,12 +86,14 @@ void ImageAffichage::Afficher() {
         }
         SDL_Texture *textureImage1= SDL_CreateTextureFromSurface(renderer, image1);
         SDL_FreeSurface(image1);
-		//Positionnement et affichage d'image 1
+		//Positionnement et affichage d'image ennemi
 		SDL_Rect posIma1;
 		posIma1.x = 100; 
 		posIma1.y= 100;
 		SDL_QueryTexture(textureImage1, NULL, NULL, &posIma1.w, &posIma1.h);
 		SDL_RenderCopy(renderer, textureImage1,NULL, &posIma1);
+
+
 		//affichage de l'image joueur 
 		SDL_Surface *image2= IMG_Load("data/joueur.png");
 		if ( !image2)
@@ -107,6 +109,15 @@ void ImageAffichage::Afficher() {
 		posIma2.y= posYJoueur;
 		SDL_QueryTexture(textureImage2, NULL, NULL, &posIma2.w, &posIma2.h);
 		SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
+		//ajouter une barre 
+		SDL_Rect re; 
+		re.x =350; 
+		re.y =350;
+		re.w =20;
+		re.h =10;
+		SDL_SetRenderDrawColor(renderer,255,0,0,0);
+		SDL_RenderFillRect(renderer, &re);
+		SDL_RenderPresent(renderer);
 		//Affichage à l'écran
 		SDL_RenderPresent(renderer);
       }

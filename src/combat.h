@@ -19,6 +19,7 @@ public:
      * @param ind Indice du noeud
     */
     Combat(Ennemi eg[MAXENNEMI], int gs, int ind);
+    
     ~Combat();
     int castSort();
     void ennHitPlay(Sort sort);

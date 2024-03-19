@@ -4,14 +4,15 @@
 #include "dialogue.h"
 #include "combat.h"
 using namespace std; 
+const int GSIZE=10;
 
 class Jeu{
     private:
-    Noeud jeu[10];
+    Noeud jeu[GSIZE];
     Joueur joueur;
 
     public: 
-    Jeu(const string &filename);
+    Jeu(const string &j, const string &g);
     Joueur getJoueur();
     
 };

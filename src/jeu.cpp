@@ -1,9 +1,9 @@
 #include "jeu.h"
 
-Jeu::Jeu(const string &j){
+Jeu::Jeu(const string &j, const string &g){
     
-    ifstream fichier(j.c_str());
-    if(!fichier.is_open()){ cout<<"file not open"<<endl;
+    ifstream fichJ(j.c_str());
+    if(!fichJ.is_open()){ cout<<"file not open"<<endl;
     }
     string nom, sort, neffet;
     int pvMx, mnMx;
@@ -11,10 +11,10 @@ Jeu::Jeu(const string &j){
     Sort inSort[NBSORT];
     Effet effet;
 
-    fichier >> nom >> pvMx >> mnMx ;
+    fichJ >> nom >> pvMx >> mnMx ;
     for (int i = 0; i < NBSORT; ++i)
     {
-            fichier >> sort >> coutS >> neffet >> puissanceEffet; 
+            fichJ >> sort >> coutS >> neffet >> puissanceEffet; 
             inSort[i].setNomSort(sort) ;
             inSort[i].setCout(coutS) ;
             effet.setNomEffet(neffet);
@@ -24,10 +24,40 @@ Jeu::Jeu(const string &j){
     
     joueur = Joueur(nom, pvMx, mnMx, inSort);
     
-    fichier.close();
-    cout << "Lecture du joueur " << j << " ... OK\n";
+    fichJ.close();
+    cout << "Lecture du fichier " << j << " ... OK\n";
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+    ifstream fichG(g.c_str());
+    if(!fichG.is_open()){ cout<<"file not open"<<endl;
+    
+    string nom, texte, separator, rep;
+    string reponse[MAXREP];
+    int ind;
+    int indice[MAXREP];
 
-    Noeud Noeud(joueur); 
+    fichG >> ind >> separator >> nom;
+
+    if(separator=="d")
+    {
+        getline(fichG, texte);
+        int i=0;
+        fichG >> rep;
+        while(rep!="cap"){
+            cout<<rep<<" "<<ind<<" "<<endl;
+            fichG>>ind;
+            indice[i]=ind;
+            reponse[i]=rep;
+            i++;
+            fichG >> rep;
+        }
+        
+        
+    }
+    cout<<ind<<separator<<nom;
+    }
+    fichG.close();
+    cout << "Lecture du fichier " << g << " ... OK\n";
+
 }
 
 Joueur Jeu::getJoueur(){

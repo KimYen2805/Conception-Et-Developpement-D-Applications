@@ -57,7 +57,7 @@ void Sort::affSort(){
     /*}else
     if (effetSort.getNomEffet()=="SoinMana")
     {    
-   */     cout<<nomSort<<" coute "<<coutS<<" mana pour infliger"<<effetSort.getPuissanceEffet()<<" degat."<<endl;
+      cout<<nomSort<<" coute "<<coutS<<" mana pour infliger"<<effetSort.getPuissanceEffet()<<" degat."<<endl; */ 
     }else{
         cout<<"woops"<<endl;
     }

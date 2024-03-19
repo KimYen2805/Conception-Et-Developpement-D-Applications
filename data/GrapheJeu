@@ -1,9 +1,19 @@
-0 debut
-1 dialogue0
-2 combat1
-3 
-4 dialogue1
-5
+0 d aide
+
+1 d debut
+Ce jeu ce joue exclusivement au clavier.\n Tout les choix ne seront pas explicites mais une aide et toujours disponible en entrant 'Aide'.\n Souhaitez-vous commencer le jeu?
+Oui 2
+Non 4
+Aide 0
+cap
+2 d dialogue0
+
+3 c combat1
+
+4 e
+
+5 d dialogue1
+
 6
 7
 8

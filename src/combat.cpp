@@ -19,13 +19,15 @@ Combat::~Combat(){
 
 int Combat::castSort(){
     string s;
+    cout<<"Entrer un sort : ";
     cin >> s;
     int sort = joueur.isSort(s);
     if(sort<0){
-        std::cout<<"Sort invalide"<<endl;
+        cout<<"Sort invalide"<<endl;
     }
-    std::cout<<"Sort invalide"<<endl;
+    
     joueur.getSort(sort).affSort();
+    return sort;
 }
 
 void Combat::ennHitPlay(Sort sort){

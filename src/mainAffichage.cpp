@@ -5,7 +5,7 @@ using namespace std;
 
 int main (int argc, char ** argv)
 {
-    Jeu Jeu("./data/Joueur");
+    Jeu Jeu("./data/Joueur","");
 		Joueur joueur = Jeu.getJoueur();
     // Initialisation de SDL
      if (SDL_Init(SDL_INIT_VIDEO) != 0) {

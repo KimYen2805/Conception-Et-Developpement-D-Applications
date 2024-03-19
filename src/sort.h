@@ -22,5 +22,7 @@ public:
     string getNomSort() const;
     float getCout() const;
     Effet getEffetSort() const;
+
+    void affSort();
 };
 #endif

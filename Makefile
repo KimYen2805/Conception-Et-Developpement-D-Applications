@@ -6,10 +6,10 @@ bin/CDKA: obj/mainCDKA.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/ef
 bin/test: obj/mainTest.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o
 	g++ -g obj/mainTest.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o -o bin/test
 
-bin/affichage: obj/mainAffichage.o obj/affichage.o 
-	g++ -g obj/mainAffichage.o obj/affichage.o -o bin/affichage -lSDL2 -lSDL2_image
+bin/affichage: obj/mainAffichage.o obj/affichage.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o obj/noeud.o obj/combat.o obj/dialogue.o obj/jeu.o
+	g++ -g obj/mainAffichage.o obj/affichage.o obj/joueur.o obj/ennemi.o obj/sort.o obj/objet.o obj/effet.o obj/noeud.o obj/combat.o obj/dialogue.o obj/jeu.o -o bin/affichage -lSDL2 -lSDL2_image
 
-obj/mainCDKA.o: src/mainCDKA.cpp src/jeu.h
+obj/mainCDKA.o: src/mainCDKA.cpp src/jeu.h 
 	g++ -g -Wall -c src/mainCDKA.cpp -o obj/mainCDKA.o
 
 obj/mainTest.o: src/mainTest.cpp src/joueur.h src/ennemi.h 

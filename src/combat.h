@@ -20,7 +20,7 @@ public:
     */
     Combat(Ennemi eg[MAXENNEMI], int gs, int ind);
     ~Combat();
-    void castSort();
+    int castSort();
     void ennHitPlay(Sort sort);
     void playHitEnn(Sort sort);
     void ennTurn();

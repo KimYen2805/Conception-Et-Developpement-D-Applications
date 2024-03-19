@@ -12,20 +12,26 @@ Combat::Combat(Ennemi eg[MAXENNEMI], int gs, int ind){
             ennGroup[i]=eg[i];
         }
 }
-/*
+
 Combat::~Combat(){
 
 }
 
-void Combat::castSort(){
-    
-    float joueur.getSort(sort)
-    if()
+int Combat::castSort(){
+    string s;
+    cin >> s;
+    int sort = joueur.isSort(s);
+    if(sort<0){
+        std::cout<<"Sort invalide"<<endl;
+    }
+    std::cout<<"Sort invalide"<<endl;
+    std::cout << joueur.getSort(sort).getEffetSort().getNomEffet() << endl;
 }
 
 void Combat::ennHitPlay(Sort sort){
 
 }
+
 void Combat::playHitEnn(Sort sort){
     
 
@@ -41,4 +47,3 @@ void Combat::playTurn(){
 void Combat::fight(){
 
 }
-*/

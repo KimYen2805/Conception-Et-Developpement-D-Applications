@@ -111,13 +111,18 @@ void ImageAffichage::Afficher() {
 		SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
 		//ajouter une barre 
 		SDL_Rect re; 
+		//
+		Jeu Jeu("./data/Joueur");
+		Joueur joueur = Jeu.getJoueur();
+
 		re.x =350; 
 		re.y =350;
-		re.w =20;
+		re.w = joueur.getPVJoueur();
 		re.h =10;
+		
 		SDL_SetRenderDrawColor(renderer,255,0,0,0);
 		SDL_RenderFillRect(renderer, &re);
-		SDL_RenderPresent(renderer);
+		//SDL_RenderPresent(renderer);
 		//Affichage à l'écran
 		SDL_RenderPresent(renderer);
       }

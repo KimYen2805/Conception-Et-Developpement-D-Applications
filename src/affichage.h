@@ -2,6 +2,7 @@
 #ifndef AFFICHAGE_H
 #define AFFICHAGE_H
 #include "jeu.h" 
+#include "joueur.h"
 #include <SDL2/SDL.h>
 
 

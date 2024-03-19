@@ -35,6 +35,9 @@ void ImageAffichage::Afficher() {
 	// initialisation boucle
 	SDL_Event events;
 	bool quit = false;
+	//pos joueur au début 
+	int posXJoueur= 300; 
+	int posYJoueur= 300;
 	// boucle
 	while (!quit && !SDL_QuitRequested()) {
 		// recuperation taille fenetre
@@ -46,12 +49,35 @@ void ImageAffichage::Afficher() {
 			{ 
 				quit = true;
 			}
-			else if (events.type== SDL_KEYDOWN && events.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+			else if (events.type== SDL_KEYDOWN )
 			{
-				quit= true;
+				switch (events.key.keysym.scancode)
+				{
+					case SDL_SCANCODE_ESCAPE:
+						quit= true;
+						break; 
+					case SDL_SCANCODE_UP:
+						posYJoueur -= 10;
+						break;
+					case SDL_SCANCODE_DOWN: 
+						posYJoueur += 10;
+						break;
+					case SDL_SCANCODE_LEFT: 
+						posXJoueur -= 10;
+						break;
+					case SDL_SCANCODE_RIGHT: 
+						posXJoueur += 10;
+						break;
+					default:
+						break;
+				}
+				
 			}
 			}
-	
+	//Effacement de l'écran
+	SDL_SetRenderDrawColor( renderer, 255, 255,200,200);
+	SDL_RenderClear(renderer);
+
 		// Affichage de l'image ennemi
         SDL_Surface *image1= IMG_Load("data/ennemi.png");
       if (!image1)
@@ -60,6 +86,14 @@ void ImageAffichage::Afficher() {
         }
         SDL_Texture *textureImage1= SDL_CreateTextureFromSurface(renderer, image1);
         SDL_FreeSurface(image1);
+		//Positionnement et affichage d'image ennemi
+		SDL_Rect posIma1;
+		posIma1.x = 100; 
+		posIma1.y= 100;
+		SDL_QueryTexture(textureImage1, NULL, NULL, &posIma1.w, &posIma1.h);
+		SDL_RenderCopy(renderer, textureImage1,NULL, &posIma1);
+
+
 		//affichage de l'image joueur 
 		SDL_Surface *image2= IMG_Load("data/joueur.png");
 		if ( !image2)
@@ -68,18 +102,22 @@ void ImageAffichage::Afficher() {
 		}
 		SDL_Texture *textureImage2 = SDL_CreateTextureFromSurface(renderer, image2);
 		SDL_FreeSurface(image2);
-		//Positionnement et affichage d'image 1
-		SDL_Rect posIma1;
-		posIma1.x = 100; 
-		posIma1.y= 100;
-		SDL_QueryTexture(textureImage1, NULL, NULL, &posIma1.w, &posIma1.h);
-		SDL_RenderCopy(renderer, textureImage1,NULL, &posIma1);
-		//Positionnement et affichage d'image 2
+		
+		//Positionnement et affichage d'image 2 joueur
 		SDL_Rect posIma2;
-		posIma2.x = 300; 
-		posIma2.y= 300;
+		posIma2.x = posXJoueur; 
+		posIma2.y= posYJoueur;
 		SDL_QueryTexture(textureImage2, NULL, NULL, &posIma2.w, &posIma2.h);
 		SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
+		//ajouter une barre 
+		SDL_Rect re; 
+		re.x =350; 
+		re.y =350;
+		re.w =20;
+		re.h =10;
+		SDL_SetRenderDrawColor(renderer,255,0,0,0);
+		SDL_RenderFillRect(renderer, &re);
+		SDL_RenderPresent(renderer);
 		//Affichage à l'écran
 		SDL_RenderPresent(renderer);
       }

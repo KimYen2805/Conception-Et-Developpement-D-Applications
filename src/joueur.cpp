@@ -154,7 +154,7 @@ void Joueur::testRegression() {
     cout<<nomJoueur<<" "<<pointDeVieMax<<endl;
     for (int i=0;i<NBSORT;i++)
     {
-        std::cout <<"testReg" <<tabSort[i].getNomSort() << " ";
+        std::cout <<"testReg :" <<tabSort[i].getNomSort() << " ";
         std::cout << tabSort[i].getCout() << " ";
         std::cout << tabSort[i].getEffetSort().getNomEffet() << " ";
         std::cout << tabSort[i].getEffetSort().getPuissanceEffet() << endl;

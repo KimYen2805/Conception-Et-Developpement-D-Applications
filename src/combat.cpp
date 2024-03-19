@@ -25,7 +25,7 @@ int Combat::castSort(){
         std::cout<<"Sort invalide"<<endl;
     }
     std::cout<<"Sort invalide"<<endl;
-    std::cout << joueur.getSort(sort).getEffetSort().getNomEffet() << endl;
+    joueur.getSort(sort).affSort();
 }
 
 void Combat::ennHitPlay(Sort sort){

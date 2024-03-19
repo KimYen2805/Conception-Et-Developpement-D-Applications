@@ -19,6 +19,7 @@ public:
 
     string getNomEffet() const; 
     float getPuissanceEffet() const; 
+
 };
 
 #endif

@@ -22,7 +22,7 @@ class ImageAffichage {
 /**
  * @brief Affiche l'image dans la fenêtre
 */
-         void Afficher();
+         void Afficher(Joueur j);
 };
 
 #endif

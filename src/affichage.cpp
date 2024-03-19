@@ -31,7 +31,7 @@ ImageAffichage::~ImageAffichage()
  SDL_DestroyRenderer(renderer); // Libère la mémoire associée au renderer
  SDL_DestroyWindow(window); // Libère la mémoire associée à la fenêtre
 }
-void ImageAffichage::Afficher() {
+void ImageAffichage::Afficher(Joueur joueur) {
 	// initialisation boucle
 	SDL_Event events;
 	bool quit = false;
@@ -112,14 +112,14 @@ void ImageAffichage::Afficher() {
 		//ajouter une barre 
 		SDL_Rect re; 
 		//
-		Jeu Jeu("./data/Joueur");
-		Joueur joueur = Jeu.getJoueur();
+	//	Jeu Jeu("./data/Joueur");
+		//Joueur joueur = Jeu.getJoueur();
 
 		re.x =350; 
 		re.y =350;
 		re.w = joueur.getPVJoueur();
 		re.h =10;
-		
+
 		SDL_SetRenderDrawColor(renderer,255,0,0,0);
 		SDL_RenderFillRect(renderer, &re);
 		//SDL_RenderPresent(renderer);

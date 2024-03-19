@@ -5,6 +5,8 @@ using namespace std;
 
 int main (int argc, char ** argv)
 {
+    Jeu Jeu("./data/Joueur");
+		Joueur joueur = Jeu.getJoueur();
     // Initialisation de SDL
      if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         cerr << "Erreur d'initialisation de SDL: " << SDL_GetError() << endl;
@@ -19,7 +21,7 @@ int main (int argc, char ** argv)
     ImageAffichage imageAffichage;
 
     //Affichage des deux images
-    imageAffichage.Afficher();
+    imageAffichage.Afficher(joueur);
 
     // Quit SDL_image
     IMG_Quit();

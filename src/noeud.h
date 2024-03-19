@@ -8,7 +8,7 @@ protected:
     int indice;
     string nomNoeud;
     Joueur joueur;
-    Noeud *fils;
+    int* fils;
 
 public:
     Noeud();

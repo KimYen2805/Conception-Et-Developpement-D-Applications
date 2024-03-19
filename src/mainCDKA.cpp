@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    Jeu Jeu("./data/Joueur", "./data/Graphe");
+    Jeu Jeu;
     //Combat combat;
     Jeu.getJoueur().testRegression();
     

@@ -1,11 +1,16 @@
 #include "dialogue.h"
 
 
-Dialogue::Dialogue(){
-    indice=0;
-    texte="Ce jeu ce joue exclusivement au clavier.\n Tout les choix ne seront pas explicites mais une aide et toujours disponible en entrant 'Aide'.\n Souhaitez-vous commencer le jeu?";
-    reponse[0]="Oui";
-    reponse[1]="Non";
-    reponse[2]="Aide";
+Dialogue::Dialogue(int ind, string nom, string txt, string rep[MAXREP], int* f, int nb){
+    indice=ind;
+    nomNoeud=nom;
+    texte=txt;
+    fils = new int[nb+1];
+    for (int i = 0; i<=nb;i++)
+    {
+        reponse[i]=rep[i];
+        fils[i]=f[i];
+    }
+    
 }
 

@@ -10,7 +10,16 @@ class Dialogue : public Noeud{
     string texte; 
     string reponse[MAXREP]; 
 public:
-    Dialogue();
+/**
+ * @brief initialise un noeud dialogue avec les paramètres
+ * @param ind indice du noeud
+ * @param nom nom du noeud
+ * @param txt le texte du dialogue
+ * @param rep tableau des réponses
+ * @param fils pointeur vers les fils
+ * @param nombre de fils et réponses
+*/
+    Dialogue(int ind, string nom, string txt, string rep[MAXREP], int* f, int nb);
 
 };
 #endif

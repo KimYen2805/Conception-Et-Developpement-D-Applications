@@ -12,7 +12,7 @@ class Jeu{
     Joueur joueur;
 
     public: 
-    Jeu(const string &j, const string &g);
+    Jeu();
     Joueur getJoueur();
     
 };

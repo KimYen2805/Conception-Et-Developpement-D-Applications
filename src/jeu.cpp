@@ -1,7 +1,7 @@
 #include "jeu.h"
 
-Jeu::Jeu(const string &j, const string &g){
-    
+Jeu::Jeu(){
+    const string &j="./data/Joueur";
     ifstream fichJ(j.c_str());
     if(!fichJ.is_open()){ cout<<"file not open"<<endl;
     }
@@ -27,33 +27,37 @@ Jeu::Jeu(const string &j, const string &g){
     fichJ.close();
     cout << "Lecture du fichier " << j << " ... OK\n";
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+    const string &g="./data/GrapheJeu";
     ifstream fichG(g.c_str());
     if(!fichG.is_open()){ cout<<"file not open"<<endl;
-    
+    int i, fils, ind=0;
+
+    int* indice[MAXREP];
+
     string nom, texte, separator, rep;
     string reponse[MAXREP];
-    int ind;
-    int indice[MAXREP];
-
+    
     fichG >> ind >> separator >> nom;
-
+    cout<<ind<<separator<<nom;
     if(separator=="d")
     {
         getline(fichG, texte);
-        int i=0;
+        int j=0;
         fichG >> rep;
         while(rep!="cap"){
-            cout<<rep<<" "<<ind<<" "<<endl;
-            fichG>>ind;
-            indice[i]=ind;
-            reponse[i]=rep;
-            i++;
+
+            std::cout<<rep<<" "<<fils<<" "<<endl;
+            fichG>>fils;
+
+            indice[j]=&fils;
+            reponse[j]=rep;
+            j++;
             fichG >> rep;
         }
         
         
     }
-    cout<<ind<<separator<<nom;
+    
     }
     fichG.close();
     cout << "Lecture du fichier " << g << " ... OK\n";

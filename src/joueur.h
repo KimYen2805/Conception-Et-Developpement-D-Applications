@@ -54,7 +54,15 @@ public :
     *@param so nom d'un sort potentiel 
     *@return un entier entre -1 et NBSORT-1
     */
-    int getSort(string so);
+    int isSort(string so);
+
+    /**
+    *@brief renvoie un sort s
+    *@param i indice d'un sort
+    *@return un sort
+    */
+    Sort getSort(int i);
+    
     //test
     void testRegression();
     

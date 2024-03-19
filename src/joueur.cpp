@@ -120,7 +120,7 @@ void Joueur::updateMana(int ma){
     }else mana += ma;
 }
 
-int Joueur::getSort(string so){
+int Joueur::isSort(string so){
     for (int i=0;i<NBSORT;i++)
     {
         if(so==tabSort[i].getNomSort() )
@@ -130,6 +130,11 @@ int Joueur::getSort(string so){
     }
     return -1;
 }
+
+Sort Joueur::getSort(int i){
+    return tabSort[i];    
+}
+
 void Joueur::testRegression() {
     std::cout<<endl << "Execution du test de regression pour la classe Joueur..." << endl;
 

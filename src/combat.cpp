@@ -2,11 +2,11 @@
 
 
 Combat::Combat(){
-    indice=1;
+    id=1;
     
 }
 Combat::Combat(Ennemi eg[MAXENNEMI], int gs, int ind){
-    indice=ind;
+    id=ind;
     for (int i=0;i<gs;i++)
         {
             ennGroup[i]=eg[i];
@@ -17,16 +17,16 @@ Combat::~Combat(){
 
 }
 
-int Combat::castSort(){
+int Combat::castSort(Joueur& j){
     string s;
     cout<<"Entrer un sort : ";
     cin >> s;
-    int sort = joueur.isSort(s);
+    int sort = j.isSort(s);
     if(sort<0){
         cout<<"Sort invalide"<<endl;
     }
     
-    joueur.getSort(sort).affSort();
+    j.getSort(sort).affSort();
     return sort;
 }
 
@@ -46,6 +46,6 @@ void Combat::playTurn(){
 
 }
 
-void Combat::fight(){
+void Combat::fight(Joueur& j){
 
 }

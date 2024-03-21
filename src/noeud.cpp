@@ -2,11 +2,8 @@
 
 
 Noeud::Noeud(){
-    indice=-1;
+    id=-1;
 
 }
 
-Noeud::Noeud(Joueur j){
-    indice=0;
-    joueur=j;
-}
+

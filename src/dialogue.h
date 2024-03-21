@@ -1,14 +1,16 @@
 #ifndef _DIALOGUE_H
 #define _DIALOGUE_H
 #include <string>
+#include <vector>
 #include "noeud.h"
 const int MAXREP= 5;
 
 using namespace std; 
+
 class Dialogue : public Noeud{
  private: 
     string texte; 
-    string reponse[MAXREP]; 
+    std::vector <string> reponse; 
 public:
 /**
  * @brief initialise un noeud dialogue avec les paramètres

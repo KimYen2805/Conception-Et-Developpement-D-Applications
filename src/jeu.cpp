@@ -3,7 +3,7 @@
 Jeu::Jeu(){
     const string &j="./data/Joueur";
     ifstream fichJ(j.c_str());
-    if(!fichJ.is_open()){ cout<<"file not open"<<endl;
+    if(!fichJ.is_open()){ cout<<"file not open"<<endl;exit(EXIT_FAILURE);
     }
     string nom, sort, neffet;
     int pvMx, mnMx;
@@ -29,7 +29,7 @@ Jeu::Jeu(){
 //----------------------------------------------------------------------------------------------------------------------------------------------------
     const string &g="./data/GrapheJeu";
     ifstream fichG(g.c_str());
-    if(!fichG.is_open()){ cout<<"file not open"<<endl;
+    if(!fichG.is_open()){ cout<<"file not open"<<endl;exit(EXIT_FAILURE);
     int i, fils, ind=0;
 
     int* indice[MAXREP];

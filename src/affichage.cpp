@@ -134,7 +134,7 @@ void ImageAffichage::Afficher(Joueur joueur) {
 	// point de vie joueur, mana, point de vie de l'ennemi
 	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
     int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();    // Mana maximale du joueur
-    int pointDeVieEnnemi=100 ; 
+    int pointDeVieEnnemi=80 ; 
 		// une barre (pointDVactu)
 	SDL_Rect rePo; 
 		rePo.x =350; 

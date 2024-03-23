@@ -6,7 +6,7 @@ using namespace std;
 int main (int argc, char ** argv)
 {
 
-    Jeu Jeu("./data/Joueur");
+    Jeu Jeu;
 	Joueur joueur = Jeu.getJoueur();
  
     ImageAffichage imageAffichage;

@@ -11,7 +11,7 @@ Ennemi::Ennemi() {
 }
 
 Ennemi::~Ennemi() {
-    delete[] tab_Sort;
+    
 }
 
 int Ennemi::getPointDeVieEnnemi() const {

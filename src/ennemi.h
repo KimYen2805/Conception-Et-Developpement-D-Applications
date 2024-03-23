@@ -2,6 +2,7 @@
 #define _ENNEMI_H
 #include "sort.h"
 #include "objet.h"
+#include <vector>
 #include <iostream>
 #include <string>
 
@@ -9,7 +10,7 @@ class Ennemi {
     private:
         int pointDeVie;
         int puissance; 
-        Sort *tab_Sort;
+        vector<Sort> tab_Sort;
     public:
      // Constructeur
     Ennemi();

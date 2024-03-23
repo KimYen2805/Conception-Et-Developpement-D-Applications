@@ -5,9 +5,10 @@ using namespace std;
 
 int main (int argc, char ** argv)
 {
+
     Jeu Jeu("./data/Joueur");
 	Joueur joueur = Jeu.getJoueur();
-    
+ 
     ImageAffichage imageAffichage;
 
     //Affichage des deux images

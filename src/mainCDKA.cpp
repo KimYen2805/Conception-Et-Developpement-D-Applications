@@ -4,8 +4,16 @@ using namespace std;
 
 int main()
 {
-    Jeu Jeu("./data/Joueur");
-    Jeu.getJoueur().testRegression();
+    /*string texte;
+    getline(std::cin,texte);
+    cout<<texte<<endl;*/
+    Jeu Jeu;
+    //Combat combat;
+    //Jeu.getJoueur().testRegression();
+    
+    //combat.castSort();
+    
+
     return 0;
 }
 

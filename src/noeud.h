@@ -5,9 +5,8 @@
 
 class Noeud {
 protected:
-    int indice;
+    int id;
     string nomNoeud;
-    Joueur joueur;
 
 public:
     Noeud();

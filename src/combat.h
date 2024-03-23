@@ -8,7 +8,7 @@ int const MAXENNEMI = 5;
 class Combat : public Noeud{
 
 private:
-    Ennemi ennGroup[MAXENNEMI];
+    vector<Ennemi> ennGroup;
 
 public:    
     Combat();
@@ -19,13 +19,14 @@ public:
      * @param ind Indice du noeud
     */
     Combat(Ennemi eg[MAXENNEMI], int gs, int ind);
+    
     ~Combat();
-    int castSort();
+    int castSort(Joueur& j);
     void ennHitPlay(Sort sort);
     void playHitEnn(Sort sort);
     void ennTurn();
     void playTurn();
-    void fight();
+    void fight(Joueur& j);
 };
 
 

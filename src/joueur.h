@@ -18,7 +18,7 @@ private :
     int pointsDeVie;        // Points de vie du joueur actuelle
 
     int maxMana;
-    int mana;
+    int mana; 
 
     Sort tabSort[NBSORT];          // Tableau de sorts 
     Objet tabObjet[NBOBJ];

@@ -2,24 +2,46 @@
 #include <iostream>
 #include <assert.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <vector>
+using namespace std; 
+
 /**
  * @brief Constructeur
  * renvoie une fenêtre SDL
 */
 ImageAffichage::ImageAffichage()
 {
+	// Initialisation de SDL
+     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        cerr << "Erreur d'initialisation de SDL: " << SDL_GetError() << endl;
+        exit(1);
+    }
+// Initialisation de SDL_image
+    if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
+        cerr << "Erreur d'initialisation de SDL_image: " << IMG_GetError() << endl;
+        SDL_Quit();
+        exit(1) ;
+    }
+	//Créaction de la fenetre SDL
 window=SDL_CreateWindow("ProjetCDKA",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,500,500,SDL_WINDOW_SHOWN);
 
 if (window == nullptr) 
 {
     cerr << "Erreur de création de fenêtre SDL"<<endl;
+	SDL_Quit();
+	exit (1);
 }
 renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 if (renderer == nullptr) 
 {
     cerr << "Erreur de création de renderer SDL: " << SDL_GetError() << endl;
+	SDL_DestroyWindow(window);
+	SDL_Quit();
+	exit(1);
 }
+
 }
 
 /**
@@ -36,8 +58,8 @@ void ImageAffichage::Afficher(Joueur joueur) {
 	SDL_Event events;
 	bool quit = false;
 	//pos joueur au début 
-	int posXJoueur= 300; 
-	int posYJoueur= 300;
+	int posXJoueur= 350; 
+	int posYJoueur= 320;
 	// boucle
 	while (!quit && !SDL_QuitRequested()) {
 		// recuperation taille fenetre
@@ -75,7 +97,7 @@ void ImageAffichage::Afficher(Joueur joueur) {
 			}
 			}
 	//Effacement de l'écran
-	SDL_SetRenderDrawColor( renderer, 255, 255,200,200);
+	SDL_SetRenderDrawColor( renderer, 191, 201,202,255);
 	SDL_RenderClear(renderer);
 
 		// Affichage de l'image ennemi
@@ -104,29 +126,100 @@ void ImageAffichage::Afficher(Joueur joueur) {
 		SDL_FreeSurface(image2);
 		
 		//Positionnement et affichage d'image 2 joueur
-		SDL_Rect posIma2;
+	SDL_Rect posIma2;
 		posIma2.x = posXJoueur; 
 		posIma2.y= posYJoueur;
-		SDL_QueryTexture(textureImage2, NULL, NULL, &posIma2.w, &posIma2.h);
-		SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
-		//ajouter une barre 
-		SDL_Rect re; 
-		//
-	//	Jeu Jeu("./data/Joueur");
-		//Joueur joueur = Jeu.getJoueur();
+	SDL_QueryTexture(textureImage2, NULL, NULL, &posIma2.w, &posIma2.h);
+	SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
+	// point de vie joueur, mana, point de vie de l'ennemi
+	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
+    int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();    // Mana maximale du joueur
+    int pointDeVieEnnemi=100 ; 
+		// une barre (pointDVactu)
+	SDL_Rect rePo; 
+		rePo.x =350; 
+		rePo.y =400;
+		rePo.w = pointDeVieJoueur;
+		rePo.h =10;
+	SDL_SetRenderDrawColor(renderer,255,0,0,0);
+	SDL_RenderFillRect(renderer, &rePo);
+		//une barre (mana)
+		SDL_Rect reMa; 
+		reMa.x =350; 
+		reMa.y =420;
+		reMa.w = maxManaJoueur;
+		reMa.h =10;
+	SDL_SetRenderDrawColor(renderer,0,0,255,0);
+	SDL_RenderFillRect(renderer, &reMa);
+	//affichage des res en rectangle text
+	if(TTF_Init()==-1) 
+	{
+    cerr<<"TTF_Init : "<<TTF_GetError()<<endl;
+    exit(2);
+	}
+	
+	TTF_Font *font= TTF_OpenFont("data/Arial.ttf",16);
+	if ( font== nullptr)
+	{
+		cerr<<"Échec du chargement de la police:  "<<TTF_GetError()<<endl;
+		exit(3);
+	}
+//Définir la couleur du texte
+SDL_Color textColor = {33, 50, 61}; 
+SDL_Color rectColor = {241, 196, 15}; 
 
-		re.x =350; 
-		re.y =350;
-		re.w = joueur.getPVJoueur();
-		re.h =10;
+std::vector<std::string> lines = {
+    "Nom du joueur:",
+    "Point de vie: " + std::to_string(pointDeVieJoueur),
+    "Max mana: " + std::to_string(maxManaJoueur),
+    "Point de vie ennemi: " + std::to_string(pointDeVieEnnemi)
+};
 
-		SDL_SetRenderDrawColor(renderer,255,0,0,0);
-		SDL_RenderFillRect(renderer, &re);
-		//SDL_RenderPresent(renderer);
-		//Affichage à l'écran
-		SDL_RenderPresent(renderer);
+int maxWidth = 0; //stocker la largeur max des textes
+int totalHeight = 0; //caculer la hauteur totale 
+vector<int> heights; //stocker la hauteur de chaque ligne de texte
+
+// Caculer la largeur max et la hauteur totale
+for (const auto& line : lines) {
+    SDL_Surface* tempSurface = TTF_RenderText_Blended(font, line.c_str(), textColor);
+    maxWidth = max(maxWidth, tempSurface->w); //Mettre à jour la largeur max 
+    totalHeight += tempSurface->h; //Ajouter la hauteur de cette ligne à la hauteur totale 
+    heights.push_back(tempSurface->h); //Stoker la hauteur de cette ligne
+    SDL_FreeSurface(tempSurface);
+}
+
+// Ajouter un espacement entre les lignes
+int spacing = 5;
+totalHeight += spacing * (lines.size() - 1); //ajouter l'espacement total à la hauteur 
+
+// dessiner le rectangle
+SDL_Rect rect = {300, 0, maxWidth + 20, totalHeight + 20}; //Une marge autour du texte
+SDL_SetRenderDrawColor(renderer, rectColor.r, rectColor.g, rectColor.b, 255);
+SDL_RenderFillRect(renderer, &rect);
+
+int posY = rect.y + 10; // Pos le premier texte avec un marge
+// Dessiner chaque ligne de texte à l'intérieur du rectangle
+for (const auto& line : lines) {
+    SDL_Surface* textSurface = TTF_RenderText_Blended(font, line.c_str(), textColor);
+    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+
+    SDL_Rect textRect = {rect.x + 10, posY, textSurface->w, textSurface->h}; // Aligner le texte avec une marge
+    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
+
+    posY += textSurface->h + spacing; //Mettre à jour la pos pour la ligne suivante
+
+    SDL_FreeSurface(textSurface);
+    SDL_DestroyTexture(textTexture);
+}
+
+//Réinitialiser la couleur du renderer pour ne pas affecter les dessins
+SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+//Libérer la police et quitter TTF
+TTF_CloseFont(font);
+TTF_Quit();
+	//Affichage à l'écran
+	SDL_RenderPresent(renderer);
       }
 }
-  
 
 

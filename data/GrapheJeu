@@ -3,10 +3,11 @@ Ce jeu ce joue exclusivement au clavier.\n Tout les choix ne seront pas explicit
 2 Oui Non 
 2 dialogue0 d
 Qlqchose Texte
-2 Apres Fin
+2 Combat Fin
 3 combat1 c
 1 100 20 1 0
-
+4 fin f
+Vous etes donc à la fin du jeu..
 1 2
 1 3
 2 3

@@ -18,10 +18,9 @@ public:
  * @param nom nom du noeud
  * @param txt le texte du dialogue
  * @param rep tableau des réponses
- * @param fils pointeur vers les fils
- * @param nombre de fils et réponses
+ * @param nb nombre de réponses
 */
-    Dialogue(int ind, string nom, string txt, string rep[MAXREP], int* f, int nb);
+    Dialogue(int ind, string nom, string txt, string rep[MAXREP],int nb);
 
 };
 #endif

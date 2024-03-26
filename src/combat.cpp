@@ -5,11 +5,12 @@ Combat::Combat(){
     id=1;
     
 }
-Combat::Combat(Ennemi eg[MAXENNEMI], int gs, int ind){
+Combat::Combat(Ennemi eg[MAXENNEMI], int gs, int ind, string nomN){
     id=ind;
+    nomNoeud=nomN;
     for (int i=0;i<gs;i++)
         {
-            ennGroup[i]=eg[i];
+            ennGroup.push_back(eg[i]);
         }
 }
 
@@ -17,10 +18,7 @@ Combat::~Combat(){
 
 }
 
-int Combat::castSort(Joueur& j){
-    string s;
-    cout<<"Entrer un sort : ";
-    cin >> s;
+int Combat::castSort(Joueur& j, string s){
     int sort = j.isSort(s);
     if(sort<0){
         cout<<"Sort invalide"<<endl;

@@ -30,6 +30,10 @@ void Ennemi::setPuissanceEnnemi(int pu) {
     puissance = pu;
 }
 
+void Ennemi::addSort(int sort){
+    tabInd_Sort.push_back(sort);
+}
+
 /*void Ennemi::attaquerJoueur() {
     
 }*/

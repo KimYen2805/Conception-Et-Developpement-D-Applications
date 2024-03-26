@@ -10,48 +10,71 @@ Graphe::Graphe()
     }
     int fils;
     int ind=0;
+    
 
     int indice[MAXREP];
 
     string nomN, texte, separator, rep;
     string reponse[MAXREP];
-
-    fichG >> ind  >> nomN>> separator;    
-    std::cout<<ind<<" "<<nomN<<" "<< separator<< endl;
-    fichG >> rep;
-    getline(fichG, texte);
-    texte = rep + texte;
-    std::cout<<texte<<endl;
-    fichG >> fils;
-    for (int i;i<fils;i++){
-        fichG >> reponse[i];
-    }
-     ;
-    std::cout<<fils <<" "<<reponse[0] << " "<< reponse[1]<< endl;
-
-/*
-    //fichG >> re
-    if(separator=="d")
+    for (int i=0;i<4;i++)
     {
-        getline(fichG, texte);
-        std::cout<<"pa"<<texte<<'\n';
-        int j= 0;
-        fichG >> rep >> fils;
-        while(rep!="cap"){
-            std::cout<<rep<<", "<<fils<<", "<<endl;
-            fichG>>fils;
-
-            indice[j]=fils;
-            reponse[j]=rep;
-            j++;
+        fichG >> ind  >> nomN>> separator;    
+        std::cout<<ind<<" "<<nomN<<" "<< separator<< endl;
+        if(separator=="d")
+        {
             fichG >> rep;
+            getline(fichG, texte);
+            texte = rep + texte;
+            std::cout<<texte<<endl;
+            fichG >> fils;
+            std::cout<<fils;
+            for (int i;i<fils;i++)
+            {
+                fichG >> reponse[i];
+                std::cout<<" "<<reponse[i];
+            }
+            std::cout<< endl;
+            
+            sommets.push_back(new Dialogue(ind,nomN,texte,reponse,fils));
         }
-    }    
-        */
-    
+
+        if(separator=="c")
+        {
+            Ennemi tab[MAXENNEMI];
+            fichG >> fils;
+            std::cout<<fils;
+            for (int i;i<fils;i++)
+            {
+                int pv, mana, nbS;
+                fichG >> pv>>mana>>nbS;
+
+                std::cout<<" "<<pv <<" "<<mana;
+                tab[i].setPointDeVieEnnemi(pv);
+                tab[i].setPuissanceEnnemi(mana);
+                for (int j;j<nbS;j++)
+                {
+                    int iSort;
+                    fichG>>iSort;
+                    tab[i].addSort(iSort);
+                }
+                
+            }
+            std::cout<< endl;
+            sommets.push_back(new Combat(tab,fils,ind,nomN));
+        }
+
+    }
     
     fichG.close();
     std::cout << "Lecture du fichier " << g << " ... OK\n";
+    n=sommets[0];
+   
+}
 
-    
+Graphe::~Graphe()
+{
+    for (long unsigned int i=0;i<sommets.size();i++)
+    {
+        delete sommets[i];
+    }
 }

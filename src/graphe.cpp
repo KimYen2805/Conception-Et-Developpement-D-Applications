@@ -38,7 +38,6 @@ Graphe::Graphe()
         int j= 0;
         fichG >> rep >> fils;
         while(rep!="cap"){
-
             std::cout<<rep<<", "<<fils<<", "<<endl;
             fichG>>fils;
 

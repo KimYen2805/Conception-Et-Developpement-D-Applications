@@ -131,7 +131,8 @@ void ImageAffichage::Afficher(Joueur joueur) {
 		posIma2.y= posYJoueur;
 	SDL_QueryTexture(textureImage2, NULL, NULL, &posIma2.w, &posIma2.h);
 	SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
-	// point de vie joueur, mana, point de vie de l'ennemi
+	//nom de joueur,  point de vie joueur, mana, point de vie de l'ennemi
+	string nomDeJoueur = joueur.getNomJoueur();
 	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
     int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();    // Mana maximale du joueur
 	   Ennemi ennemi;
@@ -170,7 +171,7 @@ SDL_Color textColor = {33, 50, 61};
 SDL_Color rectColor = {241, 196, 15}; 
 
 vector<std::string> lines = {
-    "Nom du joueur:",
+    "Nom du joueur:" + string(nomDeJoueur),
     "Point de vie: " + std::to_string(pointDeVieJoueur),
     "Max mana: " + std::to_string(maxManaJoueur),
     "Point de vie ennemi: " + std::to_string(pointDeVieEnnemi)

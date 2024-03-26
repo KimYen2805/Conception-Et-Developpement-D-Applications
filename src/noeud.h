@@ -10,7 +10,7 @@ protected:
 
 public:
     Noeud();
-    Noeud(Joueur j);
+    Noeud(Joueur j); 
     void parcourirNoeud(Joueur j);
 
 };

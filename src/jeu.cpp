@@ -5,7 +5,6 @@ Jeu::Jeu(){
     ifstream fichJ(j.c_str());
     if(!fichJ.is_open()){ std::cout<<"file not open"<<endl;exit(EXIT_FAILURE);
     }
-    
     string nom, sort, neffet;
     int pvMx, mnMx;
     float coutS, puissanceEffet;

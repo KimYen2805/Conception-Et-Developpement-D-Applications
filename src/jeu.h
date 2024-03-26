@@ -1,6 +1,5 @@
 #ifndef _JEU_H
 #define _JEU_H
-
 #include "graphe.h"
 
 using namespace std; 

@@ -18,3 +18,4 @@ obj/dialogue.o
 obj/jeu.o
 obj/mainCDKA.o
 obj/noeud.o
+obj/graphe.o

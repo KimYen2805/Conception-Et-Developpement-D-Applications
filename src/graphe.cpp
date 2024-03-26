@@ -28,7 +28,7 @@ Graphe::Graphe()
             std::cout<<texte<<endl;
             fichG >> fils;
             std::cout<<fils;
-            for (int i;i<fils;i++)
+            for (int i=0;i<fils;i++)
             {
                 fichG >> reponse[i];
                 std::cout<<" "<<reponse[i];
@@ -43,7 +43,7 @@ Graphe::Graphe()
             Ennemi tab[MAXENNEMI];
             fichG >> fils;
             std::cout<<fils;
-            for (int i;i<fils;i++)
+            for (int i=0;i<fils;i++)
             {
                 int pv, mana, nbS;
                 fichG >> pv>>mana>>nbS;
@@ -51,7 +51,7 @@ Graphe::Graphe()
                 std::cout<<" "<<pv <<" "<<mana;
                 tab[i].setPointDeVieEnnemi(pv);
                 tab[i].setPuissanceEnnemi(mana);
-                for (int j;j<nbS;j++)
+                for (int j=0;j<nbS;j++)
                 {
                     int iSort;
                     fichG>>iSort;
@@ -64,6 +64,14 @@ Graphe::Graphe()
         }
 
     }
+    fichG>>fils;
+    for (int i=0;i<fils;i++){
+        int ad1, ad2;
+        fichG>>ad1>> ad2;
+        aretes.push_back(pair(sommets[ad1],sommets[ad2]));
+        std::cout<<ad1<<" "<<ad2<<endl;
+    }
+
     
     fichG.close();
     std::cout << "Lecture du fichier " << g << " ... OK\n";

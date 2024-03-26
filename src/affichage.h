@@ -3,6 +3,7 @@
 #define AFFICHAGE_H
 #include "jeu.h" 
 #include "joueur.h"
+#include "ennemi.h"
 #include <SDL2/SDL.h>
 
 

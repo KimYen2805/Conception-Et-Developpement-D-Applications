@@ -134,7 +134,8 @@ void ImageAffichage::Afficher(Joueur joueur) {
 	// point de vie joueur, mana, point de vie de l'ennemi
 	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
     int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();    // Mana maximale du joueur
-    int pointDeVieEnnemi=80 ; 
+	   Ennemi ennemi;
+    int pointDeVieEnnemi= ennemi.getPointDeVieEnnemi(); 
 		// une barre (pointDVactu)
 	SDL_Rect rePo; 
 		rePo.x =350; 
@@ -151,14 +152,14 @@ void ImageAffichage::Afficher(Joueur joueur) {
 		reMa.h =10;
 	SDL_SetRenderDrawColor(renderer,0,0,255,0);
 	SDL_RenderFillRect(renderer, &reMa);
-	//affichage des res en rectangle text
+	//Affichage des res en rectangle text
 	if(TTF_Init()==-1) 
 	{
     cerr<<"TTF_Init : "<<TTF_GetError()<<endl;
     exit(2);
 	}
 	
-	TTF_Font *font= TTF_OpenFont("data/Arial.ttf",16);
+	TTF_Font *font= TTF_OpenFont("data/Arial.ttf",17);
 	if ( font== nullptr)
 	{
 		cerr<<"Échec du chargement de la police:  "<<TTF_GetError()<<endl;
@@ -168,7 +169,7 @@ void ImageAffichage::Afficher(Joueur joueur) {
 SDL_Color textColor = {33, 50, 61}; 
 SDL_Color rectColor = {241, 196, 15}; 
 
-std::vector<std::string> lines = {
+vector<std::string> lines = {
     "Nom du joueur:",
     "Point de vie: " + std::to_string(pointDeVieJoueur),
     "Max mana: " + std::to_string(maxManaJoueur),

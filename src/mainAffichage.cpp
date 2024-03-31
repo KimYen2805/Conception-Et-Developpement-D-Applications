@@ -6,13 +6,14 @@ int main (int argc, char ** argv)
 {
 
     Jeu Jeu;
+    Ennemi ennemi;
 	Joueur joueur = Jeu.getJoueur();
  
  
-    ImageAffichage imageAffichage;
+    Affichage affichage;
 
     //Affichage des deux images
-    imageAffichage.Afficher(joueur);
+    affichage.AfficherJeu( joueur,ennemi, Jeu); 
 
     return 0;
 }

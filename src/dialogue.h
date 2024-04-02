@@ -20,7 +20,8 @@ public:
  * @param rep tableau des réponses
  * @param nb nombre de réponses
 */
-    Dialogue(int ind, string nom, string txt, string rep[MAXREP],int nb);
+    Dialogue(int ind, string nom, string txt, string rep[MAXREP],int nb, char d);
+    int rep(string word);
 
 };
 #endif

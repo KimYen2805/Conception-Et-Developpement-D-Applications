@@ -18,7 +18,7 @@ public:
      * @param gs Taille de eg
      * @param ind Indice du noeud
     */
-    Combat(Ennemi eg[MAXENNEMI], int gs, int ind, string nomN);
+    Combat(Ennemi eg[MAXENNEMI], int gs, int ind, string nomN, char d);
     
     ~Combat();
     int castSort(Joueur& j, string s);

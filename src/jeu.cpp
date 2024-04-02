@@ -34,3 +34,13 @@ Joueur Jeu::getJoueur(){
     return joueur;
 }
 
+Graphe& Jeu::getGraphe(){
+    return jeu;
+}
+
+Noeud* Jeu::getCNoeud(){
+    //cout<<"dans jeu"<<endl;
+    return jeu.getNoeud();
+}
+
+

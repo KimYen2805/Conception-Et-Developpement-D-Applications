@@ -16,5 +16,7 @@ public:
 
     Graphe();
     ~Graphe();
+    Noeud* getNoeud();
+    void parcoursGraphe(int n);
 };
 #endif

@@ -7,11 +7,11 @@ class Noeud {
 protected:
     int id;
     string nomNoeud;
+    char delim;
 
 public:
     Noeud();
-    Noeud(Joueur j); 
-    void parcourirNoeud(Joueur j);
+    int getID();
 
 };
 #endif

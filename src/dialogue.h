@@ -23,6 +23,7 @@ public:
     */
     Dialogue(int ind, string nom, string txt, string rep[MAXREP],int nb, char d);
     string getTexte();
+    string getRep();
     int rep(string word);
 
 };

@@ -1,12 +1,12 @@
 #include "jeu.h"
-
+const int NBNOEUD=7;
 Graphe::Graphe()
 {
-    const string &g="./data/GrapheJeu";
+    const string &g="./data/GrapheJeu.txt";
     ifstream fichG(g.c_str());
     if(!fichG.is_open())
     { 
-        std::cout<<"file not open"<<endl;exit(EXIT_FAILURE);
+        std::cout<<"file not open graphe"<<endl;exit(EXIT_FAILURE);
     }
     int fils;
     int ind=0;
@@ -15,7 +15,7 @@ Graphe::Graphe()
     string nomN, texte, rep;
     char separator;
     string reponse[MAXREP];
-    for (int i=0;i<4;i++)
+    for (int i=0;i<NBNOEUD;i++)
     {
         fichG >> ind  >> nomN>> separator;    
         std::cout<<ind<<" "<<nomN<<" "<< separator<< endl;
@@ -64,11 +64,11 @@ Graphe::Graphe()
 
     }
     fichG>>fils;
-
+    cout<<"Fin noeuds "<<fils<<endl;
     for (int i=0;i<fils;i++){
         int ad1, ad2;
         fichG>>ad1>> ad2;
-        aretes.push_back(pair(sommets[ad1-1],sommets[ad2-1]));
+        aretes.push_back(pair(sommets[ad1],sommets[ad2]));
         std::cout<<ad1<<" - "<<ad2<<endl;
         
     }

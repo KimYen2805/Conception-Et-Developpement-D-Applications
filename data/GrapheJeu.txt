@@ -1,0 +1,39 @@
+0 debut d
+Ce jeu ce joue exclusivement au clavier.\n Tout les choix ne seront pas explicites mais une aide et toujours disponible en entrant 'Aide'.\n Souhaitez-vous commencer le jeu?
+2 Oui Non
+
+1 fin1 d
+Vous restez allonge, immobile, tandis que la fin approche
+0
+
+2 intro d
+Vous vous reveillez au son d'un combat proche, mais savez-vous vous battre? Dans la direction oppose, quelqu'un vous fait signe de s'approcher.
+2 Combattre Approcher
+
+3 combat1 c
+1 100 20 1 0
+
+4 villageois1 d
+'Comment te sens-tu?', vous dit ce villageois a l'air de inquiet. 'Nous t'avions embauche pour s'occuper des creatures mais il semble que tu te sois evanoui. Ton ami s'occupe de les retenir bien qu'il n'ait pas l'air taille pour le combat, tu devrais y retourner...'
+3 Combattre Parler Fuir
+
+5 villageois2 d
+'Et bien quoi, ne saurais-tu plus te battre? Qu'est t'il arriver au grimoire que tu portais plus tot?'
+1 Grimoire
+
+6 grimoire d
+Fin provisoire pour test le graphe
+0
+
+9
+0 2
+0 1
+2 3
+2 4
+3 6
+4 3
+4 5
+4 6
+5 1
+
+

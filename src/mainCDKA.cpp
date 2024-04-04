@@ -7,7 +7,7 @@ int main()
     Jeu Jeu;
 
     Noeud* noeud;
-    
+    noeud=Jeu.getCNoeud();
 
     string pTexte; //Les futurs réponses du joueur dans le main;
     Dialogue* d;
@@ -17,15 +17,25 @@ int main()
     {
         if (noeud->getDelim()=='d')
         {
-            d=(Dialogue*) noeud;
-            cout<<d->getTexte()<<endl<<"Entree : ";
-            cin>>pTexte;
-            if(pTexte=="Aida"){cout<<""<<endl;
-            }else
-            Jeu.getGraphe().parcoursGraphe(d->rep(pTexte));
+            int isValid=-1;
+            while(isValid==-1)
+            {
+                d=(Dialogue*) noeud;
+                cout<<d->getTexte()<<endl<<"Choix : ";
+                cin>>pTexte;
+                if(pTexte=="Aide")
+                {
+                    cout<<d->getRep()<<endl;
+                }else
+                {isValid =d->rep(pTexte);
+                if (isValid!=-1){Jeu.getGraphe().parcoursGraphe(isValid);}
+                else{cout<<"Reponse invalide au dialogue"<<endl;}}
+                
+            }
         }else
         if (noeud->getDelim()=='c')
         {
+            cout<<"Dans le combat"<<endl;
             c=(Combat*) noeud;
             Jeu.getGraphe().parcoursGraphe(0);
         }
@@ -52,7 +62,7 @@ int main()
     cout<<Jeu.getGraphe().isFeuille(noeud);*/
     }
     d=(Dialogue*) noeud;
-    cout<<d->getTexte()<<endl;
+    cout<<d->getTexte()<<endl;//Dialogue de fin
     return 0;
 }
 

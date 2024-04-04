@@ -12,6 +12,7 @@ protected:
 public:
     Noeud();
     int getID();
+    char getDelim();
 
 };
 #endif

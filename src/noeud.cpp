@@ -9,3 +9,7 @@ Noeud::Noeud(){
 int Noeud::getID(){
     return id;
 }
+
+char Noeud::getDelim(){
+    return delim;
+}

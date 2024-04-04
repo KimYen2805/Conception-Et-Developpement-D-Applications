@@ -12,15 +12,17 @@ class Dialogue : public Noeud{
     string texte; 
     std::vector <string> reponse; 
 public:
-/**
- * @brief initialise un noeud dialogue avec les paramètres
- * @param ind indice du noeud
- * @param nom nom du noeud
- * @param txt le texte du dialogue
- * @param rep tableau des réponses
- * @param nb nombre de réponses
-*/
+    Dialogue();
+    /**
+     * @brief initialise un noeud dialogue avec les paramètres
+     * @param ind indice du noeud
+     * @param nom nom du noeud
+     * @param txt le texte du dialogue
+     * @param rep tableau des réponses
+     * @param nb nombre de réponses
+    */
     Dialogue(int ind, string nom, string txt, string rep[MAXREP],int nb, char d);
+    string getTexte();
     int rep(string word);
 
 };

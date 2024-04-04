@@ -6,14 +6,13 @@
 int const MAXENNEMI = 5;
 
 class Combat : public Noeud{
-
 private:
     vector<Ennemi> ennGroup;
 
 public:    
     Combat();
     /**
-     * @brief
+     * @brief constructeur intialise de combat
      * @param eg Rempli ennGroup 
      * @param gs Taille de eg
      * @param ind Indice du noeud

@@ -12,8 +12,6 @@ Graphe::Graphe()
     int ind=0;
     
 
-    int indice[MAXREP];
-
     string nomN, texte, rep;
     char separator;
     string reponse[MAXREP];
@@ -108,4 +106,15 @@ void Graphe::parcoursGraphe(int id){
             }//else{//cout<<"pas de fils "<<i<<endl; }
         }//else{//cout<<"pas de père "<<i<<endl; }
     }
+}
+
+bool Graphe::isFeuille(Noeud* nActu)
+{
+    for(long unsigned int i=0;i<aretes.size();i++){
+
+        if (aretes[i].first->getID() == this->n->getID()){
+            return false;
+        }
+    }
+    return true;
 }

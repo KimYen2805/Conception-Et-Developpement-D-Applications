@@ -1,5 +1,8 @@
 #include "dialogue.h"
 
+Dialogue::Dialogue(){
+    
+}
 
 Dialogue::Dialogue(int ind, string nom, string txt, string rep[MAXREP], int nb, char d){
     id=ind;
@@ -11,11 +14,15 @@ Dialogue::Dialogue(int ind, string nom, string txt, string rep[MAXREP], int nb, 
     }
 }
 
+string Dialogue::getTexte(){
+    return texte;
+}
+
 int Dialogue::rep(string word)
 {
-    for(int i=0;i<reponse.size();i++)
+    for(long unsigned int i = 0; i < reponse.size(); i++)
     {
-        if(word==reponse[i])
+        if(word == reponse[i])
         {
             return i;
         }

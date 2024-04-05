@@ -36,11 +36,13 @@ class Affichage {
     SDL_Surface *imageBouton;
     SDL_Texture *textureImageBouton;
     bool boutonClique = false;
+    bool textInputActive = false;
     //
 
     TTF_Font* font;//
+    TTF_Font *fontSaisie;
 
-    SDL_Color textColor;
+    SDL_Color textColorInfo;
     SDL_Color rectColor;
 
     SDL_Rect inputRect;
@@ -48,6 +50,8 @@ class Affichage {
      SDL_Surface* textInputSurface ;
  SDL_Texture* textInputTexture;//
  
+ bool renderText = false;
+ bool besoinDeNettoyer = false;
     
         public:
 /**
@@ -76,15 +80,10 @@ class Affichage {
 
         void AfficherBoutonAction();
         void HandleMouseClick(SDL_Event event);
-        //void InitialiserRectBoutonAction();
-      //  void Action(Joueur joueur);
-       //gérer la boîte de texte
-       // Déclaration de la fonction InitTextInputPosition
-   // SDL_Rect InitTextInputPosition(int x, int y, int width, int height);
-      //void InitTextInput();
-    void DessinerTextInput();
-       //void HandleTextInputEvent(SDL_Event event);
-        //
+       
+    void AfficherTexteSaisie();
+       
+     
 };
 
 #endif

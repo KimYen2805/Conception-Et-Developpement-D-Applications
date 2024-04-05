@@ -45,6 +45,7 @@ if (renderer == nullptr)
     exit(2);
 	}
 font = TTF_OpenFont("data/Arial.ttf", 17);
+fontSaisie=TTF_OpenFont("data/Arial.ttf", 26);
     if (font == nullptr)
         {
         font ==TTF_OpenFont("data/Arial.ttf", 17);
@@ -56,16 +57,8 @@ font = TTF_OpenFont("data/Arial.ttf", 17);
     }
 
 	// Initialisation des couleurs 
-    textColor = {255, 255, 255};
-    rectColor = {241, 196, 15};
-    // saisie de texte
-    inputRect.x = 0;
-    inputRect.y = 0;
-    inputRect.w = 0;
-    inputRect.h = 0;
-
-    // Khởi tạo inputText
-   // inputText = "";
+    textColorInfo = {255, 255,0};
+    rectColor = {0, 0, 0};
 }
 
 /**
@@ -74,7 +67,9 @@ font = TTF_OpenFont("data/Arial.ttf", 17);
 Affichage::~Affichage()
 {
 
-    TTF_CloseFont(font); // Libère la police
+    TTF_CloseFont(font); 
+     TTF_CloseFont(fontSaisie); 
+    // Libère la police
 
     SDL_DestroyRenderer(renderer); // Libère le renderer
     SDL_DestroyWindow(window); // Libère la fenêtre
@@ -118,7 +113,6 @@ void Affichage::dessinerPersonnage()
          cerr << "Erreur de chargement de l'image: " << SDL_GetError() << endl;
         }
         textureImage1= SDL_CreateTextureFromSurface(renderer, image1);
-      //  SDL_FreeSurface(image1);
 		//Positionnement et affichage d'image ennemi
 		SDL_Rect posIma1;
 		posIma1.x = 100; 
@@ -175,7 +169,7 @@ void Affichage:: barres(Joueur joueur)
 larMax = 0; //stocker la largeur max des textes
 hautTotale = 0;
 for (const auto& line : li) {
-     tempSurface = TTF_RenderText_Blended(font, line.c_str(), textColor);
+     tempSurface = TTF_RenderText_Blended(font, line.c_str(), textColorInfo);
     larMax = max(larMax, tempSurface->w); //Mettre à jour la largeur max 
     hautTotale += tempSurface->h; //Ajouter la hauteur de cette ligne à la hauteur totale 
     haut.push_back(tempSurface->h); //Stoker la hauteur de cette ligne
@@ -200,7 +194,7 @@ SDL_RenderFillRect(renderer, &rect);
 int posY =10;
 int spacing = 5;
 for (size_t i = 0; i < lignes.size(); ++i) {
-         textSurface = TTF_RenderText_Blended(font, lignes[i].c_str(), textColor);
+         textSurface = TTF_RenderText_Blended(font, lignes[i].c_str(), textColorInfo);
          textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
         SDL_Rect textRect = {310, posY, textSurface->w, textSurface->h}; // Position avec marge
         SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
@@ -243,7 +237,27 @@ void Affichage::AfficherFond()
 	SDL_RenderCopy(renderer, textureImageFond,NULL, &posFond);
   //  SDL_DestroyTexture(textureImageFond);
 }
-//
+
+
+
+void Affichage::HandleMouseClick(SDL_Event event)
+{
+	 // Vérifier l'événement de clic de la souris
+    if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+
+        // Vérifier si les coordonnées du clic de la souris se trouvent dans la position de l'image
+        if (mouseX >= posBouton.x && mouseX <= posBouton.x + posBouton.w &&
+            mouseY >= posBouton.y && mouseY <= posBouton.y + posBouton.h) {
+            // le code de traitement lorsque le bouton est cliqué
+            boutonClique = true;
+            // Par exemple : ouvrir une nouvelle fenêtre 
+            cout << "Le bouton a été cliqué , activant la saisie de texte!" << std::endl;
+    
+        }
+    }
+}
 void Affichage::AfficherBoutonAction()
 {
    if (!boutonClique) {
@@ -259,179 +273,93 @@ void Affichage::AfficherBoutonAction()
         SDL_RenderCopy(renderer, textureImageBouton, NULL, &posBouton);
     }
 }
-void Affichage::HandleMouseClick(SDL_Event event)
-{
-	 // Vérifier l'événement de clic de la souris
-    if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
-        int mouseX, mouseY;
-        SDL_GetMouseState(&mouseX, &mouseY);
-
-        // Vérifier si les coordonnées du clic de la souris se trouvent dans la position de l'image
-        if (mouseX >= posBouton.x && mouseX <= posBouton.x + posBouton.w &&
-            mouseY >= posBouton.y && mouseY <= posBouton.y + posBouton.h) {
-            // le code de traitement lorsque le bouton est cliqué
-            boutonClique = true;
-            // Par exemple : ouvrir une nouvelle fenêtre 
-            cout << "Le bouton a été cliqué !" << std::endl;
-        }
-    }
-}
-//saisie le text
- /*void Affichage::InitTextInput()
- {
-    inputRect.x = 10;
-    inputRect.y = 10;
-    inputRect.w = 200; // Largeur ajustée pour plus de texte
-    inputRect.h = 30; 
-    SDL_StartTextInput();
-    SDL_SetTextInputRect(&inputRect);
- }
-void Affichage::DessinerTextInput() {
-    // Dessiner le rectangle de la zone de saisie
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderFillRect(renderer, &inputRect);
-
-    // Dessiner le texte entré
-    SDL_Surface* textSurface = TTF_RenderText_Blended(font, inputText.c_str(), textColor);
-    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-    SDL_FreeSurface(textSurface);
-
-    SDL_Rect textRect = {inputRect.x + 5, inputRect.y + 5, textSurface->w, textSurface->h};
-    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
-    SDL_DestroyTexture(textTexture);
-    //renderTextInput(inputText, inputRect.x, inputRect.y);
-}*/
-/*void Affichage::HandleTextInputEvent(SDL_Event event) {
-    if (event.type == SDL_TEXTINPUT) {
-        inputText += event.text.text;
-    } else if (event.type == SDL_KEYDOWN) {
-        if (event.key.keysym.scancode == SDL_SCANCODE_BACKSPACE && !inputText.empty()) {
-            inputText.pop_back();
-        } else if (event.key.keysym.scancode == SDL_SCANCODE_RETURN) {
-            // Traitement du texte entré ici, par exemple :
-            std::cout << "Texte entré : " << inputText << std::endl;
-            inputText.clear(); // Clear input text after enter
-        }
-    }
-}*/
-
-void Affichage::DessinerTextInput() {
-    bool quit = false;
-    SDL_Event event;
-    SDL_StartTextInput();
-
-    std::string inputText = ""; // Giả sử bạn đã khai báo và khởi tạo đúng
-    //SDL_Color textColor = {255, 255, 255, 255}; // Màu trắng
-
-    // While application is running
-    while (!quit) {
-        // The rerender text flag
-        bool renderText = false;
-
-        // Handle events on queue
-        while (SDL_PollEvent(&event) != 0) {
-            // User requests quit
-            if (event.type == SDL_QUIT) {
-                quit = true;
-            }
-            // Special key input
-            else if (event.type == SDL_KEYDOWN) {
-                // Handle backspace
-                if (event.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0) {
-                    // Lop off character
-                    inputText.pop_back();
-                    renderText = true;
-                }
-                // Handle copy
-                else if (event.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL) {
-                    SDL_SetClipboardText(inputText.c_str());
-                }
-                // Handle paste
-                else if (event.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL) {
-                    inputText = SDL_GetClipboardText();
-                    renderText = true;
-                }
-            }
-            //Handle text input
-            else if (event.type == SDL_TEXTINPUT) {
-                // Not copy or pasting
-                if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V'))) {
-                    // Append character
-                    inputText += event.text.text;
-                    renderText = true;
-                }
-            }
-        }
-
-        // Render new text
-        if (renderText && !inputText.empty()) {
-            // Free the existing textures if necessary
-            //SDL_DestroyTexture(textInputTexture);
-
-            // Create a surface from the text
-           textInputSurface = TTF_RenderText_Blended(font, inputText.c_str(), textColor);
-            textInputTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-
-            SDL_Rect textRect = {10, 10, textSurface->w, textSurface->h};
-          //  SDL_FreeSurface(textSurface); // No longer need the surface
-
-            // Clear the screen
-            SDL_RenderClear(renderer);
-
-            // Render the text
-            SDL_RenderCopy(renderer, textInputTexture, NULL, &textRect);
-
-            // Update the screen
-           // SDL_RenderPresent(renderer);
-        }
-    }
-
-    SDL_StopTextInput();
-  //  SDL_DestroyTexture(textInputTexture); // Cleanup
-}
 void Affichage::GererEvenements() {
     SDL_Event events;
-    // Gestion evenements
+    SDL_StartTextInput();
+
     while (SDL_PollEvent(&events)) {
         if (events.type == SDL_QUIT) {
             SDL_Quit();
             exit(0); 
         } else if (events.type == SDL_KEYDOWN) {
-            switch (events.key.keysym.scancode) {
-                case SDL_SCANCODE_ESCAPE:
-                    SDL_Quit();
-                    exit(0);
-                    break;
-                default:
-                    break;
+            if (events.key.keysym.sym == SDLK_ESCAPE) {
+                SDL_Quit();
+                exit(0);
+            } 
+            else if (textInputActive) {
+                if (events.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0) {
+                    inputText.pop_back();
+                    renderText = true;
+                } else if (events.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL) {
+                    SDL_SetClipboardText(inputText.c_str());
+                } else if (events.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL) {
+                    inputText = SDL_GetClipboardText();
+                    renderText = true;
+                }
             }
-        }else if (events.type == SDL_MOUSEBUTTONDOWN) {
-        if (events.button.button == SDL_BUTTON_LEFT) {
-           // Gérer l'événement de clic de la souris ici
-           HandleMouseClick(events);
+        } else if (events.type == SDL_TEXTINPUT) {
+            if (!(SDL_GetModState() & KMOD_CTRL && (events.text.text[0] == 'c' || events.text.text[0] == 'C' || events.text.text[0] == 'v' || events.text.text[0] == 'V'))) {
+                inputText += events.text.text;
+                renderText = true;
             }
+        } else if (events.type == SDL_MOUSEBUTTONDOWN && events.button.button == SDL_BUTTON_LEFT) {
+            HandleMouseClick(events);
+        } 
+        else if (events.key.keysym.sym == SDLK_RETURN) { // Nếu nhấn Enter
+                inputText = ""; 
+                renderText= true;
+    }
+    }
+   
+    SDL_StopTextInput();
+}
+
+void Affichage::AfficherTexteSaisie() {
+    if (renderText){
+        SDL_RenderClear(renderer);
+         SDL_SetRenderDrawColor(renderer, 128, 128, 128, 255);
+             SDL_RenderFillRect(renderer, NULL);
+    if (!inputText.empty()) {
+        textInputSurface = TTF_RenderText_Blended(fontSaisie, inputText.c_str(), {255, 255,0});
+        if (textInputSurface == NULL) {
+            std::cerr << "Unable to render text surface! SDL_ttf Error: " << TTF_GetError() << std::endl;
+        } else {
+            textInputTexture = SDL_CreateTextureFromSurface(renderer, textInputSurface);
+            SDL_Rect textRect = {10, 450,textInputSurface->w, textInputSurface->h};
+
+            SDL_RenderCopy(renderer, textInputTexture, NULL, &textRect);
         }
     }
+        
+    }
+    SDL_RenderPresent(renderer);
+    renderText = false;
 }
+
 
 void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi, Jeu jeu) {
     bool quitter = false;
-
     while (!quitter) {
+       //  SDL_RenderClear(renderer);
+      //  AfficherFondGris();
         GererEvenements();
+    AfficherTexteSaisie();
         // Affichage des éléments du jeu
-        AfficherFond();
+      // AfficherFond();
+     // AfficherFondGris();
         dessinerPersonnage(); 
         barres(joueur); 
         AfficherInfo(joueur, ennemi);
         AfficherBoutonAction();
-   // DessinerTextInput();
+        
+        
         // Affichage à l'écran
-        SDL_RenderPresent(renderer);
+       SDL_RenderPresent(renderer);
 
         // Vérification si l'utilisateur veut quitter
-        SDL_Delay(4); 
+        SDL_Delay(10); 
     }
+    
 }
 
 				

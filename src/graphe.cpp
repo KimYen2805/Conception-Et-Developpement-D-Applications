@@ -1,26 +1,25 @@
 #include "jeu.h"
-
+const int NBNOEUD=7;
 Graphe::Graphe()
 {
-    const string &g="./data/GrapheJeu";
+    const string &g="./data/GrapheJeu.txt";
     ifstream fichG(g.c_str());
     if(!fichG.is_open())
     { 
-        std::cout<<"file not open"<<endl;exit(EXIT_FAILURE);
+        std::cout<<"file not open graphe"<<endl;exit(EXIT_FAILURE);
     }
     int fils;
     int ind=0;
     
 
-    int indice[MAXREP];
-
-    string nomN, texte, separator, rep;
+    string nomN, texte, rep;
+    char separator;
     string reponse[MAXREP];
-    for (int i=0;i<4;i++)
+    for (int i=0;i<NBNOEUD;i++)
     {
         fichG >> ind  >> nomN>> separator;    
         std::cout<<ind<<" "<<nomN<<" "<< separator<< endl;
-        if(separator=="d")
+        if(separator=='d')
         {
             fichG >> rep;
             getline(fichG, texte);
@@ -35,10 +34,10 @@ Graphe::Graphe()
             }
             std::cout<< endl;
             
-            sommets.push_back(new Dialogue(ind,nomN,texte,reponse,fils));
+            sommets.push_back(new Dialogue(ind,nomN,texte,reponse,fils,separator));
         }
 
-        if(separator=="c")
+        if(separator=='c')
         {
             Ennemi tab[MAXENNEMI];
             fichG >> fils;
@@ -60,16 +59,18 @@ Graphe::Graphe()
                 
             }
             std::cout<< endl;
-            sommets.push_back(new Combat(tab,fils,ind,nomN));
+            sommets.push_back(new Combat(tab,fils,ind,nomN,separator));
         }
 
     }
     fichG>>fils;
+    cout<<"Fin noeuds "<<fils<<endl;
     for (int i=0;i<fils;i++){
         int ad1, ad2;
         fichG>>ad1>> ad2;
         aretes.push_back(pair(sommets[ad1],sommets[ad2]));
-        std::cout<<ad1<<" "<<ad2<<endl;
+        std::cout<<ad1<<" - "<<ad2<<endl;
+        
     }
 
     
@@ -83,6 +84,37 @@ Graphe::~Graphe()
 {
     for (long unsigned int i=0;i<sommets.size();i++)
     {
+        //cout<<sommets[i]<<" "<<i<<endl;
         delete sommets[i];
     }
+}
+
+Noeud* Graphe::getNoeud(){
+    //cout<<"dans graphe"<<endl;
+    return n;
+}
+
+void Graphe::parcoursGraphe(int id){
+    for(long unsigned int i=0;i<aretes.size();i++){
+
+        if (aretes[i].first->getID() == this->n->getID()){
+            if (aretes[i].first->getID()==aretes[i+id].first->getID())
+            {
+                n=aretes[i+id].second;
+                //cout<<n->getID()<<endl;;
+                break;
+            }//else{//cout<<"pas de fils "<<i<<endl; }
+        }//else{//cout<<"pas de père "<<i<<endl; }
+    }
+}
+
+bool Graphe::isFeuille(Noeud* nActu)
+{
+    for(long unsigned int i=0;i<aretes.size();i++){
+
+        if (aretes[i].first->getID() == this->n->getID()){
+            return false;
+        }
+    }
+    return true;
 }

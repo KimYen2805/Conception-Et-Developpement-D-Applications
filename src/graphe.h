@@ -5,7 +5,6 @@
 #include "combat.h"
 using namespace std;
 
-
 class Graphe{
 private:
     Noeud* n;
@@ -16,5 +15,8 @@ public:
 
     Graphe();
     ~Graphe();
+    Noeud* getNoeud();
+    void parcoursGraphe(int n);
+    bool isFeuille(Noeud* nActu);
 };
 #endif

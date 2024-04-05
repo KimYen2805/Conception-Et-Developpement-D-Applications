@@ -3,7 +3,7 @@
 Jeu::Jeu(){
     const string &j="./data/Joueur";
     ifstream fichJ(j.c_str());
-    if(!fichJ.is_open()){ std::cout<<"file not open"<<endl;exit(EXIT_FAILURE);
+    if(!fichJ.is_open()){ std::cout<<"file not open joueur"<<endl;exit(EXIT_FAILURE);
     }
     string nom, sort, neffet;
     int pvMx, mnMx;
@@ -33,4 +33,14 @@ Jeu::Jeu(){
 Joueur Jeu::getJoueur(){
     return joueur;
 }
+
+Graphe& Jeu::getGraphe(){
+    return jeu;
+}
+
+Noeud* Jeu::getCNoeud(){
+    //cout<<"dans jeu"<<endl;
+    return jeu.getNoeud();
+}
+
 

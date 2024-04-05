@@ -5,9 +5,10 @@ Combat::Combat(){
     id=1;
     
 }
-Combat::Combat(Ennemi eg[MAXENNEMI], int gs, int ind, string nomN){
+Combat::Combat(Ennemi eg[MAXENNEMI], int gs, int ind, string nomN,char d){
     id=ind;
     nomNoeud=nomN;
+    delim=d;
     for (int i=0;i<gs;i++)
         {
             ennGroup.push_back(eg[i]);

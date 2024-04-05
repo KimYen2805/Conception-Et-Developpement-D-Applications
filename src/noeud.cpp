@@ -5,7 +5,11 @@ Noeud::Noeud(){
     id=-1;
 
 }
-/*Noeud::Noeud(Joueur jo){
 
-}*/
+int Noeud::getID(){
+    return id;
+}
 
+char Noeud::getDelim(){
+    return delim;
+}

@@ -33,7 +33,7 @@ Fin provisoire pour test le graphe
 3 6
 4 3
 4 5
-4 6
-5 1
+4 1
+5 6
 
 

@@ -30,6 +30,7 @@ if (window == nullptr)
 	SDL_Quit();
 	exit (1);
 }
+// Création du renderer
 renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 if (renderer == nullptr) 
@@ -39,6 +40,7 @@ if (renderer == nullptr)
 	SDL_Quit();
 	exit(1);
 }
+// Initialisation des polices TTF
 	if(TTF_Init()==-1) 
 	{
     cerr<<"TTF_Init : "<<TTF_GetError()<<endl;
@@ -63,6 +65,7 @@ fontSaisie=TTF_OpenFont("data/Arial.ttf", 26);
 
 /**
  * @brief Destructeur
+ * Libère toutes les ressources allouées par l'objet Affichage, y compris la fenêtre SDL, le renderer, les textures et les surfaces.
 */
 Affichage::~Affichage()
 {
@@ -73,7 +76,7 @@ Affichage::~Affichage()
 
     SDL_DestroyRenderer(renderer); // Libère le renderer
     SDL_DestroyWindow(window); // Libère la fenêtre
-    //
+     // Libération des textures et surfaces
     SDL_DestroyTexture(textureImage1);
     SDL_FreeSurface(image1);
 
@@ -93,17 +96,17 @@ Affichage::~Affichage()
     
     SDL_DestroyTexture(textInputTexture);
     SDL_FreeSurface(textInputSurface);
-
-   
-
+ // Libération de SDL_ttf et SDL_image
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
 
 }
-
+/**
+ * @brief Dessine les personnages (joueur et ennemi) sur l'écran.
+*/
 void Affichage::dessinerPersonnage()
-{ //pos joueur au début 
+{ // Position initiale des personnages
 	int posXJoueur= 350; 
 	int posYJoueur= 320;
 	// Affichage de l'image ennemi
@@ -119,8 +122,6 @@ void Affichage::dessinerPersonnage()
 		posIma1.y= 100;
 		SDL_QueryTexture(textureImage1, NULL, NULL, &posIma1.w, &posIma1.h);
 		SDL_RenderCopy(renderer, textureImage1,NULL, &posIma1);
-        //SDL_DestroyTexture(textureImage1);
-
 		//affichage de l'image joueur 
 		image2= IMG_Load("data/joueur.png");
 		if ( !image2)
@@ -128,7 +129,6 @@ void Affichage::dessinerPersonnage()
 			cerr<< "Erreur de chargement de l'image: " << SDL_GetError() << endl;
 		}
 		textureImage2 = SDL_CreateTextureFromSurface(renderer, image2);
-		//SDL_FreeSurface(image2);
 		
 		//Positionnement et affichage d'image 2 joueur
 	SDL_Rect posIma2;
@@ -136,17 +136,21 @@ void Affichage::dessinerPersonnage()
 		posIma2.y= posYJoueur;
 	SDL_QueryTexture(textureImage2, NULL, NULL, &posIma2.w, &posIma2.h);
 	SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
-  //  SDL_DestroyTexture(textureImage2);
 
 }
+/**
+ * @brief Affiche les barres de santé et de mana du joueur.
+ * @param joueur Objet représentant le joueur.
+*/
 void Affichage:: barres(Joueur joueur)
 {
+    // Récupération des données du joueur
 	string nomDeJoueur = joueur.getNomJoueur();
 	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
     int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();    // Mana maximale du joueur
 	Ennemi ennemi;
     int pointDeVieEnnemi= ennemi.getPointDeVieEnnemi(); 
-// une barre (pointDVactu)
+// Affichage de la barre de vie du joueur
 	SDL_Rect rePo; 
 		rePo.x =350; 
 		rePo.y =400;
@@ -154,7 +158,7 @@ void Affichage:: barres(Joueur joueur)
 		rePo.h =10;
 	SDL_SetRenderDrawColor(renderer,255,0,0,0);
 	SDL_RenderFillRect(renderer, &rePo);
-		//une barre (mana)
+		// Affichage de la barre de mana du joueur
 		SDL_Rect reMa; 
 		reMa.x =350; 
 		reMa.y =420;
@@ -164,6 +168,13 @@ void Affichage:: barres(Joueur joueur)
 	SDL_RenderFillRect(renderer, &reMa);
 
 }
+/**
+ * @brief Calcule les dimensions du texte à afficher.
+ * @param li Vecteur contenant les lignes de texte.
+ * @param larMax Référence à la largeur maximale du texte.
+ * @param hautTotale Référence à la hauteur totale du texte.
+ * @param haut Vecteur contenant les hauteurs de chaque ligne de texte.
+*/
  void Affichage::CalculerDimensionsDuTexte(const vector<string>& li, int& larMax, int& hautTotale, vector<int>& haut)
  {
 larMax = 0; //stocker la largeur max des textes
@@ -173,22 +184,30 @@ for (const auto& line : li) {
     larMax = max(larMax, tempSurface->w); //Mettre à jour la largeur max 
     hautTotale += tempSurface->h; //Ajouter la hauteur de cette ligne à la hauteur totale 
     haut.push_back(tempSurface->h); //Stoker la hauteur de cette ligne
-   // SDL_FreeSurface(tempSurface);
 }
 // Ajouter un espacement entre les lignes
 int spacing = 5;
 hautTotale += spacing * (li.size() - 1); //ajouter l'espacement total à la hauteur 
  }
-
+/**
+ * @brief Dessine un rectangle de fond pour afficher le texte.
+ * @param renderer Pointeur vers le renderer SDL.
+ * @param larMax Largeur maximale du texte.
+ * @param hautTotale Hauteur totale du texte.
+*/
  void Affichage::DessinerFondTexte(SDL_Renderer* renderer,int larMax, int hautTotale)
  {
-	// dessiner le rectangle
+	 // Dessine un rectangle en arrière-plan pour le texte
 SDL_Rect rect = {300, 0,larMax + 20, hautTotale + 20}; //Une marge autour du texte
 SDL_SetRenderDrawColor(renderer, rectColor.r, rectColor.g, rectColor.b, 255);
 SDL_RenderFillRect(renderer, &rect);
  }
 
-
+/**
+ * @brief Affiche le texte sur l'écran.
+ * @param renderer Pointeur vers le renderer SDL.
+ * @param lignes Vecteur contenant les lignes de texte à afficher.
+*/
   void Affichage::AfficherTexte(SDL_Renderer* renderer,const vector<string>& lignes)
   {
 int posY =10;
@@ -199,13 +218,16 @@ for (size_t i = 0; i < lignes.size(); ++i) {
         SDL_Rect textRect = {310, posY, textSurface->w, textSurface->h}; // Position avec marge
         SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
         posY += textSurface->h + spacing;
-       // SDL_FreeSurface(textSurface);
-       // SDL_DestroyTexture(textTexture);
 
     }
 	//Réinitialiser la couleur du renderer pour ne pas affecter les dessins
 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
+/**
+ * @brief Affiche les informations du joueur et de l'ennemi.
+ * @param joueur Objet représentant le joueur.
+ * @param ennemi Objet représentant l'ennemi.
+*/
 void Affichage::AfficherInfo(Joueur joueur, Ennemi ennemi) {
     // Créer des lignes de texte sur le joueur et l'ennemi
     vector<string> lignes = {
@@ -220,7 +242,7 @@ void Affichage::AfficherInfo(Joueur joueur, Ennemi ennemi) {
 
 }
 //
-void Affichage::AfficherFond()
+/*void Affichage::AfficherFond()
 {
     imageFond= IMG_Load("data/fond.jpg");
 		if ( !imageFond)
@@ -228,19 +250,17 @@ void Affichage::AfficherFond()
 			cerr<< "Erreur de chargement de l'image: " << SDL_GetError() << endl;
 		}
 		textureImageFond = SDL_CreateTextureFromSurface(renderer, imageFond);
-	//	SDL_FreeSurface(imageFond);
 		
 		//Positionnement et affichage d' imageBouton
 		posFond.x = 0; 
 		posFond.y= 0;
 	SDL_QueryTexture(textureImageFond, NULL, NULL, &posFond.w, &posFond.h);
 	SDL_RenderCopy(renderer, textureImageFond,NULL, &posFond);
-  //  SDL_DestroyTexture(textureImageFond);
 }
+*/
 
 
-
-void Affichage::HandleMouseClick(SDL_Event event)
+/*void Affichage::HandleMouseClick(SDL_Event event)
 {
 	 // Vérifier l'événement de clic de la souris
     if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
@@ -252,7 +272,6 @@ void Affichage::HandleMouseClick(SDL_Event event)
             mouseY >= posBouton.y && mouseY <= posBouton.y + posBouton.h) {
             // le code de traitement lorsque le bouton est cliqué
             boutonClique = true;
-            // Par exemple : ouvrir une nouvelle fenêtre 
             cout << "Le bouton a été cliqué , activant la saisie de texte!" << std::endl;
     
         }
@@ -272,7 +291,10 @@ void Affichage::AfficherBoutonAction()
         SDL_QueryTexture(textureImageBouton, NULL, NULL, &posBouton.w, &posBouton.h);
         SDL_RenderCopy(renderer, textureImageBouton, NULL, &posBouton);
     }
-}
+}*/
+/**
+ * @brief Gère les événements SDL, tels que les saisies clavier et la fermeture de la fenêtre.
+*/
 void Affichage::GererEvenements() {
     SDL_Event events;
     SDL_StartTextInput();
@@ -302,10 +324,10 @@ void Affichage::GererEvenements() {
                 inputText += events.text.text;
                 renderText = true;
             }
-        } else if (events.type == SDL_MOUSEBUTTONDOWN && events.button.button == SDL_BUTTON_LEFT) {
+        } /*else if (events.type == SDL_MOUSEBUTTONDOWN && events.button.button == SDL_BUTTON_LEFT) {
             HandleMouseClick(events);
-        } 
-        else if (events.key.keysym.sym == SDLK_RETURN) { // Nếu nhấn Enter
+        } */
+        else if (events.key.keysym.sym == SDLK_RETURN) { 
                 inputText = ""; 
                 renderText= true;
     }
@@ -313,7 +335,9 @@ void Affichage::GererEvenements() {
    
     SDL_StopTextInput();
 }
-
+/**
+ * @brief Affiche le texte saisi par l'utilisateur.
+*/
 void Affichage::AfficherTexteSaisie() {
     if (renderText){
         SDL_RenderClear(renderer);
@@ -336,21 +360,20 @@ void Affichage::AfficherTexteSaisie() {
     renderText = false;
 }
 
-
+/**
+ * @brief Affiche le jeu en cours.
+*/
 void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi, Jeu jeu) {
     bool quitter = false;
     while (!quitter) {
-       //  SDL_RenderClear(renderer);
-      //  AfficherFondGris();
         GererEvenements();
     AfficherTexteSaisie();
         // Affichage des éléments du jeu
       // AfficherFond();
-     // AfficherFondGris();
         dessinerPersonnage(); 
         barres(joueur); 
         AfficherInfo(joueur, ennemi);
-        AfficherBoutonAction();
+      /* AfficherBoutonAction();*/
         
         
         // Affichage à l'écran

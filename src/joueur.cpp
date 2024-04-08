@@ -56,7 +56,7 @@ Joueur::Joueur(const string &filename)  {
     }
     
     fichier.close();
-    cout << "Lecture du joueur " << filename << " ... OK\n";
+    //cout << "Lecture du joueur " << filename << " ... OK\n";
     }
 }
 

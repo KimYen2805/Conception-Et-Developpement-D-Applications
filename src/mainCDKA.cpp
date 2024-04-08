@@ -12,7 +12,7 @@ int main()
     string pTexte; //Les futurs réponses du joueur dans le main;
     Dialogue* d;
     Combat* c;
-
+    cout<<endl<<endl;
     while(!Jeu.getGraphe().isFeuille(noeud))
     {
         if (noeud->getDelim()=='d')

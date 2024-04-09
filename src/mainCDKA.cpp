@@ -5,14 +5,14 @@ using namespace std;
 int main()
 {
     Jeu Jeu;
-
+    Joueur joueur=Jeu.getJoueur();
     Noeud* noeud;
     noeud=Jeu.getCNoeud();
 
     string pTexte; //Les futurs réponses du joueur dans le main;
     Dialogue* d;
     Combat* c;
-    cout<<endl<<endl;
+
     while(!Jeu.getGraphe().isFeuille(noeud))
     {
         if (noeud->getDelim()=='d')
@@ -37,29 +37,15 @@ int main()
         {
             cout<<"Dans le combat"<<endl;
             c=(Combat*) noeud;
+            while(c->isFight(joueur)==-1)
+            {
+                cin>>pTexte;
+                (c->castSort(joueur, pTexte));
+            }
             Jeu.getGraphe().parcoursGraphe(0);
         }
-        noeud=Jeu.getCNoeud();
-    
-    
-    //cout<<"un indice "<<.rep()<<endl;
-    
-    /*cout<<d->getTexte()<<endl<<"Entree : ";
-    cin>>pTexte;
-    Jeu.getGraphe().parcoursGraphe(d->rep(pTexte));
 
-    noeud=Jeu.getCNoeud();
-    d = (Dialogue*) noeud;
-    cout<<"un indice "<<noeud->getID()<<endl;
-
-    cout<<d->getTexte()<<endl<<"Entree : ";
-    
-    cin>>pTexte;
-    Jeu.getGraphe().parcoursGraphe(d->rep(pTexte));
-
-    noeud=Jeu.getCNoeud();
-    cout<<"un indice "<<noeud->getID()<<endl;
-    cout<<Jeu.getGraphe().isFeuille(noeud);*/
+        noeud=Jeu.getCNoeud(); //avancer dans le jeu en fonction des résultats
     }
     d=(Dialogue*) noeud;
     cout<<d->getTexte()<<endl;//Dialogue de fin

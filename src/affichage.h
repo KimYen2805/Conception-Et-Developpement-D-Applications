@@ -12,24 +12,24 @@
 
 class Affichage {
         private:
-       SDL_Window* window; /**< Fenêtre SDL */
+    SDL_Window* window; /**< Fenêtre SDL */
     SDL_Renderer* renderer; /**< Renderer SDL */
 
-    SDL_Texture* textureImage1; /**< Texture de l'image joueur */
-    SDL_Surface *image1; /**< Surface de l'image 1 */
+    SDL_Texture* textureImage1; /**< Texture de l'image ennemi */
+    SDL_Surface *image1; /**< Surface de l'image ennemi */
 
-    SDL_Texture* textureImage2; /**< Texture de l'image ennemi */
-    SDL_Surface *image2; /**< Surface de l'image 2 */
+    SDL_Texture* textureImage2; /**< Texture de l'image joueur */
+    SDL_Surface *image2; /**< Surface de l'image joueur */
 
-    SDL_Texture* textureImageFond; /**< Texture de l'image de fond */
-    SDL_Surface *imageFond; /**< Surface de l'image de fond */
+  //  SDL_Texture* textureImageFond; /**< Texture de l'image de fond */
+    //SDL_Surface *imageFond; /**< Surface de l'image de fond */
 
     SDL_Surface* tempSurface; /**< Surface temporaire */
 
     SDL_Texture* textTexture; /**< Texture du texte */
     SDL_Surface* textSurface; /**< Surface du texte */
 
-    SDL_Rect posFond; /**< Position de l'image de fond */
+    //SDL_Rect posFond; /**< Position de l'image de fond */
 
     SDL_Rect posBouton; /**< Position du bouton */
     SDL_Surface *imageBouton; /**< Surface du bouton */
@@ -49,8 +49,8 @@ class Affichage {
     SDL_Texture* textInputTexture; /**< Texture de texte saisi */
 
     bool renderText = false; /**< Indicateur d'affichage de texte */
-    bool besoinDeNettoyer = false; /**< Indicateur de besoin de nettoyage */
-    
+    //bool besoinDeNettoyer = false; /**< Indicateur de besoin de nettoyage */
+    FILE *fichier;
         public:
 /**
  * @brief Constructeur
@@ -75,8 +75,8 @@ class Affichage {
         void AfficherJeu(Joueur j, Ennemi ennemi,Jeu jeu);
         void GererEvenements();
 
-       /* void AfficherBoutonAction();
-        void HandleMouseClick(SDL_Event event);*/
+        void AfficherBoutonAction();
+        void HandleMouseClick(SDL_Event event);
        
     void AfficherTexteSaisie();
        

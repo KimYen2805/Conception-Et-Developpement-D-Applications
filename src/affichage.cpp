@@ -48,10 +48,6 @@ if (renderer == nullptr)
 	}
 font = TTF_OpenFont("data/Arial.ttf", 17);
 fontSaisie=TTF_OpenFont("data/Arial.ttf", 26);
-    if (font == nullptr)
-        {
-        font ==TTF_OpenFont("data/Arial.ttf", 17);
-        }
     if (font == nullptr) {
         cerr << "Échec du chargement de la police:  " << TTF_GetError() << endl;
         SDL_Quit();
@@ -83,8 +79,8 @@ Affichage::~Affichage()
     SDL_DestroyTexture(textureImage2);
     SDL_FreeSurface(image2);
 
-    SDL_DestroyTexture(textureImageFond);
-    SDL_FreeSurface(imageFond);
+   /* SDL_DestroyTexture(textureImageFond);
+    SDL_FreeSurface(imageFond);*/
 
    SDL_FreeSurface( tempSurface);
 
@@ -148,8 +144,8 @@ void Affichage:: barres(Joueur joueur)
 	string nomDeJoueur = joueur.getNomJoueur();
 	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
     int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();    // Mana maximale du joueur
-	Ennemi ennemi;
-    int pointDeVieEnnemi= ennemi.getPointDeVieEnnemi(); 
+	//Ennemi ennemi;
+   // int pointDeVieEnnemi= ennemi.getPointDeVieEnnemi(); 
 // Affichage de la barre de vie du joueur
 	SDL_Rect rePo; 
 		rePo.x =350; 
@@ -258,28 +254,9 @@ void Affichage::AfficherInfo(Joueur joueur, Ennemi ennemi) {
 	SDL_RenderCopy(renderer, textureImageFond,NULL, &posFond);
 }
 */
-
-
-/*void Affichage::HandleMouseClick(SDL_Event event)
-{
-	 // Vérifier l'événement de clic de la souris
-    if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
-        int mouseX, mouseY;
-        SDL_GetMouseState(&mouseX, &mouseY);
-
-        // Vérifier si les coordonnées du clic de la souris se trouvent dans la position de l'image
-        if (mouseX >= posBouton.x && mouseX <= posBouton.x + posBouton.w &&
-            mouseY >= posBouton.y && mouseY <= posBouton.y + posBouton.h) {
-            // le code de traitement lorsque le bouton est cliqué
-            boutonClique = true;
-            cout << "Le bouton a été cliqué , activant la saisie de texte!" << std::endl;
-    
-        }
-    }
-}
 void Affichage::AfficherBoutonAction()
 {
-   if (!boutonClique) {
+   if (boutonClique == false) {
         imageBouton = IMG_Load("data/bouton.png");
         if (!imageBouton) {
             cerr << "Erreur de chargement de l'image: " << SDL_GetError() << endl;
@@ -291,7 +268,25 @@ void Affichage::AfficherBoutonAction()
         SDL_QueryTexture(textureImageBouton, NULL, NULL, &posBouton.w, &posBouton.h);
         SDL_RenderCopy(renderer, textureImageBouton, NULL, &posBouton);
     }
-}*/
+}
+void Affichage::HandleMouseClick(SDL_Event event)
+{
+	 // Vérifier l'événement de clic de la souris
+    if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+
+        // Vérifier si les coordonnées du clic de la souris se trouvent dans la position de l'image
+        if (mouseX >= posBouton.x && mouseX <= posBouton.x + posBouton.w &&
+            mouseY >= posBouton.y && mouseY <= posBouton.y + posBouton.h) {
+            // le code de traitement lorsque le bouton est cliqué
+            boutonClique = true;
+            textInputActive= true;
+
+            cout << "Le bouton a été cliqué , activant la saisie de texte!" << endl;
+        }
+    }
+}
 /**
  * @brief Gère les événements SDL, tels que les saisies clavier et la fermeture de la fenêtre.
 */
@@ -308,7 +303,7 @@ void Affichage::GererEvenements() {
                 SDL_Quit();
                 exit(0);
             } 
-            else if (textInputActive) {
+            else if (textInputActive == true) {
                 if (events.key.keysym.sym == SDLK_BACKSPACE && inputText.length() > 0) {
                     inputText.pop_back();
                     renderText = true;
@@ -324,10 +319,10 @@ void Affichage::GererEvenements() {
                 inputText += events.text.text;
                 renderText = true;
             }
-        } /*else if (events.type == SDL_MOUSEBUTTONDOWN && events.button.button == SDL_BUTTON_LEFT) {
+        }  
+        else if (events.type == SDL_MOUSEBUTTONDOWN && events.button.button == SDL_BUTTON_LEFT) {
             HandleMouseClick(events);
-        } */
-        else if (events.key.keysym.sym == SDLK_RETURN) { 
+        }  else if (events.key.keysym.sym == SDLK_RETURN) { 
                 inputText = ""; 
                 renderText= true;
     }
@@ -339,6 +334,7 @@ void Affichage::GererEvenements() {
  * @brief Affiche le texte saisi par l'utilisateur.
 */
 void Affichage::AfficherTexteSaisie() {
+
     if (renderText){
         SDL_RenderClear(renderer);
          SDL_SetRenderDrawColor(renderer, 128, 128, 128, 255);
@@ -346,7 +342,7 @@ void Affichage::AfficherTexteSaisie() {
     if (!inputText.empty()) {
         textInputSurface = TTF_RenderText_Blended(fontSaisie, inputText.c_str(), {255, 255,0});
         if (textInputSurface == NULL) {
-            std::cerr << "Unable to render text surface! SDL_ttf Error: " << TTF_GetError() << std::endl;
+            cerr << "! SDL_ttf Error: " << TTF_GetError() <<endl;
         } else {
             textInputTexture = SDL_CreateTextureFromSurface(renderer, textInputSurface);
             SDL_Rect textRect = {10, 450,textInputSurface->w, textInputSurface->h};
@@ -356,25 +352,28 @@ void Affichage::AfficherTexteSaisie() {
     }
         
     }
-    SDL_RenderPresent(renderer);
     renderText = false;
 }
 
 /**
  * @brief Affiche le jeu en cours.
+ * @param joueur Objet représentant le joueur.
+ * @param ennemi Objet représentant l'ennemi.
+ * @param jeu Objet représentant le jeu.
 */
 void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi, Jeu jeu) {
     bool quitter = false;
     while (!quitter) {
-        GererEvenements();
-    AfficherTexteSaisie();
         // Affichage des éléments du jeu
-      // AfficherFond();
+       //AfficherFond();
+
         dessinerPersonnage(); 
         barres(joueur); 
         AfficherInfo(joueur, ennemi);
-      /* AfficherBoutonAction();*/
+       AfficherBoutonAction();
         
+        GererEvenements();
+         AfficherTexteSaisie();
         
         // Affichage à l'écran
        SDL_RenderPresent(renderer);

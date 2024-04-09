@@ -14,7 +14,8 @@
 - ProjetCDKA/doc :le fichier doxygen qui permet de générer la documentation du code, la fichier PowerPoint, le diagramme des classes UML et le diagramme de Gantt.
 - ProjetCDKA/obj :répertoire comportant les compilations intermédiaires (.o)
 
-## 
+## Pour compiler
+
 
 
 # 

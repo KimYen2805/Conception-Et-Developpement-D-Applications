@@ -34,9 +34,17 @@ void Ennemi::addSort(int sort){
     tabInd_Sort.push_back(sort);
 }
 
-/*void Ennemi::attaquerJoueur() {
-    
-}*/
+int Ennemi::nbEnne() {
+    return rand() % 5 + 1; // Random number 
+}
+
+int Ennemi::posXEnne() {
+    return rand() % 300; // Random X position
+}
+
+int Ennemi::posYEnne() {
+    return rand() % 204; // Random Y position (assuming screen height of 24 lines)
+}
 void Ennemi::testRegression() {
     cout << "Exécution du test de régression pour la classe Ennemi..." << endl;
 

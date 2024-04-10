@@ -119,7 +119,16 @@ void Joueur::updateMana(int ma){
         mana = 0;
     }else mana += ma;
 }
-
+int Joueur::getPosX()
+{
+    int posX;
+    return posX = 350;
+}
+int Joueur::getPosY()
+{
+    int posX;
+    return posX = 320;
+}
 int Joueur::isSort(string so){
     for (int i=0;i<NBSORT;i++)
     {
@@ -134,7 +143,13 @@ int Joueur::isSort(string so){
 Sort Joueur::getSort(int i){
     return tabSort[i];    
 }
+vector<int> posJoueur() {
+        
+        int randomX = rand() % 513; 
+        int randomY = rand() % 513;
 
+        return {randomX, randomY};
+    }
 void Joueur::testRegression() {
     std::cout<<endl << "Execution du test de regression pour la classe Joueur..." << endl;
 

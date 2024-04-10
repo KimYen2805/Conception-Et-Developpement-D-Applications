@@ -2,6 +2,8 @@
 #define _JOUEUR_H
 #include "sort.h"
 #include "objet.h"
+#include <vector>
+#include <cstdlib>
 using namespace std;
 
 const int NBSORT=4;
@@ -48,6 +50,9 @@ public :
     void setMAXMana(int ma);
 
     void updateMana(int ma);
+    
+    int getPosX();
+    int getPosY();
 
     /**
     *@brief renvoie l'indice d'un sort si le nom est valide, -1 sinon

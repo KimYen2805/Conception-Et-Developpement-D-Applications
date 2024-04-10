@@ -21,20 +21,16 @@ class Affichage {
     SDL_Texture* textureImage2; /**< Texture de l'image joueur */
     SDL_Surface *image2; /**< Surface de l'image joueur */
 
-  //  SDL_Texture* textureImageFond; /**< Texture de l'image de fond */
-    //SDL_Surface *imageFond; /**< Surface de l'image de fond */
+   SDL_Texture* textureImageFond; /**< Texture de l'image de fond */
+    SDL_Surface *imageFond; /**< Surface de l'image de fond */
 
     SDL_Surface* tempSurface; /**< Surface temporaire */
 
     SDL_Texture* textTexture; /**< Texture du texte */
     SDL_Surface* textSurface; /**< Surface du texte */
 
-    //SDL_Rect posFond; /**< Position de l'image de fond */
+    SDL_Rect posFond; /**< Position de l'image de fond */
 
-    SDL_Rect posBouton; /**< Position du bouton */
-    SDL_Surface *imageBouton; /**< Surface du bouton */
-    SDL_Texture *textureImageBouton; /**< Texture du bouton */
-    bool boutonClique = false; /**< Indicateur de clic sur le bouton */
     bool textInputActive = false; /**< Indicateur d'entrée de texte */
 
     TTF_Font* font; /**< Police de caractères */
@@ -65,22 +61,19 @@ class Affichage {
 */
           void AfficherFond();
        
-         void dessinerPersonnage();
+         void dessinerPersonnage(Joueur j, Ennemi ennemi);
         void barres(Joueur j);
         void CalculerDimensionsDuTexte(const vector<string>& lignes, int& largeurMax, int& hauteurTotale, vector<int>& hauteurs);
-        void DessinerFondTexte(SDL_Renderer* renderer,int largeurMax, int hauteurTotale);
+       // void DessinerFondTexte(SDL_Renderer* renderer,int largeurMax, int hauteurTotale);
         void AfficherTexte(SDL_Renderer* renderer,const vector<string>& lignes);
-        void AfficherInfo(Joueur j, Ennemi enne);
+        void AfficherInfo(Joueur j, Ennemi enne, SDL_Renderer *renderer);
         //jeu 
         void AfficherJeu(Joueur j, Ennemi ennemi,Jeu jeu);
         void GererEvenements();
-
-        void AfficherBoutonAction();
-        void HandleMouseClick(SDL_Event event);
        
     void AfficherTexteSaisie();
        
      
-};
+ };
 
 #endif

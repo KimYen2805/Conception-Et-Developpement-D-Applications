@@ -24,8 +24,8 @@ public:
     void ennHitPlay(Sort sort);
     void playHitEnn(Sort sort);
     void ennTurn();
-    void playTurn();
-    void fight(Joueur& j);
+    void playTurn(Joueur& j, int sort);
+    int isFight(Joueur& j);
 };
 
 

@@ -11,6 +11,8 @@ class Ennemi {
         int pointDeVie;
         int puissance; 
         vector<int> tabInd_Sort;
+
+        
     public:
      // Constructeur
     Ennemi();
@@ -31,6 +33,9 @@ class Ennemi {
 
     void addSort(int sort);
 
+    int nbEnne();
+    int posXEnne();
+    int posYEnne();
     // Fonction pour attaquer le joueur ?
     //void attaquerJoueur(); Plutôt une fonction qui sera dans combat
 

@@ -5,15 +5,15 @@ using namespace std;
 int main (int argc, char ** argv)
 {
 
-   Jeu Jeu;
+   Jeu jeu;
     Ennemi ennemi;
-	Joueur joueur = Jeu.getJoueur();
+	Joueur joueur = jeu.getJoueur();
  
  
     Affichage affichage;
 
     //Affichage des deux images
-    affichage.AfficherJeu( joueur,ennemi, Jeu); 
+    affichage.AfficherJeu( joueur,ennemi, jeu); 
 
     return 0;
 }

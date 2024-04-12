@@ -7,6 +7,7 @@ int const EMAXSORT = 10;
 
 Ennemi::Ennemi() {
     pointDeVie = 100;
+    pvMax=100;
     puissance = 20;
 }
 
@@ -18,15 +19,27 @@ int Ennemi::getPointDeVieEnnemi() const {
     return pointDeVie;
 }
 
+int Ennemi::getPVmaxEnnemi() const{
+    return pvMax;
+}
+
 void Ennemi::setPointDeVieEnnemi(int points) {
     pointDeVie = points;
 }
 
+void Ennemi::setPVmaxEnnemi(int pv){
+    pvMax=pv;
+    pointDeVie = pvMax;
+}
+
 void Ennemi::updatePVEnn(int pv){
-    if(pointDeVie + pv <= 0)
+    if ((pointDeVie + pv) >= pvMax)
+    {
+        pointDeVie = pvMax;
+    }else if((pointDeVie + pv) <= 0)
     {
         pointDeVie = 0;
-    }else{ pointDeVie += pv;}
+    }else pointDeVie += pv;
 }
 
 int Ennemi::getPuissanceEnnemi() const {

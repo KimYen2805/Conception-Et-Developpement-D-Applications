@@ -57,7 +57,7 @@ Graphe::Graphe()
                 fichG >> pv>>mana>>nbS;
 
                 //std::cout<<" "<<pv <<" "<<mana;
-                tab[i].setPointDeVieEnnemi(pv);
+                tab[i].setPVmaxEnnemi(pv);
                 tab[i].setPuissanceEnnemi(mana);
                 for (int j=0;j<nbS;j++)
                 {

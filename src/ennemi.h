@@ -9,6 +9,7 @@
 class Ennemi {
     private:
         int pointDeVie;
+        int pvMax;
         int puissance; 
         vector<int> tabInd_Sort;
 
@@ -21,9 +22,12 @@ class Ennemi {
     ~Ennemi();
     // Getter pour pointDeVie
     int getPointDeVieEnnemi() const;
+    int getPVmaxEnnemi() const;
 
     // Setter pour pointDeVie
     void setPointDeVieEnnemi(int pv);
+
+    void setPVmaxEnnemi(int pv);
 
 
     void updatePVEnn(int pv);

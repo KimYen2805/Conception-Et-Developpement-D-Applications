@@ -22,6 +22,13 @@ void Ennemi::setPointDeVieEnnemi(int points) {
     pointDeVie = points;
 }
 
+void Ennemi::updatePVEnn(int pv){
+    if(pointDeVie + pv <= 0)
+    {
+        pointDeVie = 0;
+    }else{ pointDeVie += pv;}
+}
+
 int Ennemi::getPuissanceEnnemi() const {
     return puissance;
 }

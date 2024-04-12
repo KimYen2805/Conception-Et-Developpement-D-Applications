@@ -21,8 +21,8 @@ public:
     
     ~Combat();
     int castSort(Joueur& j, string s);
-    void ennHitPlay(Sort sort);
-    void playHitEnn(Sort sort);
+    void ennHitPlay(Joueur& j, Sort sort);
+    void playHitEnn(Joueur& j, float degat);
     void ennTurn();
     void playTurn(Joueur& j, int sort);
     int isFight(Joueur& j);

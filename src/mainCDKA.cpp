@@ -39,10 +39,20 @@ int main()
             c=(Combat*) noeud;
             while(c->isFight(joueur)==-1)
             {
+                cout<<"Action joueur: ";
                 cin>>pTexte;
-                (c->castSort(joueur, pTexte));
+                int iSort = c->castSort(joueur, pTexte);
+                if (iSort!=-1)
+                {
+                    c->playTurn(joueur,iSort);
+                }
+                if(c->isFight(joueur)==-1)
+                {
+                    c->ennTurn();
+                }
+                
             }
-            Jeu.getGraphe().parcoursGraphe(0);
+            Jeu.getGraphe().parcoursGraphe(c->isFight(joueur));
         }
 
         noeud=Jeu.getCNoeud(); //avancer dans le jeu en fonction des résultats

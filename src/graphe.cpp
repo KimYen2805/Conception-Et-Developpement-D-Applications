@@ -10,6 +10,7 @@ Graphe::Graphe()
     }
     int fils;
     int ind=0;
+    int nbL;
     
 
     string nomN, texte, rep;
@@ -19,13 +20,19 @@ Graphe::Graphe()
     fichG >> NBNOEUD;
     for (int i=0;i<NBNOEUD;i++)
     {
-        fichG >> ind  >> nomN>> separator;    
+        fichG >> ind >> nomN >> separator;    
         //std::cout<<ind<<" "<<nomN<<" "<< separator<< endl;
         if(separator=='d')
         {
-            fichG >> rep;
-            getline(fichG, texte);
-            texte = rep + texte;
+            string temp;
+            fichG >> nbL >> rep;
+            getline(fichG, temp);
+            texte = rep + temp;
+            for(int i=0; i<nbL-1;i++)
+            {
+                getline(fichG, temp);
+                texte+='\n'+temp; 
+            }
             //std::cout<<texte<<endl;
             fichG >> fils;
             //std::cout<<fils;

@@ -25,6 +25,11 @@ class Ennemi {
     // Setter pour pointDeVie
     void setPointDeVieEnnemi(int pv);
 
+
+    void updatePVEnn(int pv);
+
+    
+
     // Getter pour puissance
     int getPuissanceEnnemi() const;
 

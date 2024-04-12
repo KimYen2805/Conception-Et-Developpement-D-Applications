@@ -29,31 +29,32 @@ int Combat::castSort(Joueur& j, string s){
     return sort;
 }
 
-void Combat::ennHitPlay(Joueur& j, Sort sort){
+void Combat::ennHitPlay(Joueur& j, float sort){
 
 }
 
-void Combat::playHitEnn(Joueur& j, float sort){
-
-    ennGroup[rand()%(ennGroup.size())].updatePVEnn(-sort);
-    cout<< ennGroup[0].getPointDeVieEnnemi()<<endl;
+void Combat::playHitEnn(Joueur& j, float degat, int tar){
+    if (tar==0) ennGroup[rand()%(ennGroup.size())].updatePVEnn(-degat);
+    else ennGroup[tar-1].updatePVEnn(-degat);
 }
 
 void Combat::ennTurn(){
 
 }
 
-void Combat::playTurn(Joueur& j, int sort){
+void Combat::playTurn(Joueur& j, int sort, int tar){
     Sort s = j.getSort(sort);
     if(s.getEffetSort().getNomEffet()=="degatVie")
     {
         cout<<"here"<<endl;
-        playHitEnn(j, j.getPVJoueur()*s.getEffetSort().getPuissanceEffet());
+        playHitEnn(j, j.getPVJoueur()*s.getEffetSort().getPuissanceEffet(), 0);
         j.updatePVJoueur(-j.getPVJoueur()*s.getCout());
     }
-    if(j.getSort(sort).getCout()<=j.getMana())
+    if(j.getSort(sort).getCout()<=j.getMana() && s.getEffetSort().getNomEffet()=="degatMana")
     {
-        
+        cout<<"also here"<<endl;
+        playHitEnn(j, s.getEffetSort().getPuissanceEffet(), tar);
+        j.updateMana(-s.getCout());
     }
 }
 

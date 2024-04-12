@@ -21,10 +21,10 @@ public:
     
     ~Combat();
     int castSort(Joueur& j, string s);
-    void ennHitPlay(Joueur& j, Sort sort);
-    void playHitEnn(Joueur& j, float degat);
+    void ennHitPlay(Joueur& j, float sort);
+    void playHitEnn(Joueur& j, float degat, int tar);
     void ennTurn();
-    void playTurn(Joueur& j, int sort);
+    void playTurn(Joueur& j, int sort, int tar);
     int isFight(Joueur& j);
 };
 

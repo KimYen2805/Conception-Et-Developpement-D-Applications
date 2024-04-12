@@ -38,13 +38,21 @@ int main()
             cout<<"Dans le combat"<<endl;
             c=(Combat*) noeud;
             while(c->isFight(joueur)==-1)
-            {
+            {   
+                int target =0;
                 cout<<"Action joueur: ";
                 cin>>pTexte;
+                if (isdigit(pTexte[0]))
+                {
+                    int target=int(pTexte[0]);
+                    pTexte.erase(0,1);
+                    cout<<target<<" "<<pTexte<<endl;
+                }
                 int iSort = c->castSort(joueur, pTexte);
+                
                 if (iSort!=-1)
                 {
-                    c->playTurn(joueur,iSort);
+                    c->playTurn(joueur,iSort, target);
                 }
                 if(c->isFight(joueur)==-1)
                 {

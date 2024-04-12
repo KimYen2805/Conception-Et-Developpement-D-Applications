@@ -39,8 +39,8 @@ class Ennemi {
     void addSort(int sort);
 
     int nbEnne();
-    int posXEnne();
-    int posYEnne();
+    int posXEnne(int n);
+    int posYEnne(int n);
     // Fonction pour attaquer le joueur ?
     //void attaquerJoueur(); Plutôt une fonction qui sera dans combat
 

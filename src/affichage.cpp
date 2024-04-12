@@ -130,8 +130,8 @@ void Affichage::dessinerPersonnage(Joueur j, Ennemi ennemi)
     SDL_Rect posIma1;
     int nbEnnemi= ennemi.nbEnne();
      for (int i = 0; i < nbEnnemi; ++i) {
-        posIma1.x  = ennemi.posXEnne();
-        posIma1.y = ennemi.posYEnne();
+        posIma1.x  = ennemi.posXEnne(i);
+        posIma1.y = ennemi.posYEnne(i);
         SDL_QueryTexture(textureImage1, NULL, NULL, &posIma1.w, &posIma1.h);//ko can 
 		SDL_RenderCopy(renderer, textureImage1,NULL, &posIma1);
     }

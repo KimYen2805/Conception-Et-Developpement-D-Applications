@@ -51,7 +51,6 @@ int Ennemi::posXEnne(int n) {
 
 int Ennemi::posYEnne(int n) {
     return 100+(n%2)*70; // Random Y position (assuming screen height of 24 lines)
->>>>>>> refs/remotes/origin/main
 }
 void Ennemi::testRegression() {
     cout << "Exécution du test de régression pour la classe Ennemi..." << endl;

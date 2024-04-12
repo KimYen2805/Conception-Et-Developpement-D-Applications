@@ -35,18 +35,17 @@ int main()
         }else
         if (noeud->getDelim()=='c')
         {
-            cout<<"Dans le combat"<<endl;
             c=(Combat*) noeud;
             while(c->isFight(joueur)==-1)
             {   
+                c->affStat(joueur);
                 int target =0;
-                cout<<"Action joueur: ";
+                cout<<endl<<"Action joueur: ";
                 cin>>pTexte;
                 if (isdigit(pTexte[0]))
                 {
-                    int target=int(pTexte[0]);
+                    target=pTexte[0]-'0'; 
                     pTexte.erase(0,1);
-                    cout<<target<<" "<<pTexte<<endl;
                 }
                 int iSort = c->castSort(joueur, pTexte);
                 

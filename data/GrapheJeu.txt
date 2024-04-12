@@ -19,7 +19,9 @@ Dans la direction oppose, quelqu'un vous fait signe de s'approcher.
 2 Combattre Approcher
 
 3 combat1 c
-1 100 20 1 0
+2 
+50 50 1 0
+80 30 1 0
 
 4 villageois1 d
 3

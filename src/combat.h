@@ -26,6 +26,7 @@ public:
     void ennTurn();
     void playTurn(Joueur& j, int sort, int tar);
     int isFight(Joueur& j);
+    void affStat(Joueur& j);
 };
 
 

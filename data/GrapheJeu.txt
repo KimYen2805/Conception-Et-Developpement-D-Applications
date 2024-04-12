@@ -1,4 +1,4 @@
-8
+9
 
 0 debut d
 3
@@ -27,7 +27,7 @@ Dans la direction oppose, quelqu'un vous fait signe de s'approcher.
 3
 'Comment te sens-tu?', vous dit ce villageois a l'air de inquiet. 
 'Nous t'avions embauche pour t'occuper des creatures mais il semblerait que tu te sois evanoui. 
-Ton ami s'occupe de les retenir bien qu'il n'ait pas l'air de taille pour le combat, tu devrais y retourner...'
+Ton ami s'occupe de les retenir, bien qu'il n'ait pas l'air de taille pour le combat. Tu devrais y retourner...'
 3 Combattre Parler Fuir
 
 5 villageois2 d
@@ -36,23 +36,32 @@ Ton ami s'occupe de les retenir bien qu'il n'ait pas l'air de taille pour le com
 1 Grimoire
 
 6 grimoire d
+3
+Les sorts existant sont Agidyne et Kougaon, peut-etre en découvrirez-vous d'autre.
+Agidyne peut prendre une valeur au debut du mot, indiquant l'ennemi a attaquer, epuisant du mana.
+Kougaon vous soigne en échange d'une portion de mana.
+1 Combattre
+
+7 defaite1 d
 1
-Les sorts existant sont Agidyne et Kougaon, peut-être en découvrirez-vous d'autre.
+Vous succombez finalement aux coups de vos adversaires...
 0
 
-7 victoire1 d
-1
-Bon les combats sont ce qu'ils sont mais avec plus de sorts disponible, 
+8 victoire1 d
+2
+Bon les combats sont ce qu'ils sont mais avec plus de sorts disponible, les possibilités n'en seront que plus diverses.
+En attendant, celui qui semble etre votre ami vous remercie d'etre arrive a temps et vous dirigez vers le village proche.
 0
 
-10
+11
 0 2
 0 1
 2 3
 2 4
-3 6
+3 8
 3 7
 4 3
 4 5
 4 1
 5 6
+6 3

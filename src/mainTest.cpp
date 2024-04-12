@@ -1,10 +1,26 @@
 // mainTest.cpp
-
+#include <iostream>
+#include <thread>
+#include <chrono>
 #include "joueur.h"
 #include "ennemi.h"
 
 //#include "jeu.h"
 
+/*string getVal(string defaultValue)
+{
+    string t="";
+    thread enter([&]{cin>>t;});
+    thread timer(chrono::seconds(3));
+    
+    while (!timer.joinable()||!enter.joinable())
+    {
+
+    }
+    enter.join();
+    return t;
+
+}*/
 
 
 int main() {
@@ -37,7 +53,8 @@ int main() {
     while(c==false){
         
     cout << "Votre choix : ";
-    cin >> choix;
+    //choix= getVal("123");
+    cin>>choix;
 
     if (choix=="Action"){ 
         cout<<"choix 1: action"<<endl;
@@ -46,9 +63,11 @@ int main() {
         cout<<"choix 2: quitter"<<endl;
         c=true;
     }else{
-        cout << "Choix invalide. Veuillez choisir à nouveau." << endl;
+        cout << choix<<"Choix invalide. Veuillez choisir à nouveau." << endl;
     }
-    } 
+    }
 
     return 0;
 }
+
+

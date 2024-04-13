@@ -26,13 +26,8 @@ class Ennemi {
 
     // Setter pour pointDeVie
     void setPointDeVieEnnemi(int pv);
-
     void setPVmaxEnnemi(int pv);
-
-
-    void updatePVEnn(int pv);
-
-    
+    void updatePVEnn(float pv);
 
     // Getter pour puissance
     int getPuissanceEnnemi() const;
@@ -41,6 +36,8 @@ class Ennemi {
     void setPuissanceEnnemi(int power);
 
     void addSort(int sort);
+    int getSort(int n);
+    int getSsize();
 
     int nbEnne();
     int posXEnne(int n);

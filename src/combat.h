@@ -23,10 +23,10 @@ public:
     int castSort(Joueur& j, string s);
     void ennHitPlay(Joueur& j, float sort);
     void playHitEnn(Joueur& j, float degat, int tar);
-    void ennTurn();
+    void ennTurn(Joueur& j);
     void playTurn(Joueur& j, int sort, int tar);
-    int isFight(Joueur& j);
-    void affStat(Joueur& j);
+    int isFight(Joueur& j) const;
+    void affStat(Joueur& j) const;
 };
 
 

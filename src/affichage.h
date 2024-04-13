@@ -49,7 +49,11 @@ class Affichage {
 
     bool renderText = false; /**< Indicateur d'affichage de texte */
     //bool besoinDeNettoyer = false; /**< Indicateur de besoin de nettoyage */
-    FILE *fichier;
+     Noeud* n;
+     vector<Noeud*> sommets;
+    vector<pair<Noeud*,Noeud*>> aretes;
+//bool quitter = false;
+
         public:
 /**
  * @brief Constructeur

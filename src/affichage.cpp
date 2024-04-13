@@ -233,7 +233,7 @@ std::stringstream ss(lignes);
             if (textTexture == nullptr) {
                 cerr << "Erreur lors de la création de la texture à partir de la surface: " << SDL_GetError() << endl;
             } else {
-                SDL_Rect textRect = {310, posY, textSurface->w, textSurface->h};
+                SDL_Rect textRect = {rect.x, posY, textSurface->w, textSurface->h};
                 SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
                 posY += textSurface->h + spacing;
             }

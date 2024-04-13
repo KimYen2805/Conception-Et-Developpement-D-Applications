@@ -545,20 +545,20 @@ void Affichage::AfficherTexteSaisie() {
  * @param ennemi Objet représentant l'ennemi.
  * @param jeu Objet représentant le jeu.
 */
+
 void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi, Jeu jeu) {
     bool quitter = false;
+        
     while (!quitter) {
         // Affichage des éléments du jeu
-        SDL_RenderClear(renderer);
+       SDL_RenderClear(renderer);
         AfficherFond();
        dessinerPersonnage(joueur, ennemi); 
 
         barres(joueur); 
-        AfficherInfo(joueur, ennemi, renderer);
-        
-        GererEvenements();
-        // AfficherTexteSaisie();
-        
+       AfficherInfo(joueur, ennemi, renderer);
+         playGame(renderer);
+           //GererEvenements();
         // Affichage à l'écran
        SDL_RenderPresent(renderer);
 
@@ -569,7 +569,5 @@ void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi, Jeu jeu) {
 }
 //ajouter sons
 //joueur ne pas affiche pendant dialogue
-//si il y a plus 1 ennemi et gerer la pos entre
-//noeud //afficher comme dans le fichier Grapejeu.txt
 			
 			

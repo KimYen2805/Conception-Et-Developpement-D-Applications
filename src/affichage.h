@@ -4,10 +4,13 @@
 #include "jeu.h" 
 #include "joueur.h"
 #include "ennemi.h"
+#include "graphe.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <vector>
+#include <sstream>
+
 
 
 class Affichage {

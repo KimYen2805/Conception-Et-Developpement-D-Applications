@@ -125,6 +125,19 @@ TTF_CloseFont(font);
 /**
  * @brief Dessine les personnages (joueur et ennemi) sur l'écran.
 */
+//
+void Affichage::AfficherFond()
+{
+     int windowWidth, windowHeight;
+    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+		//Positionnement et affichage d' imageBouton
+		posFond.x = 0; //pas besoin 
+		posFond.y= 0; //il faut ajouter w et h 
+         posFond.w = windowWidth; 
+    posFond.h = windowHeight;
+	//SDL_QueryTexture(textureImageFond, NULL, NULL, &posFond.w, &posFond.h);//xem lai
+	SDL_RenderCopy(renderer, textureImageFond,NULL, &posFond);
+}
 void Affichage::dessinerPersonnage(Joueur j, Ennemi ennemi)
 {
     SDL_Rect posIma1;

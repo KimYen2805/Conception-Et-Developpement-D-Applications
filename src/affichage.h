@@ -72,15 +72,17 @@ class Affichage {
         void barres(Joueur j);
         void CalculerDimensionsDuTexte(const vector<string>& lignes, int& largeurMax, int& hauteurTotale, vector<int>& hauteurs);
        // void DessinerFondTexte(SDL_Renderer* renderer,int largeurMax, int hauteurTotale);
-        void AfficherTexte(SDL_Renderer* renderer,const vector<string>& lignes);
+        void AfficherTexte(SDL_Renderer* renderer,const vector<string>& lignes, const SDL_Rect& rect);
         void AfficherInfo(Joueur j, Ennemi enne, SDL_Renderer *renderer);
         //jeu 
         void AfficherJeu(Joueur j, Ennemi ennemi,Jeu jeu);
         void GererEvenements();
        
     void AfficherTexteSaisie();
-       
-     
+
+    void chargerGrapeJeu();
+  void handleInput(string &pTexte);
+     void playGame(SDL_Renderer* renderer);
  };
 
 #endif

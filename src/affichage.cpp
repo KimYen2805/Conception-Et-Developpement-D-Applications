@@ -527,14 +527,13 @@ void Affichage::playGame(SDL_Renderer* renderer) {
 */
 void Affichage::AfficherTexteSaisie() {
 
-    if (!inputText.empty()) {
+    if (textInputActive && !inputText.empty() && renderText) {
         textInputSurface = TTF_RenderText_Blended(fontSaisie, inputText.c_str(), {255, 255,0});
         if (textInputSurface == nullptr) {
             cerr << "! SDL_ttf Error: " << TTF_GetError() <<endl;
         } else {
             textInputTexture = SDL_CreateTextureFromSurface(renderer, textInputSurface);
             SDL_Rect textRect = {10, 450,textInputSurface->w, textInputSurface->h};
-
             SDL_RenderCopy(renderer, textInputTexture, NULL, &textRect);
         }
     }

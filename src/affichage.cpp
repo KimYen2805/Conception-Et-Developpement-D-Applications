@@ -55,13 +55,13 @@ if (!textureImageFond) {
     cerr << "Erreur de chargement de l'image: " << SDL_GetError() << endl;
 }
 
-// Load enemy image and create texture
+
 textureImage1 = IMG_LoadTexture(renderer, "data/ennemi.png");
 if (!textureImage1) {
     cerr << "Erreur de chargement de l'image de l'ennemi: " << SDL_GetError() << endl;
 }
 
-// Load player image and create texture
+
 textureImage2 = IMG_LoadTexture(renderer, "data/joueur.png");
 if (!textureImage2) {
     cerr << "Erreur de chargement de l'image du joueur: " << SDL_GetError() << endl;
@@ -116,9 +116,9 @@ TTF_CloseFont(font);
 
 }
 /**
- * @brief Dessine les personnages (joueur et ennemi) sur l'écran.
+ * @brief Affiche le fond du jeu.
+ * Dessine l'image de fond sur la fenêtre SDL.
 */
-//
 void Affichage::AfficherFond()
 {
      int windowWidth, windowHeight;
@@ -128,6 +128,10 @@ void Affichage::AfficherFond()
     posFond.h = windowHeight;
 	SDL_RenderCopy(renderer, textureImageFond,NULL, &posFond);
 }
+/**
+ * @brief Dessine les personnages (joueur et ennemi) sur l'écran.
+*/
+//
 void Affichage::dessinerPersonnage(Joueur j, Ennemi ennemi)
 {
     SDL_Rect posIma1;
@@ -146,6 +150,12 @@ void Affichage::dessinerPersonnage(Joueur j, Ennemi ennemi)
 	SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
 
 }
+/**
+ * @brief Affiche les barres de santé et de mana du joueur et de l'ennemi.
+ * @param joueur Objet représentant le joueur.
+ * @param en Objet représentant l'ennemi.
+ * @param renderer Pointeur vers le renderer SDL.
+*/
 void Affichage:: barres(Joueur joueur , Ennemi en, SDL_Renderer* renderer)
 {
     // Récupération des données du joueur
@@ -180,10 +190,6 @@ void Affichage:: barres(Joueur joueur , Ennemi en, SDL_Renderer* renderer)
 
 
 }
-/**
- * @brief Affiche les barres de santé et de mana du joueur.
- * @param joueur Objet représentant le joueur.
-*/
 
 /**
  * @brief Calcule les dimensions du texte à afficher.
@@ -259,7 +265,10 @@ void Affichage::AfficherInfo(Joueur joueur, Ennemi ennemi, SDL_Renderer *rendere
     // Appeler la fonction d'affichage du texte
    AfficherTexte(renderer, lignes, textRect);
 }
-
+/**
+ * @brief Charge les données du jeu à partir d'un fichier.
+ * Lit les données du fichier "GrapheJeu.txt" pour initialiser le jeu.
+*/
 void Affichage::chargerGrapeJeu()
 { ifstream fichG("data/GrapheJeu.txt");
     if(!fichG.is_open())
@@ -347,7 +356,11 @@ void Affichage::chargerGrapeJeu()
    // std::cout << "Lecture du fichier " << g << " ... OK\n";
     n=sommets[0];
 }
-
+/**
+ * @brief Gère la saisie utilisateur.
+ * Permet à l'utilisateur de saisir du texte et de contrôler le déroulement du jeu.
+ * @param pTexte Référence à la chaîne de texte saisie par l'utilisateur.
+*/
 void Affichage::handleInput(string &pTexte) {
         bool inputComplete = false;
            SDL_Event event;
@@ -392,6 +405,11 @@ void Affichage::handleInput(string &pTexte) {
     }
     SDL_StopTextInput();
 }
+/**
+ * @brief Efface le texte précédent et affiche un nouveau texte.
+ * @param renderer Pointeur vers le renderer SDL.
+ * @param rect Rectangle délimitant l'emplacement du texte.
+*/
 void Affichage::effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& rect) {
     SDL_SetRenderDrawColor(renderer, 97, 106, 107, 255); 
     SDL_RenderFillRect(renderer, &rect);
@@ -399,7 +417,11 @@ void Affichage::effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& r
     vector<string> lignes = { " " }; 
     AfficherTexte(renderer, lignes, rect);
 }
-
+/**
+ * @brief Lance le jeu en mode SDL.
+ * Gère le déroulement du jeu en mode SDL, y compris les interactions avec le joueur et l'affichage des éléments du jeu.
+ * @param renderer Pointeur vers le renderer SDL.
+*/
 void Affichage::playGame(SDL_Renderer* renderer) {
     Jeu Jeu;
     Joueur joueur = Jeu.getJoueur();
@@ -517,7 +539,6 @@ void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi) {
             
     while (!quitter) {
         // Affichage des éléments du jeu
-       //SDL_RenderClear(renderer);
         AfficherFond();
           AfficherInfo(joueur, ennemi, renderer);
        dessinerPersonnage(joueur, ennemi); 
@@ -533,8 +554,4 @@ void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi) {
     }
     
 }
-
-//ajouter sons
-//joueur ne pas affiche pendant dialogue
-			
 			

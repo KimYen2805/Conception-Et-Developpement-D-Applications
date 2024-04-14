@@ -382,7 +382,7 @@ void Affichage::handleInput(string &pTexte) {
                 //effacerTexte= true;
     }
         }
-        SDL_Rect texteRect = { 50, 450, 100, 50 };
+        SDL_Rect texteRect = { 360, 450, 100, 50 };
         SDL_SetRenderDrawColor(renderer, 231, 76, 60, 255); 
         SDL_RenderFillRect(renderer, &texteRect);
 

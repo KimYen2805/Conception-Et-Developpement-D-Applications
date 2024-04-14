@@ -1,9 +1,8 @@
 9
 
 0 debut d
-3
+2
 Ce jeu ce joue exclusivement au clavier.
-Tout les choix ne seront pas explicites mais une aide et toujours disponible en entrant 'Aide'.
 Souhaitez-vous commencer le jeu?
 2 Oui Non
 
@@ -20,8 +19,8 @@ Dans la direction oppose, quelqu'un vous fait signe de s'approcher.
 
 3 combat1 c
 2 
-50 50 1 0
-80 30 2 2 3
+30 50 1 0
+35 30 2 2 3
 
 4 villageois1 d
 3
@@ -38,7 +37,7 @@ Ton ami s'occupe de les retenir, bien qu'il n'ait pas l'air de taille pour le co
 6 grimoire d
 3
 Les sorts existant sont Agidyne et Kougaon, peut-etre en découvrirez-vous d'autre.
-Agidyne peut prendre une valeur au debut du mot, indiquant l'ennemi a attaquer, epuisant du mana.
+Agidyne peut prendre une valeur au debut du mot, indiquant l'ennemi a attaquer, epuisant du mana. Ex: 1Agidyne
 Kougaon vous soigne en échange d'une portion de mana.
 1 Combattre
 

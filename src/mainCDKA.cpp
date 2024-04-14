@@ -21,16 +21,13 @@ int main()
             while(isValid==-1)
             {
                 d=(Dialogue*) noeud;
-                cout<<d->getTexte()<<endl<<endl<<"Choix : ";
+
+                cout<<d->getTexte()<<endl<<d->getRep()<<endl<<endl<<"Choix : ";
                 cin>>pTexte;
-                if(pTexte=="Aide")
-                {
-                    cout<<d->getRep()<<endl;
-                }else
-                {isValid =d->rep(pTexte);
-                if (isValid!=-1){Jeu.getGraphe().parcoursGraphe(isValid);}
-                else{cout<<"Reponse invalide au dialogue"<<endl;}}
-                
+                isValid =d->rep(pTexte);
+
+                if (isValid!=-1) Jeu.getGraphe().parcoursGraphe(isValid);
+                else cout<<"Reponse invalide au dialogue"<<endl;
             }
         }else
         if (noeud->getDelim()=='c')
@@ -44,7 +41,7 @@ int main()
                 cin>>pTexte;
                 if (isdigit(pTexte[0]))
                 {
-                    target=pTexte[0]-'0'; 
+                    target=pTexte[0]-'0';
                     pTexte.erase(0,1);
                 }
                 int iSort = c->castSort(joueur, pTexte);
@@ -56,8 +53,7 @@ int main()
                 if(c->isFight(joueur)==-1)
                 {
                     c->ennTurn(joueur);
-                }
-                
+                }  
             }
             Jeu.getGraphe().parcoursGraphe(c->isFight(joueur));
         }

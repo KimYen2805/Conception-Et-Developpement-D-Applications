@@ -66,7 +66,6 @@ class Ennemi {
     int nbEnne();
     int posXEnne(int n);
     int posYEnne(int n);
-    // Fonction pour attaquer le joueur ?
     //void attaquerJoueur(); Plutôt une fonction qui sera dans combat
 
     //test 

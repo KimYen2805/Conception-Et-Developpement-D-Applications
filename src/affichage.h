@@ -80,7 +80,7 @@ bool effacerTexte = false;
          * @brief Affiche les barres de santé et de mana du joueur.
          * @param joueur Objet représentant le joueur.
         */
-        void barres(Joueur j,SDL_Renderer* renderer);
+        void barres(Joueur j, Ennemi en,SDL_Renderer* renderer);
         /**
          * @brief Calcule les dimensions du texte à afficher.
          * @param li Vecteur contenant les lignes de texte.

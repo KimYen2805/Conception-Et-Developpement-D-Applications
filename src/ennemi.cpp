@@ -63,7 +63,8 @@ int Ennemi::getSort(int n){
 }
 
 int Ennemi::nbEnne() {
-    return rand() % 5 + 1; // Random number 
+
+    return 2;
 }
 
 int Ennemi::posXEnne(int n) {
@@ -71,7 +72,7 @@ int Ennemi::posXEnne(int n) {
 }
 
 int Ennemi::posYEnne(int n) {
-    return 100+(n%2)*70; // Random Y position (assuming screen height of 24 lines)
+    return 100+(n%2)*70; // Random Y position 
 }
 void Ennemi::testRegression() {
     cout << "Exécution du test de régression pour la classe Ennemi..." << endl;

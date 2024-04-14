@@ -137,11 +137,13 @@ void Affichage::dessinerPersonnage(Joueur j, Ennemi ennemi)
 	SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
 
 }
-void Affichage:: barres(Joueur joueur , SDL_Renderer* renderer)
+void Affichage:: barres(Joueur joueur , Ennemi en, SDL_Renderer* renderer)
 {
     // Récupération des données du joueur
 	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
-    int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();    // Mana maximale du joueur
+    int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();   // Mana maximale du joueur
+    int pointDeVieEnnemi= en.getPointDeVieEnnemi();
+     
 // Affichage de la barre de vie du joueur
 	SDL_Rect rePo; 
 		rePo.x =600; 
@@ -158,6 +160,15 @@ void Affichage:: barres(Joueur joueur , SDL_Renderer* renderer)
 		reMa.h =15;
 	SDL_SetRenderDrawColor(renderer,0,0,255,0);
 	SDL_RenderFillRect(renderer, &reMa);
+    // Affichage de la barre de vie d'ennemi
+	SDL_Rect rePoE; 
+        rePoE.x =20; 
+		rePoE.y =60;
+		rePoE.w = pointDeVieEnnemi;
+		rePoE.h =15;
+	SDL_SetRenderDrawColor(renderer,255,0,0,0);
+	SDL_RenderFillRect(renderer, &rePoE);
+
 
 }
 
@@ -341,7 +352,7 @@ void Affichage::handleInput(string &pTexte) {
                 //effacerTexte= true;
     }
         }
-        SDL_Rect texteRect = { 50, 450, 100, 50 };
+        SDL_Rect texteRect = { 360, 450, 100, 50 };
         SDL_SetRenderDrawColor(renderer, 231, 76, 60, 255); 
         SDL_RenderFillRect(renderer, &texteRect);
 
@@ -362,6 +373,7 @@ void Affichage::effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& r
 void Affichage::playGame(SDL_Renderer* renderer) {
     Jeu Jeu;
     Joueur joueur = Jeu.getJoueur();
+    Ennemi ennemi;
     Noeud* noeud = Jeu.getCNoeud();
 
     SDL_Rect texteRectA = { 10, 300, 820, 130 };
@@ -445,7 +457,7 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                             effacerEtAfficherTexte(renderer, texteRectA);
                             effacerTexte = false;
                         }
-                         barres(joueur, renderer);
+                         barres(joueur,ennemi, renderer);
             }
             Jeu.getGraphe().parcoursGraphe(c->isFight(joueur));
         }

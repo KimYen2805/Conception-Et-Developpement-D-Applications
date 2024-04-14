@@ -2,6 +2,7 @@
 #define _SORT_H
 #include "effet.h"
 #include <string>
+#include <sstream>
 using namespace std;
 
 class Sort
@@ -24,5 +25,6 @@ public:
     Effet getEffetSort() const;
 
     void affSort();
+    void affSortSDL(std::stringstream& ss);
 };
 #endif

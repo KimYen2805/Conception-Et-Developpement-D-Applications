@@ -72,7 +72,7 @@ bool effacerTexte = false;
           void AfficherFond();
        
          void dessinerPersonnage(Joueur j, Ennemi ennemi);
-        void barres(Joueur j,SDL_Renderer* renderer);
+        void barres(Joueur j, Ennemi en,SDL_Renderer* renderer);
         void CalculerDimensionsDuTexte(const vector<string>& lignes, int& largeurMax, int& hauteurTotale, vector<int>& hauteurs);
        // void DessinerFondTexte(SDL_Renderer* renderer,int largeurMax, int hauteurTotale);
         void AfficherTexte(SDL_Renderer* renderer,const vector<string>& lignes, const SDL_Rect& rect);

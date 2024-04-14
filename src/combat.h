@@ -3,6 +3,7 @@
 #include "noeud.h"
 
 #include "ennemi.h"
+#include <sstream>
 int const MAXENNEMI = 5;
 
 class Combat : public Noeud{

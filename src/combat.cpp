@@ -34,7 +34,9 @@ int Combat::castSortSDL(Joueur& j, string s, vector<string>& lignes) {
     if(sort < 0) {
         lignes.push_back("Sort invalide");
     } else {  
-        lignes.push_back(j.getSort(sort).getNomSort());
+        stringstream ss;
+        j.getSort(sort).affSortSDL(ss);
+        lignes.push_back(ss.str());
     }
     return sort;
 }

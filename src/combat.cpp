@@ -40,7 +40,7 @@ int Combat::castSortSDL(Joueur& j, string s, vector<string>& lignes) {
 }
 
 void Combat::ennHitPlay(Joueur& j, float sort){
-
+    j.updatePVJoueur(-sort);
 }
 
 void Combat::playHitEnn(Joueur& j, float degat, int tar){
@@ -56,8 +56,32 @@ void Combat::playHitEnn(Joueur& j, float degat, int tar){
     else ennGroup[tar-1].updatePVEnn(-degat);
 }
 
-void Combat::ennTurn(){
+void Combat::ennTurn(Joueur& j){
+    for (long unsigned int i = 0; i<ennGroup.size(); i++)
+    {
+        
+        Ennemi e=ennGroup[i];
+        if (e.getPointDeVieEnnemi()>0)
+        {
 
+            Sort s =j.getSort(e.getSort(rand() % e.getSsize()));
+
+            s.affSort();
+            if(s.getEffetSort().getNomEffet()=="degatVie")
+            {
+                ennHitPlay(j, e.getPointDeVieEnnemi() * s.getEffetSort().getPuissanceEffet() * e.getPuissanceEnnemi()/100);
+                ennGroup[i].updatePVEnn( -float(e.getPointDeVieEnnemi() * s.getCout() * e.getPuissanceEnnemi())/100.0);
+            }else
+            if(s.getEffetSort().getNomEffet()=="degatMana")
+            {
+                ennHitPlay(j, s.getEffetSort().getPuissanceEffet() * e.getPuissanceEnnemi() /100);              
+            }else
+            if(s.getEffetSort().getNomEffet()=="soinMana")
+            {
+                ennGroup[rand() % ennGroup.size()].updatePVEnn( s.getEffetSort().getPuissanceEffet() * e.getPuissanceEnnemi() /100 );
+            }
+        }
+    }
 }
 
 void Combat::playTurn(Joueur& j, int sort, int tar){
@@ -74,8 +98,8 @@ void Combat::playTurn(Joueur& j, int sort, int tar){
         cout<<endl;
         playHitEnn(j, s.getEffetSort().getPuissanceEffet(), tar);
         j.updateMana(-s.getCout());
-    }
-    if(j.getSort(sort).getCout()<=j.getMana() && s.getEffetSort().getNomEffet()=="SoinMana")
+    }else
+    if(j.getSort(sort).getCout()<=j.getMana() && s.getEffetSort().getNomEffet()=="soinMana")
     {
         cout<<endl;
         j.updatePVJoueur(s.getEffetSort().getPuissanceEffet());
@@ -100,7 +124,7 @@ void Combat::playTurnSDL(Joueur& j, int sort, int tar, vector<string>& lignesSor
     }
 }
 
-int Combat::isFight(Joueur& j){
+int Combat::isFight(Joueur& j) const{
     if (j.getPVJoueur()<=0) return 1;//si le joueur perds avance au noeud de défaite        
     else{
         for(long unsigned int i=0;i<ennGroup.size();i++)
@@ -111,7 +135,7 @@ int Combat::isFight(Joueur& j){
     } 
 }
 
-void Combat::affStat(Joueur& j){
+void Combat::affStat(Joueur& j) const{
     cout<<"Points de vie du joueur: "<<j.getPVJoueur()<<endl;
     cout<<"Mana du joueur: "<<j.getMana()<<endl<<endl;
     for(long unsigned int i=0;i<ennGroup.size();i++)

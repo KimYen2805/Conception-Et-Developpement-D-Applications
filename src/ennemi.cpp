@@ -32,14 +32,15 @@ void Ennemi::setPVmaxEnnemi(int pv){
     pointDeVie = pvMax;
 }
 
-void Ennemi::updatePVEnn(int pv){
-    if ((pointDeVie + pv) >= pvMax)
+void Ennemi::updatePVEnn(float pv){
+    if(pointDeVie>0)
     {
-        pointDeVie = pvMax;
-    }else if((pointDeVie + pv) <= 0)
-    {
-        pointDeVie = 0;
-    }else pointDeVie += pv;
+        if ((pointDeVie + pv) >= pvMax){pointDeVie = pvMax;cout<<"vie = max"<<endl;}
+
+        else if((pointDeVie + pv) <= 0) {pointDeVie = 0;cout<<"vie = 0"<<endl;}
+
+        else {pointDeVie += pv; cout<<"vie + "<<pv<<" "<<pointDeVie<<endl;}
+    }
 }
 
 int Ennemi::getPuissanceEnnemi() const {
@@ -52,6 +53,13 @@ void Ennemi::setPuissanceEnnemi(int pu) {
 
 void Ennemi::addSort(int sort){
     tabInd_Sort.push_back(sort);
+}
+
+int Ennemi::getSsize(){
+    return tabInd_Sort.size();
+}
+int Ennemi::getSort(int n){
+    return tabInd_Sort[n];
 }
 
 int Ennemi::nbEnne() {

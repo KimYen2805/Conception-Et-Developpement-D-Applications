@@ -24,7 +24,7 @@ public:
     int castSortSDL(Joueur& j, string s, vector<string>& lignes);
     void ennHitPlay(Joueur& j, float sort);
     void playHitEnn(Joueur& j, float degat, int tar);
-    void ennTurn();
+    void ennTurn(Joueur& j);
     void playTurn(Joueur& j, int sort, int tar);
     void playTurnSDL(Joueur& j, int sort, int tar, vector<string>& lignesSort);
     int isFight(Joueur& j);

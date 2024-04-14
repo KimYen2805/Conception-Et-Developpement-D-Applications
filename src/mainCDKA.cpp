@@ -21,7 +21,7 @@ int main()
             while(isValid==-1)
             {
                 d=(Dialogue*) noeud;
-                cout<<d->getTexte()<<endl<<"Choix : ";
+                cout<<d->getTexte()<<endl<<endl<<"Choix : ";
                 cin>>pTexte;
                 if(pTexte=="Aide")
                 {
@@ -40,7 +40,7 @@ int main()
             {   
                 c->affStat(joueur);
                 int target =0;
-                cout<<endl<<"Action joueur: ";
+                cout<<endl<<endl<<"Action joueur: ";
                 cin>>pTexte;
                 if (isdigit(pTexte[0]))
                 {
@@ -55,7 +55,7 @@ int main()
                 }
                 if(c->isFight(joueur)==-1)
                 {
-                    c->ennTurn();
+                    c->ennTurn(joueur);
                 }
                 
             }

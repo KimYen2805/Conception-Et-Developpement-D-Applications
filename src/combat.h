@@ -18,18 +18,17 @@ public:
      * @param ind Indice du noeud
     */
     Combat(Ennemi eg[MAXENNEMI], int gs, int ind, string nomN, char d);
-    
     ~Combat();
     int castSort(Joueur& j, string s);
-    int castSortSDL(Joueur& j, string s, vector<string>& lignes);
     void ennHitPlay(Joueur& j, float sort);
     void playHitEnn(Joueur& j, float degat, int tar);
     void ennTurn(Joueur& j);
     void playTurn(Joueur& j, int sort, int tar);
     void playTurnSDL(Joueur& j, int sort, int tar, vector<string>& lignesSort);
-    int isFight(Joueur& j);
-    void affStat(Joueur& j);
-    void affStatSDL(Joueur& j, vector<string>& lignes);
+    int isFight(Joueur& j) const;
+    void affStat(Joueur& j) const;
+     void affStatSDL(Joueur& j, vector<string>& lignes);
+
 };
 
 

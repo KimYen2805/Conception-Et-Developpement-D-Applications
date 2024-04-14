@@ -35,11 +35,11 @@ void Ennemi::setPVmaxEnnemi(int pv){
 void Ennemi::updatePVEnn(float pv){
     if(pointDeVie>0)
     {
-        if ((pointDeVie + pv) >= pvMax){pointDeVie = pvMax;cout<<"vie = max"<<endl;}
+        if ((pointDeVie + pv) >= pvMax) pointDeVie = pvMax;
 
-        else if((pointDeVie + pv) <= 0) {pointDeVie = 0;cout<<"vie = 0"<<endl;}
+        else if((pointDeVie + pv) <= 0) pointDeVie = 0;
 
-        else {pointDeVie += pv; cout<<"vie + "<<pv<<" "<<pointDeVie<<endl;}
+        else pointDeVie += pv;
     }
 }
 

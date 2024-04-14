@@ -53,7 +53,10 @@ class Affichage {
      vector<Noeud*> sommets;
     vector<pair<Noeud*,Noeud*>> aretes;
 //bool quitter = false;
+string pTexte;
+bool effacerTexte = false; 
 
+//SDL_Rect texteRectA;
         public:
 /**
  * @brief Constructeur
@@ -69,20 +72,22 @@ class Affichage {
           void AfficherFond();
        
          void dessinerPersonnage(Joueur j, Ennemi ennemi);
-        void barres(Joueur j);
+        void barres(Joueur j,SDL_Renderer* renderer);
         void CalculerDimensionsDuTexte(const vector<string>& lignes, int& largeurMax, int& hauteurTotale, vector<int>& hauteurs);
        // void DessinerFondTexte(SDL_Renderer* renderer,int largeurMax, int hauteurTotale);
         void AfficherTexte(SDL_Renderer* renderer,const vector<string>& lignes, const SDL_Rect& rect);
         void AfficherInfo(Joueur j, Ennemi enne, SDL_Renderer *renderer);
-        //jeu 
-        void AfficherJeu(Joueur j, Ennemi ennemi,Jeu jeu);
-        void GererEvenements();
        
-    void AfficherTexteSaisie();
+     //   void GererEvenements();
+       void effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& rect);
+    //void AfficherTexteSaisie();
 
     void chargerGrapeJeu();
   void handleInput(string &pTexte);
      void playGame(SDL_Renderer* renderer);
+
+      //jeu 
+        void AfficherJeu(Joueur j, Ennemi ennemi);
  };
 
 #endif

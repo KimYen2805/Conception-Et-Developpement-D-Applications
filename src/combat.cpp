@@ -29,6 +29,16 @@ int Combat::castSort(Joueur& j, string s){
     return sort;
 }
 
+int Combat::castSortSDL(Joueur& j, string s, vector<string>& lignes) {
+    int sort = j.isSort(s);
+    if(sort < 0) {
+        lignes.push_back("Sort invalide");
+    } else {  
+        lignes.push_back(j.getSort(sort).getNomSort());
+    }
+    return sort;
+}
+
 void Combat::ennHitPlay(Joueur& j, float sort){
 
 }
@@ -73,6 +83,22 @@ void Combat::playTurn(Joueur& j, int sort, int tar){
     }
 
 }
+void Combat::playTurnSDL(Joueur& j, int sort, int tar, vector<string>& lignesSort) {
+    Sort s = j.getSort(sort);
+    if(s.getEffetSort().getNomEffet() == "degatVie") {
+        lignesSort.push_back("Le joueur perd " + to_string(j.getPVJoueur() * s.getEffetSort().getPuissanceEffet()) + " points de vie.");
+        playHitEnn(j, j.getPVJoueur() * s.getEffetSort().getPuissanceEffet(), 0);
+        j.updatePVJoueur(-j.getPVJoueur() * s.getCout());
+    } else if(s.getCout() <= j.getMana() && s.getEffetSort().getNomEffet() == "degatMana") {
+        lignesSort.push_back("Le joueur inflige " + to_string(s.getEffetSort().getPuissanceEffet()) + " degats a l'ennemi " + to_string(tar) + ".");
+        playHitEnn(j, s.getEffetSort().getPuissanceEffet(), tar);
+        j.updateMana(-s.getCout());
+    } else if(s.getCout() <= j.getMana() && s.getEffetSort().getNomEffet() == "SoinMana") {
+        lignesSort.push_back("Le joueur gagne " + to_string(s.getEffetSort().getPuissanceEffet()) + " points de vie.");
+        j.updatePVJoueur(s.getEffetSort().getPuissanceEffet());
+        j.updateMana(-s.getCout());
+    }
+}
 
 int Combat::isFight(Joueur& j){
     if (j.getPVJoueur()<=0) return 1;//si le joueur perds avance au noeud de défaite        
@@ -93,4 +119,13 @@ void Combat::affStat(Joueur& j){
         cout<<"Points de vie de l'ennemi "<<i+1<<": "<<ennGroup[i].getPointDeVieEnnemi()<<endl;
     }
 
+}
+void Combat::affStatSDL(Joueur& j, vector<string>& lignes) {
+    lignes.push_back("Points de vie du joueur: " + to_string(j.getPVJoueur()));
+    lignes.push_back("Mana du joueur: " + to_string(j.getMana()));
+    lignes.push_back(""); 
+
+    for (size_t i = 0; i < ennGroup.size(); i++) {
+        lignes.push_back("Points de vie de l'ennemi " + to_string(i + 1) + ": " + to_string(ennGroup[i].getPointDeVieEnnemi()));
+    }
 }

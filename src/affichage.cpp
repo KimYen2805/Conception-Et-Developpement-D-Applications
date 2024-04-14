@@ -244,7 +244,7 @@ void Affichage::AfficherInfo(Joueur joueur, Ennemi ennemi, SDL_Renderer *rendere
         "Bienvenue dans notre jeu! Pour commencer, appuyez sur Entree.",
         "Nom du joueur : " + joueur.getNomJoueur()
     };
-     SDL_Rect textRect = {300, 10, 0, 0};
+     SDL_Rect textRect = {200, 10, 0, 0};
     // Appeler la fonction d'affichage du texte
    AfficherTexte(renderer, lignes, textRect);
 }
@@ -305,6 +305,8 @@ void Affichage::chargerGrapeJeu()
                 fichG >> pv>>mana>>nbS;
 
                 std::cout<<" "<<pv <<" "<<mana;
+            
+
                 tab[i].setPointDeVieEnnemi(pv);
                 tab[i].setPuissanceEnnemi(mana);
                 for (int j=0;j<nbS;j++)
@@ -315,7 +317,7 @@ void Affichage::chargerGrapeJeu()
                 }
                 
             }
-            std::cout<< endl;
+           // std::cout<< endl;
             sommets.push_back(new Combat(tab,fils,ind,nomN,separator));
         }
 
@@ -336,12 +338,10 @@ void Affichage::chargerGrapeJeu()
 }
 
 void Affichage::handleInput(string &pTexte) {
-    bool enterPressed = false;
         bool inputComplete = false;
-         SDL_StartTextInput();
+           SDL_Event event;
    SDL_StartTextInput();
     while (!inputComplete) {
-        SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 inputComplete = true;
@@ -350,110 +350,146 @@ void Affichage::handleInput(string &pTexte) {
                 break;
             }
             if (event.type == SDL_KEYDOWN) {
+                 if (event.key.keysym.sym == SDLK_ESCAPE) {
+                SDL_Quit();
+                exit(0);
+            } 
                 if (event.key.keysym.sym == SDLK_BACKSPACE && pTexte.length() > 0) {
                     pTexte.pop_back();
                 } else if (event.key.keysym.sym == SDLK_RETURN) {
                     inputComplete = true;
+                    effacerTexte= true;
+                    // pTexte = ""; 
                 }
-            } else if (event.type == SDL_TEXTINPUT) {
-
+            } 
+            else if (event.type == SDL_TEXTINPUT) {
+             if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V'))) {
                 pTexte += event.text.text;
             }
+            }  else if (event.key.keysym.sym == SDLK_RETURN) { 
+                pTexte = ""; 
+                //effacerTexte= true;
+    }
         }
-        AfficherTexte(renderer, { pTexte }, { 50, 100, 400, 100 });
+        SDL_Rect texteRect = { 50, 450, 100, 50 };
+        SDL_SetRenderDrawColor(renderer, 231, 76, 60, 255); 
+        SDL_RenderFillRect(renderer, &texteRect);
 
-        SDL_RenderPresent(renderer);
+        AfficherTexte(renderer, { pTexte }, texteRect);
+
+       SDL_RenderPresent(renderer);
     }
     SDL_StopTextInput();
 }
+void Affichage::effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& rect) {
+    SDL_SetRenderDrawColor(renderer, 97, 106, 107, 255); 
+    SDL_RenderFillRect(renderer, &rect);
+
+    vector<string> lignes = { " " }; 
+    AfficherTexte(renderer, lignes, rect);
+}
+
 void Affichage::playGame(SDL_Renderer* renderer) {
     Jeu Jeu;
-    Joueur joueur=Jeu.getJoueur();
-    Noeud* noeud;
-    noeud=Jeu.getCNoeud();
+    Joueur joueur = Jeu.getJoueur();
+    Noeud* noeud = Jeu.getCNoeud();
 
-    string pTexte; //Les futurs réponses du joueur dans le main;
+    SDL_Rect texteRectA = { 10, 300, 820, 130 };
     Dialogue* d;
     Combat* c;
-        while (!Jeu.getGraphe().isFeuille(noeud)) {
+
+    while (!Jeu.getGraphe().isFeuille(noeud)) {
         if (noeud->getDelim() == 'd') {
             d = (Dialogue*)noeud;
-            vector<string> lignes = { d->getTexte() };
-           AfficherTexte(renderer, lignes, { 10, 300, 300, 50 });
-            handleInput(pTexte);
-            //cout<<d->getTexte()<<endl<<"Choix : ";
-              //  cin>>pTexte;
-            if (pTexte == "Aide") {
-                vector<string> aide = { d->getRep() };
-                AfficherTexte(renderer, aide, { 10, 200, 300, 50 });
-            //  cout<<d->getRep()<<endl;
+            int isValid = -1;
+            vector<string> lignes;
+            while (isValid == -1) {
+                lignes = { d->getTexte() };
+                AfficherTexte(renderer, lignes, texteRectA);
+                handleInput(pTexte);
+                if (effacerTexte) {
+                    effacerEtAfficherTexte(renderer, texteRectA);
+                    effacerTexte = false;
+                }
+                if (pTexte == "Aide") {
+                    vector<string> aide = { d->getRep() };
+                    AfficherTexte(renderer, aide, texteRectA);
+                    handleInput(pTexte);
+                     if (effacerTexte) {
+                            effacerEtAfficherTexte(renderer, texteRectA);
+                            effacerTexte = false;
+                        }
+                } else {
+                    isValid = d->rep(pTexte);
+                    if (isValid != -1) {
+                        Jeu.getGraphe().parcoursGraphe(isValid);
+                    } else {
+                        vector<string> reponse = { "Reponse invalide au dialogue" };
+                        AfficherTexte(renderer, reponse, texteRectA);
+                        handleInput(pTexte);
+                        if (effacerTexte) {
+                            effacerEtAfficherTexte(renderer, texteRectA);
+                            effacerTexte = false;
+                        }
+                    }
+                }
             }
-            else {
-                int isValid = d->rep(pTexte);
-                if (isValid != -1) {
-                    Jeu.getGraphe().parcoursGraphe(isValid);
+        } else if (noeud->getDelim() == 'c') {
+            c = (Combat*)noeud;
+              
+            while (c->isFight(joueur) == -1) {
+                vector<string> lignesStat;
+                c->affStatSDL(joueur, lignesStat);
+                AfficherTexte(renderer, lignesStat, texteRectA);
+
+                int target = 0;
+                vector<string> message = { "Action joueur:" };
+                AfficherTexte(renderer, message, { 350, 220, 100, 50 });
+                handleInput(pTexte);
+                if (effacerTexte) {
+                    effacerEtAfficherTexte(renderer, texteRectA);
+                    effacerTexte = false;
                 }
-                else {
-                    vector<string> reponse = { "Reponse invalide au dialogue" };
-                    AfficherTexte(renderer, reponse, { 10, 200, 500, 50 });
-                   // cout<<"Reponse invalide au dialogue"<<endl;
+                if (isdigit(pTexte[0])) {
+                    target = pTexte[0] - '0';
+                    pTexte.erase(0, 1);
                 }
-            }
-        }
-       else if (noeud->getDelim() == 'c') {
-            
-                c=(Combat*) noeud;
-            while(c->isFight(joueur)==-1)
-            {   
-                c->affStat(joueur);
-                int target =0;
-                cout<<endl<<"Action joueur: ";
-                // cin>>pTexte;
-               handleInput(pTexte);
-                if (isdigit(pTexte[0]))
-                {
-                    target=pTexte[0]-'0'; 
-                    pTexte.erase(0,1);
+                vector<string> lignesSort;
+                int iSort = c->castSortSDL(joueur, pTexte, lignesSort);
+                AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
+                     if (effacerTexte) {
+                            effacerEtAfficherTexte(renderer, texteRectA);
+                            effacerTexte = false;
+                        }
+                if (iSort != -1) {
+                    c->playTurnSDL(joueur, iSort, target, lignesSort);
+                     AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
                 }
-                int iSort = c->castSort(joueur, pTexte);
-                
-                if (iSort!=-1)
-                {
-                    c->playTurn(joueur,iSort, target);
-                }
-                if(c->isFight(joueur)==-1)
-                {
+                if (c->isFight(joueur) == -1) {
                     c->ennTurn();
+                  
                 }
-                
+                AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
+                  handleInput(pTexte);
+                 if (effacerTexte) {
+                            effacerEtAfficherTexte(renderer, texteRectA);
+                            effacerTexte = false;
+                        }
+                         barres(joueur, renderer);
             }
             Jeu.getGraphe().parcoursGraphe(c->isFight(joueur));
-
         }
-
-        noeud = Jeu.getCNoeud(); //avancer dans le jeu en fonction des résultats
-      
+        
+        noeud = Jeu.getCNoeud(); // Avancer dans le jeu en fonction des résultats
     }
 
     d = (Dialogue*)noeud;
-    vector<string> lignes = { d->getTexte() };
-    AfficherTexte(renderer, lignes, { 10, 10, 500, 50 }); //Dialogue de fin
-
-}
-/**
- * @brief Affiche le texte saisi par l'utilisateur.
-*/
-void Affichage::AfficherTexteSaisie() {
-
-    if (textInputActive && !inputText.empty() && renderText) {
-        textInputSurface = TTF_RenderText_Blended(fontSaisie, inputText.c_str(), {255, 255,0});
-        if (textInputSurface == nullptr) {
-            cerr << "! SDL_ttf Error: " << TTF_GetError() <<endl;
-        } else {
-            textInputTexture = SDL_CreateTextureFromSurface(renderer, textInputSurface);
-            SDL_Rect textRect = {10, 450,textInputSurface->w, textInputSurface->h};
-            SDL_RenderCopy(renderer, textInputTexture, NULL, &textRect);
-        }
+     vector<string> messageV = { "Win" };
+    AfficherTexte(renderer, messageV, { 350, 320, 100, 50 }); //Dialogue de fin
+    handleInput(pTexte);
+    if (effacerTexte) {
+        effacerEtAfficherTexte(renderer, texteRectA);
+        effacerTexte = false;
     }
 }
 
@@ -464,27 +500,28 @@ void Affichage::AfficherTexteSaisie() {
  * @param jeu Objet représentant le jeu.
 */
 
-void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi, Jeu jeu) {
+void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi) {
     bool quitter = false;
-        
+            
     while (!quitter) {
         // Affichage des éléments du jeu
-       SDL_RenderClear(renderer);
+       //SDL_RenderClear(renderer);
         AfficherFond();
+          AfficherInfo(joueur, ennemi, renderer);
        dessinerPersonnage(joueur, ennemi); 
-
-        barres(joueur); 
-       AfficherInfo(joueur, ennemi, renderer);
+       
+        handleInput(pTexte);
          playGame(renderer);
-           //GererEvenements();
+      //  barres(joueur,renderer);  
         // Affichage à l'écran
        SDL_RenderPresent(renderer);
 
         // Vérification si l'utilisateur veut quitter
-        SDL_Delay(1200); 
+        SDL_Delay(1000); 
     }
     
 }
+
 //ajouter sons
 //joueur ne pas affiche pendant dialogue
 			

@@ -20,6 +20,7 @@ public:
     Combat(Ennemi eg[MAXENNEMI], int gs, int ind, string nomN, char d);
     ~Combat();
     int castSort(Joueur& j, string s);
+    int castSortSDL(Joueur& j, string s, vector<string>& lignes);
     void ennHitPlay(Joueur& j, float sort);
     void playHitEnn(Joueur& j, float degat, int tar);
     void ennTurn(Joueur& j);

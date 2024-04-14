@@ -466,7 +466,7 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                      AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
                 }
                 if (c->isFight(joueur) == -1) {
-                    c->ennTurn();
+                    c->ennTurn(joueur);
                   
                 }
                 AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });

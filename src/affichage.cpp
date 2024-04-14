@@ -4,10 +4,7 @@
 
 using namespace std; 
 
-/**
- * @brief Constructeur
- * renvoie une fenêtre SDL
-*/
+
 
 Affichage::Affichage()
 {
@@ -83,10 +80,7 @@ if (font == nullptr) {
     
 }
 
-/**
- * @brief Destructeur
- * Libère toutes les ressources allouées par l'objet Affichage, y compris la fenêtre SDL, le renderer, les textures et les surfaces.
-*/
+
 Affichage::~Affichage()
 {
      // Libération des textures et surfaces
@@ -115,10 +109,7 @@ TTF_CloseFont(font);
     SDL_Quit();
 
 }
-/**
- * @brief Dessine les personnages (joueur et ennemi) sur l'écran.
-*/
-//
+
 void Affichage::AfficherFond()
 {
      int windowWidth, windowHeight;
@@ -169,20 +160,9 @@ void Affichage:: barres(Joueur joueur , SDL_Renderer* renderer)
 	SDL_RenderFillRect(renderer, &reMa);
 
 }
-/**
- * @brief Affiche les barres de santé et de mana du joueur.
- * @param joueur Objet représentant le joueur.
-*/
 
-/**
- * @brief Calcule les dimensions du texte à afficher.
- * @param li Vecteur contenant les lignes de texte.
- * @param larMax Référence à la largeur maximale du texte.
- * @param hautTotale Référence à la hauteur totale du texte.
- * @param haut Vecteur contenant les hauteurs de chaque ligne de texte.
-*/
- void Affichage::CalculerDimensionsDuTexte(const vector<string>& li, int& larMax, int& hautTotale, vector<int>& haut)
- {
+void Affichage::CalculerDimensionsDuTexte(const vector<string>& li, int& larMax, int& hautTotale, vector<int>& haut)
+{
 larMax = 0; //stocker la largeur max des textes
 hautTotale = 0;
 for (const auto& line : li) {
@@ -195,13 +175,7 @@ for (const auto& line : li) {
 // Ajouter un espacement entre les lignes
 int spacing = 5;
 hautTotale += spacing * (li.size() - 1); //ajouter l'espacement total à la hauteur 
- }
-
-/**
- * @brief Affiche le texte sur l'écran.
- * @param renderer Pointeur vers le renderer SDL.
- * @param lignes Vecteur contenant les lignes de texte à afficher.
-*/
+}
 
 void Affichage::AfficherTexte(SDL_Renderer* renderer, const vector<string>& lignes, const SDL_Rect &rect) {
     int posY = rect.y;
@@ -233,11 +207,7 @@ void Affichage::AfficherTexte(SDL_Renderer* renderer, const vector<string>& lign
         }
     }
 }
-/**
- * @brief Affiche les informations du joueur et de l'ennemi.
- * @param joueur Objet représentant le joueur.
- * @param ennemi Objet représentant l'ennemi.
-*/
+
 void Affichage::AfficherInfo(Joueur joueur, Ennemi ennemi, SDL_Renderer *renderer) {
     // Créer des lignes de texte sur le joueur et l'ennemi
     vector<string> lignes = {

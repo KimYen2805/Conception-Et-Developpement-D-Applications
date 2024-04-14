@@ -20,13 +20,37 @@ class Ennemi {
 
     // Destructeur
     ~Ennemi();
-    // Getter pour pointDeVie
+   
+    /**
+     * @brief renvoi pointDeVie
+     * 
+     * @return int 
+     */
     int getPointDeVieEnnemi() const;
+    /**
+     * @brief renvoi pvMax
+     * 
+     * @return int 
+     */
     int getPVmaxEnnemi() const;
 
-    // Setter pour pointDeVie
+    /**
+     * @brief Set pointDeVie 
+     * 
+     * @param pv 
+     */
     void setPointDeVieEnnemi(int pv);
+    /**
+     * @brief set pvMax et pointDevie
+     * 
+     * @param pv 
+     */
     void setPVmaxEnnemi(int pv);
+    /**
+     * @brief ajoute pv à pointDeVie sans dépasser pvMax ou en dessous de 0
+     * 
+     * @param pv 
+     */
     void updatePVEnn(float pv);
 
     // Getter pour puissance

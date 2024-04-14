@@ -58,24 +58,49 @@ bool effacerTexte = false;
 
 //SDL_Rect texteRectA;
         public:
-/**
- * @brief Constructeur
-*/
+        /**
+         * @brief Constructeur
+         * renvoie une fenêtre SDL
+        */
          Affichage();
-    /**
-     * @brief Destructeur
-    */
+        /**
+         * @brief Destructeur
+         * Libère toutes les ressources allouées par l'objet Affichage, y compris la fenêtre SDL, le renderer, les textures et les surfaces.
+        */
         ~Affichage();
-/**
- * @brief Affiche l'image dans la fenêtre
-*/
-          void AfficherFond();
-       
-         void dessinerPersonnage(Joueur j, Ennemi ennemi);
+        /**
+         * @brief Affiche l'image dans la fenêtre
+        */
+        void AfficherFond();
+        /**
+         * @brief Dessine les personnages (joueur et ennemi) sur l'écran.
+        */
+        void dessinerPersonnage(Joueur j, Ennemi ennemi);
+        /**
+         * @brief Affiche les barres de santé et de mana du joueur.
+         * @param joueur Objet représentant le joueur.
+        */
         void barres(Joueur j,SDL_Renderer* renderer);
+        /**
+         * @brief Calcule les dimensions du texte à afficher.
+         * @param li Vecteur contenant les lignes de texte.
+         * @param larMax Référence à la largeur maximale du texte.
+         * @param hautTotale Référence à la hauteur totale du texte.
+         * @param haut Vecteur contenant les hauteurs de chaque ligne de texte.
+        */
         void CalculerDimensionsDuTexte(const vector<string>& lignes, int& largeurMax, int& hauteurTotale, vector<int>& hauteurs);
        // void DessinerFondTexte(SDL_Renderer* renderer,int largeurMax, int hauteurTotale);
+       /**
+         * @brief Affiche le texte sur l'écran.
+         * @param renderer Pointeur vers le renderer SDL.
+         * @param lignes Vecteur contenant les lignes de texte à afficher.
+        */
         void AfficherTexte(SDL_Renderer* renderer,const vector<string>& lignes, const SDL_Rect& rect);
+        /**
+         * @brief Affiche les informations du joueur et de l'ennemi.
+         * @param joueur Objet représentant le joueur.
+         * @param ennemi Objet représentant l'ennemi.
+        */
         void AfficherInfo(Joueur j, Ennemi enne, SDL_Renderer *renderer);
        
      //   void GererEvenements();

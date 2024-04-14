@@ -22,7 +22,17 @@ public:
      * @param nb nombre de réponses
     */
     Dialogue(int ind, string nom, string txt, string rep[MAXREP],int nb, char d);
+    /**
+     * @brief texte object
+     * 
+     * @return string 
+     */
     string getTexte();
+    /**
+     * @brief renvoi une string avec les réponses du dialogue
+     * 
+     * @return string 
+     */
     string getRep();
     int rep(string word);
 

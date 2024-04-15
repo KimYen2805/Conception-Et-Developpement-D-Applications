@@ -452,7 +452,6 @@ void Affichage::playGame(SDL_Renderer* renderer) {
             vector<string> lignes;
             while (isValid == -1) 
             {
-                cout<<d->getTexte()<<endl;
                 lignes = { d->getTexte()+'\n'+ d->getRep()};
                 AfficherTexte(renderer, lignes, texteRectA);
                 handleInput(pTexte);
@@ -460,9 +459,7 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                 {
                     effacerEtAfficherTexte(renderer, texteRectA);
                     effacerTexte = false;
-                    vector<string> demande = { "loup y es tu?" };
-                   // cout<<"loup y es tu?"<<endl;
-                     AfficherTexte(renderer, demande, texteRectA);
+                    cout<<"loup y es tu?"<<endl;
                 }
                 isValid = d->rep(pTexte);
                 
@@ -534,6 +531,7 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                     effacerTexte = false;
                 }
             }
+            cout<<"combat fini "<<c->isFight(joueur)<<endl;
             Jeu.getGraphe().parcoursGraphe(c->isFight(joueur));
         }
         
@@ -541,8 +539,8 @@ void Affichage::playGame(SDL_Renderer* renderer) {
     }
 
     d = (Dialogue*)noeud;
-     vector<string> messageV = { "Win" };
-    AfficherTexte(renderer, messageV, { 350, 320, 100, 50 }); //Dialogue de fin
+    //vector<string> messageV = { "Win" };
+    //AfficherTexte(renderer, messageV, { 350, 320, 100, 50 }); //Dialogue de fin
     handleInput(pTexte);
     if (effacerTexte) {
         effacerEtAfficherTexte(renderer, texteRectA);

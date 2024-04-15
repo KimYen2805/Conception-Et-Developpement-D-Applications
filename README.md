@@ -2,7 +2,7 @@
 - 12109294 ADAM RODRIGUEZ
 - 12107434 LE Kim Yen 
 ## Règle du jeu 
-
+Toute les actions utilisent le clavier 
 ## Liste des fonctionnalités du programme
 
 
@@ -15,7 +15,12 @@
 - ProjetCDKA/obj :répertoire comportant les compilations intermédiaires (.o)
 
 ## Pour compiler
-
+Ouvrir une invite de commande dans le dossier du projet et lancer la commande:
+make
+puis la version textuelle se lance avec:
+./bin/CDKA
+et la version image se lance avec:
+./bin/affichage
 
 
 # 

@@ -38,7 +38,7 @@ Les sorts existant sont Agidyne et Kougaon, peut-etre en decouvrirez-vous d'autr
 Agidyne peut prendre une valeur au debut du mot, indiquant l'ennemi a attaquer, epuisant du mana. 
 Ex: 1Agidyne
 Kougaon vous soigne en échange d'une portion de mana.
-1 Combattre
+2 Combattre Suite
 
 7 defaite1 d
 1
@@ -51,11 +51,21 @@ Bon les combats sont ce qu'ils sont mais avec plus de sorts disponible, les poss
 En attendant, celui qui semble etre votre ami vous remercie d'etre arrive a temps et vous dirigez vers le village proche.
 1 Village
 
-9 village d
+9 suiteGrim d
 2
+Quand un combat prends fin par la victoire du joueur, celui ci récupère l'integralite
+de sa vie et mana en ajoutant un quantite fixe au maximum
+1 Combattre
 
 
-11
+10 village d
+3
+Maintenant de retour au village les villageois vous remercie alors qu'un villageois accoure
+en annoncant que d'autres monstres ont été vu un peu plus loin dans la foret et qu'ils se 
+dirigent vers le village
+2 Librairie Combattre
+
+14
 0 2
 0 1
 2 3
@@ -67,4 +77,6 @@ En attendant, celui qui semble etre votre ami vous remercie d'etre arrive a temp
 4 1
 5 6
 6 3
-8
+6 9
+8 10
+9 3

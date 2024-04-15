@@ -162,3 +162,7 @@ int Combat::groupSize(){
 int Combat::getPVEnn_i(int i){
     return ennGroup[i].getPointDeVieEnnemi();
 }
+int Combat::getPVmaxEnn_i(int i){
+    return ennGroup[i].getPVmaxEnnemi();
+}
+

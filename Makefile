@@ -57,7 +57,7 @@ obj/effet.o: src/effet.cpp src/effet.h
   	#doxygen doc/doxyfile
 
 clean:
-	rm -f -r obj/*.o bin/* doc/html doc/latex
+	rm -f obj/*.o bin/* 
 
-#veryclean: clean
-#	rm src/*.out
+veryclean: clean
+	rm -r bin/* doc/html doc/latex

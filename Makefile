@@ -53,11 +53,11 @@ obj/objet.o: src/objet.cpp src/effet.cpp src/objet.h src/effet.h
 obj/effet.o: src/effet.cpp src/effet.h
 	g++ -g -Wall -c src/effet.cpp -o obj/effet.o
 
-# doc: doc/doxyfile
-#   doxygen doc/doxyfile
+#doc: doc/doxyfile
+  	#doxygen doc/doxyfile
 
 clean:
-	rm -f obj/*.o bin/*
+	rm -f -r obj/*.o bin/* doc/html doc/latex
 
 #veryclean: clean
 #	rm src/*.out

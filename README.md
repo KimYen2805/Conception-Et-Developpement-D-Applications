@@ -2,7 +2,10 @@
 - 12109294 ADAM RODRIGUEZ
 - 12107434 LE Kim Yen 
 ## Règle du jeu 
-Toute les actions utilisent le clavier 
+Toute les actions utilisent le clavier.
+En dialogue les réponses possible sont affichés en dessous du texte.
+En combat, les nom des sorts ne sont pas disponible, il faut les avoir retenu en avance (ou noté).
+Une tentative de sort invalide utilise quand même un sort
 ## Liste des fonctionnalités du programme
 
 

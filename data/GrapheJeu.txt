@@ -73,6 +73,7 @@ dirigent vers le village
 2
 Vous trouvez un livre qui contient un sort qui vous etait inconnu, il se lit Makajama. 
 Il coute un quart de votre vie actuelle pour infliger 3 fois la vie perdue a l'ennemi
+0
 
 15
 0 2

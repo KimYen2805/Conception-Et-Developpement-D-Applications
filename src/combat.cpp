@@ -167,4 +167,3 @@ int Combat::getPVEnn_i(int i){
 int Combat::getPVmaxEnn_i(int i){
     return ennGroup[i].getPVmaxEnnemi();
 }
-

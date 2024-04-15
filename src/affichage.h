@@ -18,27 +18,45 @@ class Affichage {
     SDL_Window* window; /**< Fenêtre SDL */
     SDL_Renderer* renderer; /**< Renderer SDL */
 
-    SDL_Texture* textureImageFond; /**< Texture de l'image de fond */
-    SDL_Surface *imageFond; /**< Surface de l'image de fond */
-    SDL_Rect posFond;/**< Position de l'image de fond */
-
     SDL_Texture* textureImage1; /**< Texture de l'image ennemi */
     SDL_Surface *image1; /**< Surface de l'image ennemi */
 
     SDL_Texture* textureImage2; /**< Texture de l'image joueur */
     SDL_Surface *image2; /**< Surface de l'image joueur */
 
-    TTF_Font* font; /**< Police de caractères */
+   SDL_Texture* textureImageFond; /**< Texture de l'image de fond */
+    SDL_Surface *imageFond; /**< Surface de l'image de fond */
 
     SDL_Surface* tempSurface; /**< Surface temporaire */
+
     SDL_Texture* textTexture; /**< Texture du texte */
     SDL_Surface* textSurface; /**< Surface du texte */
+
+    SDL_Rect posFond; /**< Position de l'image de fond */
+
+    bool textInputActive = false; /**< Indicateur d'entrée de texte */
+
+    TTF_Font* font; /**< Police de caractères */
+    TTF_Font *fontSaisie; /**< Police de caractères pour la saisie */
 
     SDL_Color textColorInfo; /**< Couleur du texte */
     SDL_Color rectColor; /**< Couleur du rectangle */
 
-    string pTexte;  /**< Texte saisi par l'utilisateur */
-  bool effacerTexte= false;
+    SDL_Rect inputRect; /**< Rectangle de saisie */
+    string inputText; /**< Texte saisi */
+    SDL_Surface* textInputSurface; /**< Surface de texte saisi */
+    SDL_Texture* textInputTexture; /**< Texture de texte saisi */
+
+    bool renderText = false; /**< Indicateur d'affichage de texte */
+    //bool besoinDeNettoyer = false; /**< Indicateur de besoin de nettoyage */
+     Noeud* n;
+     vector<Noeud*> sommets;
+    vector<pair<Noeud*,Noeud*>> aretes;
+//bool quitter = false;
+string pTexte;
+bool effacerTexte = false; 
+
+//SDL_Rect texteRectA;
         public:
         /**
          * @brief Constructeur
@@ -83,41 +101,18 @@ class Affichage {
          * @param joueur Objet représentant le joueur.
          * @param ennemi Objet représentant l'ennemi.
         */
-  /**
-* @brief Affiche les informations du joueur et de l'ennemi.
- * @param j Objet représentant le joueur.
- * @param enne Objet représentant l'ennemi.
- * @param renderer Pointeur vers le renderer SDL.
- */
         void AfficherInfo(Joueur j, Ennemi enne, SDL_Renderer *renderer);
-  
-/**
- * @brief Charge le graphe du jeu à partir d'un fichier.
- */
-    void chargerGrapeJeu();
-  /**
- * @brief Gère la saisie utilisateur pendant le jeu.
- * @param pTexte Référence vers la chaîne de caractères où stocker la saisie utilisateur.
- */
-     void handleInput(string &pTexte);
+       
+     //   void GererEvenements();
+       void effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& rect);
+    //void AfficherTexteSaisie();
 
-/**
- * @brief Efface le texte actuel et affiche un nouveau texte dans le rectangle spécifié.
- * @param renderer Pointeur vers le renderer SDL.
- * @param rect Rectangle dans lequel le texte sera affiché.
- */
-    void effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& rect);
-/**
- * @brief Lance le déroulement du jeu.
- * @param renderer Pointeur vers le renderer SDL.
- */
+    void chargerGrapeJeu();
+  void handleInput(string &pTexte);
      void playGame(SDL_Renderer* renderer);
-/**
- * @brief Affiche le jeu en cours.
- * @param j Objet représentant le joueur.
- * @param ennemi Objet représentant l'ennemi.
- */
-      void AfficherJeu(Joueur j, Ennemi ennemi);
+
+      //jeu 
+        void AfficherJeu(Joueur j, Ennemi ennemi);
  };
 
 #endif

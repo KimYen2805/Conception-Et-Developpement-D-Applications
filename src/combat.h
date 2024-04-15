@@ -81,8 +81,20 @@ public:
      * @param lignes le texte renvoyé à l'écran 
      */
     void affStatSDL(Joueur& j, vector<string>& lignes);
+    /**
+     * @brief la taille du groupe d'ennemi du combat
+     * @return int 
+    */
     int groupSize();
+    /**
+     * @brief retourne les pv de l'ennemi i
+     * @return int
+    */
     int getPVEnn_i(int i);
+    /**
+     * @brief retourne les pvmax de l'ennemi i
+     * @return int
+    */
     int getPVmaxEnn_i(int i);
 
 };

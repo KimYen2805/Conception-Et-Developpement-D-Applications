@@ -429,10 +429,9 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                     effacerTexte = false;
                 }
                 isValid = d->rep(pTexte);
-                
+                cout<<isValid<<" loup y est tu "<<pTexte<<endl;
                 if (isValid != -1) 
                 {
-                    
                     Jeu.getGraphe().parcoursGraphe(isValid);
                 } else {
                     vector<string> reponse = { "Reponse invalide au dialogue" };

@@ -34,6 +34,10 @@ public:
      * @return string 
      */
     string getRep();
+    /**
+     * @brief l'indice relatif du noeud suivant
+     * @return int
+    */
     int rep(string word);
 
 };

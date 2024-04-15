@@ -119,16 +119,7 @@ void Joueur::updateMana(int ma){
         mana = 0;
     }else mana += ma;
 }
-int Joueur::getPosX()
-{
-    int posX;
-    return posX = 600;
-}
-int Joueur::getPosY()
-{
-    int posX;
-    return posX = 460;
-}
+
 int Joueur::isSort(string so){
     for (int i=0;i<NBSORT;i++)
     {

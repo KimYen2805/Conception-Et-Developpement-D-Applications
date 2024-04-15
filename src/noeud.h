@@ -11,7 +11,13 @@ protected:
 
 public:
     Noeud();
+    /**
+     * @return id du noeud
+    */
     int getID();
+    /**
+     * @return delim le charactere qui différencie les dialogue et combat
+    */
     char getDelim();
 
 };

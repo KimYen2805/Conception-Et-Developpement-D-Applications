@@ -14,14 +14,22 @@ private:
 
 public:
     Objet();
-
+    /**
+     * @brief change le nom de l'objet 
+     * @param nom
+    */
     void setNomObjet(string nom);
-    void setQuantite(int nvCout);
-    void setEffetObjet(int nvPuissance);
-
-    string getNom() const;
-    int getCoutMana() const;
-    int getPuissance() const;
+    /**
+     * @brief change la quantité d'objet 
+     * @param nvQut
+    */
+    void setQuantite(int nvQut);
+    /**
+     * @brief change l'effet de l'objet 
+     * @param nvEffet
+    */
+    void setEffetObjet(Effet nvEffet);
+    
    // Objet &operator=(const Objet &other);
 };
 

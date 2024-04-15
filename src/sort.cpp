@@ -65,11 +65,11 @@ void Sort::affSort(){
 void Sort::affSortSDL(std::stringstream& ss) {
     std::string tempStr; // Variable temporaire pour stocker les lignes
     if (effetSort.getNomEffet() == "degatMana") {    
-        tempStr = nomSort + " coute " + std::to_string(coutS) + " points de mana pour infliger " + std::to_string(effetSort.getPuissanceEffet()) + " degats.";
+        tempStr = nomSort + " coute 1/" + std::to_string(int(coutS)) + " points de mana pour infliger " + std::to_string(int(effetSort.getPuissanceEffet())) + " degats.";
     } else if (effetSort.getNomEffet() == "degatVie") {    
-        tempStr = nomSort + " coute " + std::to_string(coutS) + " points de vie actuelle pour infliger " + std::to_string(effetSort.getPuissanceEffet()) + " points de vie actuelle en degats.";
+        tempStr = nomSort + " coute " + std::to_string(int(1/coutS)) + " points de vie actuelle pour infliger " + std::to_string(int(effetSort.getPuissanceEffet()*1/coutS))+"/" + std::to_string(int(1/coutS)) + " des points de vie actuelle en degats.";
     } else if (effetSort.getNomEffet() == "soinVie") {    
-        tempStr = nomSort + " coute " + std::to_string(coutS) + " points de mana pour soigner " + std::to_string(effetSort.getPuissanceEffet()) + " points de vie.";
+        tempStr = nomSort + " coute " + std::to_string(int(coutS)) + " points de mana pour soigner " + std::to_string(int(effetSort.getPuissanceEffet())) + " points de vie.";
     } else {
         tempStr = "Oops";
     }

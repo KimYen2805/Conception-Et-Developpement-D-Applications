@@ -135,8 +135,8 @@ void Affichage::dessinerPersonnage(Joueur j, Combat* c)
     }
 		//Positionnement et affichage d'image 2 joueur
 	SDL_Rect posIma2;
-		posIma2.x =j.getPosX() ; 
-		posIma2.y= j.getPosY();
+		posIma2.x = 600; 
+		posIma2.y = 460;
 	SDL_QueryTexture(textureImage2, NULL, NULL, &posIma2.w, &posIma2.h);
 	SDL_RenderCopy(renderer, textureImage2,NULL, &posIma2);
 
@@ -150,16 +150,16 @@ void Affichage::dessinerPersonnage(Joueur j, Combat* c)
 void Affichage::barres(Joueur joueur , Combat* c, SDL_Renderer* renderer)
 {
     // Récupération des données du joueur
-	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
-    int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();   // Mana maximale du joueur
+    joueur.getPVJoueur(); // Point de vie du joueur
+    int barreManaJoueur = joueur.getMana()*100/joueur.getMAXMana();   // Mana maximale du joueur
     Ennemi e;
     //int pointDeVieEnnemi= en.getPointDeVieEnnemi();
      
 // Affichage de la barre de vie du joueur
 	SDL_Rect rePo; 
-		rePo.x =710; 
+		rePo.x =705; 
 		rePo.y =550;
-		rePo.w = pointDeVieJoueur;
+		rePo.w = joueur.getPVJoueur()*100/joueur.getPVMAXJoueur(); 
 		rePo.h =15;
 	SDL_SetRenderDrawColor(renderer,255,0,0,0);
 	SDL_RenderFillRect(renderer, &rePo);
@@ -167,20 +167,22 @@ void Affichage::barres(Joueur joueur , Combat* c, SDL_Renderer* renderer)
 		SDL_Rect reMa; 
 		reMa.x =710; 
 		reMa.y =570;
-		reMa.w = maxManaJoueur;
+		reMa.w = barreManaJoueur;
 		reMa.h =15;
 	SDL_SetRenderDrawColor(renderer,0,50,240,0);
 	SDL_RenderFillRect(renderer, &reMa);
     // Affichage de la barre de vie d'ennemi
     for (int i=0; i<c->groupSize();i++)
-	{   
-        SDL_Rect rePoE; 
-        rePoE.x =e.posXEnne(i); 
-		rePoE.y =e.posYEnne(i);
-		rePoE.w = c->getPVEnn_i(i)*100/c->getPVmaxEnn_i(i);
-		rePoE.h =15;
-        SDL_SetRenderDrawColor(renderer,255,0,0,0);
-        SDL_RenderFillRect(renderer, &rePoE);
+	{   if(c->getPVEnn_i(i)>0)
+        {
+            SDL_Rect rePoE; 
+            rePoE.x =e.posXEnne(i)+10; 
+            rePoE.y =e.posYEnne(i)-20;
+            rePoE.w = c->getPVEnn_i(i)*100/c->getPVmaxEnn_i(i);
+            rePoE.h =15;
+            SDL_SetRenderDrawColor(renderer,255, 0,0,0);
+            SDL_RenderFillRect(renderer, &rePoE);
+        }
     }
 
 
@@ -374,7 +376,7 @@ void Affichage::handleInput(string &pTexte) {
     }
         }
         SDL_Rect texteRect = { 360, 550, 100, 40 };
-        SDL_SetRenderDrawColor(renderer, 231, 76, 60, 20); 
+        SDL_SetRenderDrawColor(renderer, 10, 20, 50, 0); 
         SDL_RenderFillRect(renderer, &texteRect);
 
         AfficherTexte(renderer, { pTexte }, texteRect);
@@ -429,7 +431,6 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                     effacerTexte = false;
                 }
                 isValid = d->rep(pTexte);
-                cout<<isValid<<" loup y est tu "<<pTexte<<endl;
                 if (isValid != -1) 
                 {
                     Jeu.getGraphe().parcoursGraphe(isValid);
@@ -444,7 +445,6 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                     }
                     
                 }
-                cout<<pTexte<<endl;
             }
         } else if (noeud->getDelim() == 'c') {
             c = (Combat*)noeud;
@@ -460,7 +460,7 @@ void Affichage::playGame(SDL_Renderer* renderer) {
 
                 int target = 0;
                 vector<string> message = { "Action joueur:" };
-                AfficherTexte(renderer, message, { 350, 220, 100, 50 });
+                AfficherTexte(renderer, message, { 350, 620, 100, 50 });
                 handleInput(pTexte);
                 if (effacerTexte) 
                 {
@@ -474,7 +474,7 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                 }
                 vector<string> lignesSort;
                 int iSort = c->castSortSDL(joueur, pTexte, lignesSort);
-                AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
+                AfficherTexte(renderer, lignesSort, { 300, 620, 100, 50 });
                 if (effacerTexte) 
                 {
                     effacerEtAfficherTexte(renderer, texteRectA);
@@ -483,13 +483,13 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                 if (iSort != -1) 
                 {
                     c->playTurnSDL(joueur, iSort, target, lignesSort);
-                    AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
+                    AfficherTexte(renderer, lignesSort, { 300, 620, 100, 50 });
                 }
                 if (c->isFight(joueur) == -1)
                 {
                     c->ennTurn(joueur);
                 }
-                AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
+                AfficherTexte(renderer, lignesSort, { 300, 620, 100, 50 });
                 handleInput(pTexte);
                 if (effacerTexte)
                 {
@@ -497,7 +497,7 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                     effacerTexte = false;
                 }
             }
-            cout<<"combat fini "<<c->isFight(joueur)<<endl;
+
             Jeu.getGraphe().parcoursGraphe(c->isFight(joueur));
         }
         

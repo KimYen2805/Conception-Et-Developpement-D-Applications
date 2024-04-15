@@ -12,9 +12,17 @@ class Jeu{
 
 public: 
     Jeu();
+    /**
+     * @return renvoi le joueur du jeu
+    */
     Joueur getJoueur();
-
+    /** 
+     * @return Graphe& revoie le graphe du jeu par référence
+    */
     Graphe& getGraphe();
+    /** 
+     * @return Noeud* revoie le noeud actuel du graphe 
+    */
     Noeud* getCNoeud();
     
 };

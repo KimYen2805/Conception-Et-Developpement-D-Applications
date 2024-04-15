@@ -65,7 +65,7 @@ de sa vie et mana en ajoutant un quantite fixe au maximum
 10 village d
 3
 Maintenant de retour au village les villageois vous remercie alors qu'un villageois accoure
-en annoncant que d'autres monstres ont été vu un peu plus loin dans la foret et qu'ils se 
+en annoncant que d'autres monstres ont ete vu un peu plus loin dans la foret et qu'ils se 
 dirigent vers le village
 2 Librairie Combattre
 

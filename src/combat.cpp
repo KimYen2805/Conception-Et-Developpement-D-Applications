@@ -101,7 +101,7 @@ void Combat::playTurn(Joueur& j, int sort, int tar){
         playHitEnn(j, s.getEffetSort().getPuissanceEffet(), tar);
         j.updateMana(-s.getCout());
     }else
-    if(j.getSort(sort).getCout()<=j.getMana() && s.getEffetSort().getNomEffet()=="soinMana")
+    if(j.getSort(sort).getCout()<=j.getMana() && s.getEffetSort().getNomEffet()=="soinVie")
     {
         cout<<endl;
         j.updatePVJoueur(s.getEffetSort().getPuissanceEffet());
@@ -112,15 +112,15 @@ void Combat::playTurn(Joueur& j, int sort, int tar){
 void Combat::playTurnSDL(Joueur& j, int sort, int tar, vector<string>& lignesSort) {
     Sort s = j.getSort(sort);
     if(s.getEffetSort().getNomEffet() == "degatVie") {
-        lignesSort.push_back("Le joueur perd " + to_string(j.getPVJoueur() * s.getEffetSort().getPuissanceEffet()) + " points de vie.");
+        lignesSort.push_back("Le joueur perd " + to_string(int(j.getPVJoueur() * s.getCout())) + " points de vie.");
         playHitEnn(j, j.getPVJoueur() * s.getEffetSort().getPuissanceEffet(), 0);
         j.updatePVJoueur(-j.getPVJoueur() * s.getCout());
     } else if(s.getCout() <= j.getMana() && s.getEffetSort().getNomEffet() == "degatMana") {
-        lignesSort.push_back("Le joueur inflige " + to_string(s.getEffetSort().getPuissanceEffet()) + " degats a l'ennemi " + to_string(tar) + ".");
+        lignesSort.push_back("Le joueur inflige " + to_string(int(s.getEffetSort().getPuissanceEffet())) + " degats a l'ennemi " + to_string(tar) + ".");
         playHitEnn(j, s.getEffetSort().getPuissanceEffet(), tar);
         j.updateMana(-s.getCout());
-    } else if(s.getCout() <= j.getMana() && s.getEffetSort().getNomEffet() == "SoinMana") {
-        lignesSort.push_back("Le joueur gagne " + to_string(s.getEffetSort().getPuissanceEffet()) + " points de vie.");
+    } else if(s.getCout() <= j.getMana() && s.getEffetSort().getNomEffet() == "soinVie") {
+        lignesSort.push_back("Le joueur gagne " + to_string(int(s.getEffetSort().getPuissanceEffet())) + " points de vie.");
         j.updatePVJoueur(s.getEffetSort().getPuissanceEffet());
         j.updateMana(-s.getCout());
     }

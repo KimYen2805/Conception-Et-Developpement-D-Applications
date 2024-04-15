@@ -32,15 +32,38 @@ public :
     Joueur(const string &filename);
     //Decontructeur
     ~Joueur();
+    /**
+     * @return nom joueur
+    */
     string getNomJoueur() const ;
+    /**
+     * @brief change le nom du joueur
+     * @param nom 
+    */
     void setNomJoueur(string nom);
-
+    /**
+     * @return pointDeVie
+    */
     int getPVJoueur() ;
+    /**
+     * @return pointDeVieMax
+    */
     int getPVMAXJoueur() ;
-
+    /**
+     * @brief change les pvMax du joueur
+     * @param pv
+    */
     void setPVMAXJoueur(int pv);
+    /**
+     * @brief change les pv du joueur
+     * @param pv
+    */
     void setPVJoueur(int pv);
-
+    /**
+     * @brief ajoute pv à pointDeVie sans dépasser pvMax ou en dessous de 0
+     * 
+     * @param pv 
+     */
     void updatePVJoueur(int pv);
 
     int getMana();
@@ -48,11 +71,12 @@ public :
 
     void setMana(int ma);
     void setMAXMana(int ma);
-
+    /**
+     * @brief ajoute ma à mana sans dépasser pvMax ou en dessous de 0
+     * 
+     * @param pv 
+     */
     void updateMana(int ma);
-    
-    int getPosX();
-    int getPosY();
 
     /**
     *@brief renvoie l'indice d'un sort si le nom est valide, -1 sinon

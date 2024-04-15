@@ -18,18 +18,7 @@ void Objet::setQuantite(int nvQuantite) {
     quantite = nvQuantite;
 }
 
-void Objet::setEffetObjet(int nvPuissance) {
-    effetObjet.setPuissanceEffet(nvPuissance);
+void Objet::setEffetObjet(Effet nvEffet) {
+    effetObjet= nvEffet;
 }
 
-string Objet::getNom() const {
-    return nomObjet;
-}
-
-int Objet::getCoutMana() const {
-    return quantite;
-}
-
-int Objet::getPuissance() const {
-    return effetObjet.getPuissanceEffet();
-}

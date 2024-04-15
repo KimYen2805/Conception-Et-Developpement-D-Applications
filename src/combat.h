@@ -81,6 +81,8 @@ public:
      * @param lignes le texte renvoyé à l'écran 
      */
     void affStatSDL(Joueur& j, vector<string>& lignes);
+    int groupSize();
+    int getPVEnn_i(int i);
 
 };
 

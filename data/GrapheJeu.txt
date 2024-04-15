@@ -22,12 +22,10 @@ Dans la direction oppose, quelqu'un vous fait signe de s'approcher.
 30 50 1 0
 35 30 2 2 3
 
-4 villageois1 d
-3
-'Comment te sens-tu?', vous dit ce villageois a l'air de inquiet. 
-'Nous t'avions embauche pour t'occuper des creatures mais il semblerait que tu te sois evanoui. 
-Ton ami s'occupe de les retenir, bien qu'il n'ait pas l'air de taille pour le combat. Tu devrais y retourner...'
-3 Combattre Parler Fuir
+4 villageois1 c
+1
+50 40 1 0
+
 
 5 villageois2 d
 1
@@ -50,7 +48,8 @@ Vous succombez finalement aux coups de vos adversaires...
 2
 Bon les combats sont ce qu'ils sont mais avec plus de sorts disponible, les possibilités n'en seront que plus diverses.
 En attendant, celui qui semble etre votre ami vous remercie d'etre arrive a temps et vous dirigez vers le village proche.
-0
+1 Village
+
 
 11
 0 2

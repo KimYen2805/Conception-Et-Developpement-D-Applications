@@ -5,7 +5,7 @@ using namespace std;
 int main (int argc, char ** argv)
 {
 
-   Jeu jeu;
+    Jeu jeu;
     Ennemi ennemi;
 	Joueur joueur = jeu.getJoueur();
     Affichage affichage;

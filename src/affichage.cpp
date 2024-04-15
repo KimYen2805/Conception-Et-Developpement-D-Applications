@@ -74,8 +74,8 @@ if (font == nullptr) {
     }
 
 	// Initialisation des couleurs 
-    textColorInfo = {255, 255,0};
-    rectColor = {0, 0, 0};
+    textColorInfo = {140, 180,100};
+    rectColor = {0, 255, 0, 10};
     pTexte = ""; 
     
 }
@@ -123,13 +123,13 @@ void Affichage::AfficherFond()
  * @brief Dessine les personnages (joueur et ennemi) sur l'écran.
 */
 //
-void Affichage::dessinerPersonnage(Joueur j, Ennemi ennemi)
+void Affichage::dessinerPersonnage(Joueur j, Combat* c)
 {
     SDL_Rect posIma1;
-    int nbEnnemi= ennemi.nbEnne();
-     for (int i = 0; i < nbEnnemi; ++i) {
-        posIma1.x  = ennemi.posXEnne(i);
-        posIma1.y = ennemi.posYEnne(i);
+    Ennemi e;
+     for (int i = 0; i < c->groupSize(); ++i) {
+        posIma1.x  = e.posXEnne(i);
+        posIma1.y = e.posYEnne(i);
         SDL_QueryTexture(textureImage1, NULL, NULL, &posIma1.w, &posIma1.h);//ko can 
 		SDL_RenderCopy(renderer, textureImage1,NULL, &posIma1);
     }
@@ -147,37 +147,41 @@ void Affichage::dessinerPersonnage(Joueur j, Ennemi ennemi)
  * @param en Objet représentant l'ennemi.
  * @param renderer Pointeur vers le renderer SDL.
 */
-void Affichage:: barres(Joueur joueur , Ennemi en, SDL_Renderer* renderer)
+void Affichage::barres(Joueur joueur , Combat* c, SDL_Renderer* renderer)
 {
     // Récupération des données du joueur
 	int pointDeVieJoueur = joueur.getPVJoueur(); // Point de vie du joueur
     int maxManaJoueur = joueur.getMana()*100/joueur.getMAXMana();   // Mana maximale du joueur
-    int pointDeVieEnnemi= en.getPointDeVieEnnemi();
+    Ennemi e;
+    //int pointDeVieEnnemi= en.getPointDeVieEnnemi();
      
 // Affichage de la barre de vie du joueur
 	SDL_Rect rePo; 
-		rePo.x =600; 
-		rePo.y =600;
+		rePo.x =710; 
+		rePo.y =550;
 		rePo.w = pointDeVieJoueur;
 		rePo.h =15;
 	SDL_SetRenderDrawColor(renderer,255,0,0,0);
 	SDL_RenderFillRect(renderer, &rePo);
 		// Affichage de la barre de mana du joueur
 		SDL_Rect reMa; 
-		reMa.x =600; 
-		reMa.y =620;
+		reMa.x =710; 
+		reMa.y =570;
 		reMa.w = maxManaJoueur;
 		reMa.h =15;
-	SDL_SetRenderDrawColor(renderer,0,0,255,0);
+	SDL_SetRenderDrawColor(renderer,0,50,240,0);
 	SDL_RenderFillRect(renderer, &reMa);
     // Affichage de la barre de vie d'ennemi
-	SDL_Rect rePoE; 
-        rePoE.x =20; 
-		rePoE.y =60;
-		rePoE.w = pointDeVieEnnemi;
+    for (int i=0; i<c->groupSize();i++)
+	{   
+        SDL_Rect rePoE; 
+        rePoE.x =e.posXEnne(i)+50; 
+		rePoE.y =e.posYEnne(i);
+		rePoE.w = c->getPVEnn_i(i)*100/30;
 		rePoE.h =15;
-	SDL_SetRenderDrawColor(renderer,255,0,0,0);
-	SDL_RenderFillRect(renderer, &rePoE);
+        SDL_SetRenderDrawColor(renderer,255,0,0,0);
+        SDL_RenderFillRect(renderer, &rePoE);
+    }
 
 
 }
@@ -369,8 +373,8 @@ void Affichage::handleInput(string &pTexte) {
                 //effacerTexte= true;
     }
         }
-        SDL_Rect texteRect = { 360, 450, 100, 50 };
-        SDL_SetRenderDrawColor(renderer, 231, 76, 60, 255); 
+        SDL_Rect texteRect = { 360, 550, 100, 40 };
+        SDL_SetRenderDrawColor(renderer, 231, 76, 60, 20); 
         SDL_RenderFillRect(renderer, &texteRect);
 
         AfficherTexte(renderer, { pTexte }, texteRect);
@@ -402,50 +406,57 @@ void Affichage::playGame(SDL_Renderer* renderer) {
     Ennemi ennemi;
     Noeud* noeud = Jeu.getCNoeud();
 
-    SDL_Rect texteRectA = { 10, 300, 820, 130 };
+    SDL_Rect texteRectA = { 0, 600, 820, 130 };
     Dialogue* d;
     Combat* c;
 
-    while (!Jeu.getGraphe().isFeuille(noeud)) {
-        if (noeud->getDelim() == 'd') {
+    while (!Jeu.getGraphe().isFeuille(noeud)) 
+    {
+        if (noeud->getDelim() == 'd') 
+        {
+            AfficherFond();
             d = (Dialogue*)noeud;
             int isValid = -1;
             vector<string> lignes;
-            while (isValid == -1) {
-                lignes = { d->getTexte() };
+            while (isValid == -1) 
+            {
+                cout<<d->getTexte()<<endl;
+                lignes = { d->getTexte()+'\n'+ d->getRep()};
                 AfficherTexte(renderer, lignes, texteRectA);
                 handleInput(pTexte);
-                if (effacerTexte) {
+                if (effacerTexte) 
+                {
                     effacerEtAfficherTexte(renderer, texteRectA);
                     effacerTexte = false;
+                    cout<<"loup y es tu?"<<endl;
                 }
-                if (pTexte == "Aide") {
-                    vector<string> aide = { d->getRep() };
-                    AfficherTexte(renderer, aide, texteRectA);
-                    handleInput(pTexte);
-                     if (effacerTexte) {
-                            effacerEtAfficherTexte(renderer, texteRectA);
-                            effacerTexte = false;
-                        }
+                isValid = d->rep(pTexte);
+                
+                if (isValid != -1) 
+                {
+                    
+                    Jeu.getGraphe().parcoursGraphe(isValid);
                 } else {
-                    isValid = d->rep(pTexte);
-                    if (isValid != -1) {
-                        Jeu.getGraphe().parcoursGraphe(isValid);
-                    } else {
-                        vector<string> reponse = { "Reponse invalide au dialogue" };
-                        AfficherTexte(renderer, reponse, texteRectA);
-                        handleInput(pTexte);
-                        if (effacerTexte) {
-                            effacerEtAfficherTexte(renderer, texteRectA);
-                            effacerTexte = false;
-                        }
+                    vector<string> reponse = { "Reponse invalide au dialogue" };
+                    AfficherTexte(renderer, reponse, texteRectA);
+                    handleInput(pTexte);
+                    if (effacerTexte) 
+                    {
+                        effacerEtAfficherTexte(renderer, texteRectA);
+                        effacerTexte = false;
                     }
+                    
                 }
+                cout<<pTexte<<endl;
             }
         } else if (noeud->getDelim() == 'c') {
             c = (Combat*)noeud;
               
-            while (c->isFight(joueur) == -1) {
+            while (c->isFight(joueur) == -1) 
+            {
+                AfficherFond();
+                dessinerPersonnage(joueur, c); 
+                barres(joueur,c, renderer);
                 vector<string> lignesStat;
                 c->affStatSDL(joueur, lignesStat);
                 AfficherTexte(renderer, lignesStat, texteRectA);
@@ -454,36 +465,40 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                 vector<string> message = { "Action joueur:" };
                 AfficherTexte(renderer, message, { 350, 220, 100, 50 });
                 handleInput(pTexte);
-                if (effacerTexte) {
+                if (effacerTexte) 
+                {
                     effacerEtAfficherTexte(renderer, texteRectA);
                     effacerTexte = false;
                 }
-                if (isdigit(pTexte[0])) {
+                if (isdigit(pTexte[0])) 
+                {
                     target = pTexte[0] - '0';
                     pTexte.erase(0, 1);
                 }
                 vector<string> lignesSort;
                 int iSort = c->castSortSDL(joueur, pTexte, lignesSort);
                 AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
-                     if (effacerTexte) {
-                            effacerEtAfficherTexte(renderer, texteRectA);
-                            effacerTexte = false;
-                        }
-                if (iSort != -1) {
-                    c->playTurnSDL(joueur, iSort, target, lignesSort);
-                     AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
+                if (effacerTexte) 
+                {
+                    effacerEtAfficherTexte(renderer, texteRectA);
+                    effacerTexte = false;
                 }
-                if (c->isFight(joueur) == -1) {
+                if (iSort != -1) 
+                {
+                    c->playTurnSDL(joueur, iSort, target, lignesSort);
+                    AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
+                }
+                if (c->isFight(joueur) == -1)
+                {
                     c->ennTurn(joueur);
-                  
                 }
                 AfficherTexte(renderer, lignesSort, { 300, 300, 100, 50 });
-                  handleInput(pTexte);
-                 if (effacerTexte) {
-                            effacerEtAfficherTexte(renderer, texteRectA);
-                            effacerTexte = false;
-                        }
-                         barres(joueur,ennemi, renderer);
+                handleInput(pTexte);
+                if (effacerTexte)
+                {
+                    effacerEtAfficherTexte(renderer, texteRectA);
+                    effacerTexte = false;
+                }
             }
             Jeu.getGraphe().parcoursGraphe(c->isFight(joueur));
         }
@@ -515,7 +530,7 @@ void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi) {
         // Affichage des éléments du jeu
         AfficherFond();
           AfficherInfo(joueur, ennemi, renderer);
-       dessinerPersonnage(joueur, ennemi); 
+       //dessinerPersonnage(joueur, ennemi); 
        
         handleInput(pTexte);
          playGame(renderer);

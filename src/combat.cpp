@@ -155,3 +155,10 @@ void Combat::affStatSDL(Joueur& j, vector<string>& lignes) {
         lignes.push_back("Points de vie de l'ennemi " + to_string(i + 1) + ": " + to_string(ennGroup[i].getPointDeVieEnnemi()));
     }
 }
+
+int Combat::groupSize(){
+    return ennGroup.size();
+}
+int Combat::getPVEnn_i(int i){
+    return ennGroup[i].getPointDeVieEnnemi();
+}

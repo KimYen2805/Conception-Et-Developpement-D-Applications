@@ -68,11 +68,11 @@ int Ennemi::nbEnne() {
 }
 
 int Ennemi::posXEnne(int n) {
-    return n*70; // Random X position
+    return n*70; 
 }
 
 int Ennemi::posYEnne(int n) {
-    return 100+(n%2)*70; // Random Y position 
+    return 100+(n%2)*70; 
 }
 void Ennemi::testRegression() {
     cout << "Exécution du test de régression pour la classe Ennemi..." << endl;

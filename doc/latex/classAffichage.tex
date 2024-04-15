@@ -1,0 +1,189 @@
+\hypertarget{classAffichage}{}\doxysection{Affichage Class Reference}
+\label{classAffichage}\index{Affichage@{Affichage}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAffichage_a5956d12aebf4355a052d8a0eec9ad116}\label{classAffichage_a5956d12aebf4355a052d8a0eec9ad116}} 
+{\bfseries Affichage} ()
+\begin{DoxyCompactList}\small\item\em Constructeur renvoie une fenêtre SDL. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAffichage_ae6a4f4db7a0d8d2abc8bd44c1be674c0}\label{classAffichage_ae6a4f4db7a0d8d2abc8bd44c1be674c0}} 
+{\bfseries $\sim$\+Affichage} ()
+\begin{DoxyCompactList}\small\item\em Destructeur Libère toutes les ressources allouées par l\textquotesingle{}objet \mbox{\hyperlink{classAffichage}{Affichage}}, y compris la fenêtre SDL, le renderer, les textures et les surfaces. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAffichage_acdd7fb925e51b3d6cd7d5a3452006e89}\label{classAffichage_acdd7fb925e51b3d6cd7d5a3452006e89}} 
+void {\bfseries Afficher\+Fond} ()
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}image dans la fenêtre. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAffichage_af1e4185a74d42476d1dd35ee1d092ecb}\label{classAffichage_af1e4185a74d42476d1dd35ee1d092ecb}} 
+void {\bfseries dessiner\+Personnage} (\mbox{\hyperlink{classJoueur}{Joueur}} j, \mbox{\hyperlink{classCombat}{Combat}} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Dessine les personnages (joueur et ennemi) sur l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAffichage_a44479797ccb9ab530cd92a75b6b75472}{barres}} (\mbox{\hyperlink{classJoueur}{Joueur}} j, \mbox{\hyperlink{classCombat}{Combat}} $\ast$c, SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Affiche les barres de santé et de mana du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAffichage_afdfaeb09241d2c691041284e0e4acbaa}{Calculer\+Dimensions\+Du\+Texte}} (const vector$<$ string $>$ \&lignes, int \&largeur\+Max, int \&hauteur\+Totale, vector$<$ int $>$ \&hauteurs)
+\begin{DoxyCompactList}\small\item\em Calcule les dimensions du texte à afficher. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAffichage_aca63b8eacce31fa9459dc1e1ff6dd395}{Afficher\+Texte}} (SDL\+\_\+\+Renderer $\ast$renderer, const vector$<$ string $>$ \&lignes, const SDL\+\_\+\+Rect \&rect)
+\begin{DoxyCompactList}\small\item\em Affiche le texte sur l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAffichage_af74d81b81eca5b96aad07cc0100dff61}{Afficher\+Info}} (\mbox{\hyperlink{classJoueur}{Joueur}} j, \mbox{\hyperlink{classEnnemi}{Ennemi}} enne, SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Affiche les informations du joueur et de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAffichage_a6721ca0ee98f1ede83a32a2007059f02}{effacer\+Et\+Afficher\+Texte}} (SDL\+\_\+\+Renderer $\ast$renderer, const SDL\+\_\+\+Rect \&rect)
+\begin{DoxyCompactList}\small\item\em Efface le texte précédent et affiche un nouveau texte. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAffichage_a5cbe10e70febad6eaff461eaf632b819}\label{classAffichage_a5cbe10e70febad6eaff461eaf632b819}} 
+void {\bfseries charger\+Grape\+Jeu} ()
+\begin{DoxyCompactList}\small\item\em Charge les données du jeu à partir d\textquotesingle{}un fichier. Lit les données du fichier \char`\"{}\+Graphe\+Jeu.\+txt\char`\"{} pour initialiser le jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAffichage_ad76f708e6c9199541aab54bb48d0bb2b}{handle\+Input}} (string \&p\+Texte)
+\begin{DoxyCompactList}\small\item\em Gère la saisie utilisateur. Permet à l\textquotesingle{}utilisateur de saisir du texte et de contrôler le déroulement du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAffichage_ae876d810896858fba2203f1017991439}{play\+Game}} (SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Lance le jeu en mode SDL. Gère le déroulement du jeu en mode SDL, y compris les interactions avec le joueur et l\textquotesingle{}affichage des éléments du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAffichage_a49623086ad73547682627fb518770e72}{Afficher\+Jeu}} (\mbox{\hyperlink{classJoueur}{Joueur}} j, \mbox{\hyperlink{classEnnemi}{Ennemi}} ennemi)
+\begin{DoxyCompactList}\small\item\em Affiche le jeu en cours. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAffichage_af74d81b81eca5b96aad07cc0100dff61}\label{classAffichage_af74d81b81eca5b96aad07cc0100dff61}} 
+\index{Affichage@{Affichage}!AfficherInfo@{AfficherInfo}}
+\index{AfficherInfo@{AfficherInfo}!Affichage@{Affichage}}
+\doxysubsubsection{\texorpdfstring{AfficherInfo()}{AfficherInfo()}}
+{\footnotesize\ttfamily void Affichage\+::\+Afficher\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJoueur}{Joueur}}}]{j,  }\item[{\mbox{\hyperlink{classEnnemi}{Ennemi}}}]{enne,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations du joueur et de l\textquotesingle{}ennemi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em joueur} & \mbox{\hyperlink{classObjet}{Objet}} représentant le joueur. \\
+\hline
+{\em ennemi} & \mbox{\hyperlink{classObjet}{Objet}} représentant l\textquotesingle{}ennemi. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAffichage_a49623086ad73547682627fb518770e72}\label{classAffichage_a49623086ad73547682627fb518770e72}} 
+\index{Affichage@{Affichage}!AfficherJeu@{AfficherJeu}}
+\index{AfficherJeu@{AfficherJeu}!Affichage@{Affichage}}
+\doxysubsubsection{\texorpdfstring{AfficherJeu()}{AfficherJeu()}}
+{\footnotesize\ttfamily void Affichage\+::\+Afficher\+Jeu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJoueur}{Joueur}}}]{joueur,  }\item[{\mbox{\hyperlink{classEnnemi}{Ennemi}}}]{ennemi }\end{DoxyParamCaption})}
+
+
+
+Affiche le jeu en cours. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em joueur} & \mbox{\hyperlink{classObjet}{Objet}} représentant le joueur. \\
+\hline
+{\em ennemi} & \mbox{\hyperlink{classObjet}{Objet}} représentant l\textquotesingle{}ennemi. \\
+\hline
+{\em jeu} & \mbox{\hyperlink{classObjet}{Objet}} représentant le jeu. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAffichage_aca63b8eacce31fa9459dc1e1ff6dd395}\label{classAffichage_aca63b8eacce31fa9459dc1e1ff6dd395}} 
+\index{Affichage@{Affichage}!AfficherTexte@{AfficherTexte}}
+\index{AfficherTexte@{AfficherTexte}!Affichage@{Affichage}}
+\doxysubsubsection{\texorpdfstring{AfficherTexte()}{AfficherTexte()}}
+{\footnotesize\ttfamily void Affichage\+::\+Afficher\+Texte (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{const vector$<$ string $>$ \&}]{lignes,  }\item[{const SDL\+\_\+\+Rect \&}]{rect }\end{DoxyParamCaption})}
+
+
+
+Affiche le texte sur l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Pointeur vers le renderer SDL. \\
+\hline
+{\em lignes} & Vecteur contenant les lignes de texte à afficher. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAffichage_a44479797ccb9ab530cd92a75b6b75472}\label{classAffichage_a44479797ccb9ab530cd92a75b6b75472}} 
+\index{Affichage@{Affichage}!barres@{barres}}
+\index{barres@{barres}!Affichage@{Affichage}}
+\doxysubsubsection{\texorpdfstring{barres()}{barres()}}
+{\footnotesize\ttfamily void Affichage\+::barres (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJoueur}{Joueur}}}]{joueur,  }\item[{\mbox{\hyperlink{classCombat}{Combat}} $\ast$}]{c,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Affiche les barres de santé et de mana du joueur. 
+
+Affiche les barres de santé et de mana du joueur et de l\textquotesingle{}ennemi.
+
+
+\begin{DoxyParams}{Parameters}
+{\em joueur} & \mbox{\hyperlink{classObjet}{Objet}} représentant le joueur.\\
+\hline
+{\em joueur} & \mbox{\hyperlink{classObjet}{Objet}} représentant le joueur. \\
+\hline
+{\em en} & \mbox{\hyperlink{classObjet}{Objet}} représentant l\textquotesingle{}ennemi. \\
+\hline
+{\em renderer} & Pointeur vers le renderer SDL. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAffichage_afdfaeb09241d2c691041284e0e4acbaa}\label{classAffichage_afdfaeb09241d2c691041284e0e4acbaa}} 
+\index{Affichage@{Affichage}!CalculerDimensionsDuTexte@{CalculerDimensionsDuTexte}}
+\index{CalculerDimensionsDuTexte@{CalculerDimensionsDuTexte}!Affichage@{Affichage}}
+\doxysubsubsection{\texorpdfstring{CalculerDimensionsDuTexte()}{CalculerDimensionsDuTexte()}}
+{\footnotesize\ttfamily void Affichage\+::\+Calculer\+Dimensions\+Du\+Texte (\begin{DoxyParamCaption}\item[{const vector$<$ string $>$ \&}]{lignes,  }\item[{int \&}]{largeur\+Max,  }\item[{int \&}]{hauteur\+Totale,  }\item[{vector$<$ int $>$ \&}]{hauteurs }\end{DoxyParamCaption})}
+
+
+
+Calcule les dimensions du texte à afficher. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em li} & Vecteur contenant les lignes de texte. \\
+\hline
+{\em lar\+Max} & Référence à la largeur maximale du texte. \\
+\hline
+{\em haut\+Totale} & Référence à la hauteur totale du texte. \\
+\hline
+{\em haut} & Vecteur contenant les hauteurs de chaque ligne de texte. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAffichage_a6721ca0ee98f1ede83a32a2007059f02}\label{classAffichage_a6721ca0ee98f1ede83a32a2007059f02}} 
+\index{Affichage@{Affichage}!effacerEtAfficherTexte@{effacerEtAfficherTexte}}
+\index{effacerEtAfficherTexte@{effacerEtAfficherTexte}!Affichage@{Affichage}}
+\doxysubsubsection{\texorpdfstring{effacerEtAfficherTexte()}{effacerEtAfficherTexte()}}
+{\footnotesize\ttfamily void Affichage\+::effacer\+Et\+Afficher\+Texte (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{const SDL\+\_\+\+Rect \&}]{rect }\end{DoxyParamCaption})}
+
+
+
+Efface le texte précédent et affiche un nouveau texte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Pointeur vers le renderer SDL. \\
+\hline
+{\em rect} & Rectangle délimitant l\textquotesingle{}emplacement du texte. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAffichage_ad76f708e6c9199541aab54bb48d0bb2b}\label{classAffichage_ad76f708e6c9199541aab54bb48d0bb2b}} 
+\index{Affichage@{Affichage}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Affichage@{Affichage}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily void Affichage\+::handle\+Input (\begin{DoxyParamCaption}\item[{string \&}]{p\+Texte }\end{DoxyParamCaption})}
+
+
+
+Gère la saisie utilisateur. Permet à l\textquotesingle{}utilisateur de saisir du texte et de contrôler le déroulement du jeu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Texte} & Référence à la chaîne de texte saisie par l\textquotesingle{}utilisateur. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAffichage_ae876d810896858fba2203f1017991439}\label{classAffichage_ae876d810896858fba2203f1017991439}} 
+\index{Affichage@{Affichage}!playGame@{playGame}}
+\index{playGame@{playGame}!Affichage@{Affichage}}
+\doxysubsubsection{\texorpdfstring{playGame()}{playGame()}}
+{\footnotesize\ttfamily void Affichage\+::play\+Game (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Lance le jeu en mode SDL. Gère le déroulement du jeu en mode SDL, y compris les interactions avec le joueur et l\textquotesingle{}affichage des éléments du jeu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & Pointeur vers le renderer SDL. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/affichage.\+h\item 
+src/affichage.\+cpp\end{DoxyCompactItemize}

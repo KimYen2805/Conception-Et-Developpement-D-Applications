@@ -1,0 +1,28 @@
+\hypertarget{dialogue_8h_source}{}\doxysection{dialogue.\+h}
+\label{dialogue_8h_source}\index{src/dialogue.h@{src/dialogue.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_DIALOGUE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_DIALOGUE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}noeud.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAXREP=\ 5;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDialogue}{Dialogue}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classNoeud}{Noeud}}\{}
+\DoxyCodeLine{00011\ \ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{string}\ texte;\ }
+\DoxyCodeLine{00013\ \ \ \ \ std::vector\ <string>\ reponse;\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classDialogue}{Dialogue}}();}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classDialogue}{Dialogue}}(\textcolor{keywordtype}{int}\ ind,\ \textcolor{keywordtype}{string}\ nom,\ \textcolor{keywordtype}{string}\ txt,\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classDialogue_a75787c8bc6e2f8988bbf7a22a9226519}{rep}}[MAXREP],\textcolor{keywordtype}{int}\ nb,\ \textcolor{keywordtype}{char}\ d);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classDialogue_aadea935776ed9cfd6fb3aa3835492791}{getTexte}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classDialogue_a437317babed77f9dcba7982dcd2610d0}{getRep}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDialogue_a75787c8bc6e2f8988bbf7a22a9226519}{rep}}(\textcolor{keywordtype}{string}\ word);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

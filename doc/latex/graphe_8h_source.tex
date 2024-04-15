@@ -1,0 +1,28 @@
+\hypertarget{graphe_8h_source}{}\doxysection{graphe.\+h}
+\label{graphe_8h_source}\index{src/graphe.h@{src/graphe.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_GRAPHE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_GRAPHE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}dialogue.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}combat.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraphe}{Graphe}}\{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{classNoeud}{Noeud}}*\ n;}
+\DoxyCodeLine{00011\ \ \ \ \ vector<Noeud*>\ sommets;}
+\DoxyCodeLine{00012\ \ \ \ \ vector<pair<Noeud*,Noeud*>>\ aretes;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classGraphe}{Graphe}}();}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classGraphe}{\string~Graphe}}();}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classNoeud}{Noeud}}*\ \mbox{\hyperlink{classGraphe_ac9401c7e2b5febc45e760919fb56577c}{getNoeud}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraphe_a985a02832c002515547ea64a932e997f}{parcoursGraphe}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraphe_a66210eb803f062665ef44541031071e2}{isFeuille}}(\mbox{\hyperlink{classNoeud}{Noeud}}*\ nActu);}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

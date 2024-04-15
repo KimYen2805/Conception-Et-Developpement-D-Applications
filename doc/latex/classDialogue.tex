@@ -1,0 +1,113 @@
+\hypertarget{classDialogue}{}\doxysection{Dialogue Class Reference}
+\label{classDialogue}\index{Dialogue@{Dialogue}}
+Inheritance diagram for Dialogue\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDialogue}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDialogue_a9e408d9b91992a68ee31097b58db1e23}{Dialogue}} (int ind, string nom, string txt, string \mbox{\hyperlink{classDialogue_a75787c8bc6e2f8988bbf7a22a9226519}{rep}}\mbox{[}MAXREP\mbox{]}, int nb, char d)
+\begin{DoxyCompactList}\small\item\em initialise un noeud dialogue avec les paramètres \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classDialogue_aadea935776ed9cfd6fb3aa3835492791}{get\+Texte}} ()
+\begin{DoxyCompactList}\small\item\em texte object \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classDialogue_a437317babed77f9dcba7982dcd2610d0}{get\+Rep}} ()
+\begin{DoxyCompactList}\small\item\em renvoi une string avec les réponses du dialogue \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDialogue_a75787c8bc6e2f8988bbf7a22a9226519}{rep}} (string word)
+\begin{DoxyCompactList}\small\item\em l\textquotesingle{}indice relatif du noeud suivant \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classNoeud}{Noeud}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classNoeud_a9b397ab3012b18a62443b662e225071c}{get\+ID}} ()
+\item 
+char \mbox{\hyperlink{classNoeud_a2a0b2f24eb1176f4b3428cb7d2807701}{get\+Delim}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{classNoeud}{Noeud}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNoeud_a1b6888482323cacd7d9c88b8a5f5349b}\label{classNoeud_a1b6888482323cacd7d9c88b8a5f5349b}} 
+int {\bfseries id}
+\item 
+\mbox{\Hypertarget{classNoeud_a6d9ac4a84b010ebdd2489161fa587053}\label{classNoeud_a6d9ac4a84b010ebdd2489161fa587053}} 
+string {\bfseries nom\+Noeud}
+\item 
+\mbox{\Hypertarget{classNoeud_ab2e41db0ab994b144ea8a653d8bf7583}\label{classNoeud_ab2e41db0ab994b144ea8a653d8bf7583}} 
+char {\bfseries delim}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDialogue_a9e408d9b91992a68ee31097b58db1e23}\label{classDialogue_a9e408d9b91992a68ee31097b58db1e23}} 
+\index{Dialogue@{Dialogue}!Dialogue@{Dialogue}}
+\index{Dialogue@{Dialogue}!Dialogue@{Dialogue}}
+\doxysubsubsection{\texorpdfstring{Dialogue()}{Dialogue()}}
+{\footnotesize\ttfamily Dialogue\+::\+Dialogue (\begin{DoxyParamCaption}\item[{int}]{ind,  }\item[{string}]{nom,  }\item[{string}]{txt,  }\item[{string}]{rep\mbox{[}\+MAXREP\mbox{]},  }\item[{int}]{nb,  }\item[{char}]{d }\end{DoxyParamCaption})}
+
+
+
+initialise un noeud dialogue avec les paramètres 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ind} & indice du noeud \\
+\hline
+{\em nom} & nom du noeud \\
+\hline
+{\em txt} & le texte du dialogue \\
+\hline
+{\em rep} & tableau des réponses \\
+\hline
+{\em nb} & nombre de réponses \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDialogue_a437317babed77f9dcba7982dcd2610d0}\label{classDialogue_a437317babed77f9dcba7982dcd2610d0}} 
+\index{Dialogue@{Dialogue}!getRep@{getRep}}
+\index{getRep@{getRep}!Dialogue@{Dialogue}}
+\doxysubsubsection{\texorpdfstring{getRep()}{getRep()}}
+{\footnotesize\ttfamily string Dialogue\+::get\+Rep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+renvoi une string avec les réponses du dialogue 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDialogue_aadea935776ed9cfd6fb3aa3835492791}\label{classDialogue_aadea935776ed9cfd6fb3aa3835492791}} 
+\index{Dialogue@{Dialogue}!getTexte@{getTexte}}
+\index{getTexte@{getTexte}!Dialogue@{Dialogue}}
+\doxysubsubsection{\texorpdfstring{getTexte()}{getTexte()}}
+{\footnotesize\ttfamily string Dialogue\+::get\+Texte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+texte object 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDialogue_a75787c8bc6e2f8988bbf7a22a9226519}\label{classDialogue_a75787c8bc6e2f8988bbf7a22a9226519}} 
+\index{Dialogue@{Dialogue}!rep@{rep}}
+\index{rep@{rep}!Dialogue@{Dialogue}}
+\doxysubsubsection{\texorpdfstring{rep()}{rep()}}
+{\footnotesize\ttfamily int Dialogue\+::rep (\begin{DoxyParamCaption}\item[{string}]{word }\end{DoxyParamCaption})}
+
+
+
+l\textquotesingle{}indice relatif du noeud suivant 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/dialogue.\+h\item 
+src/dialogue.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,54 @@
+\hypertarget{ennemi_8h_source}{}\doxysection{ennemi.\+h}
+\label{ennemi_8h_source}\index{src/ennemi.h@{src/ennemi.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_ENNEMI\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_ENNEMI\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}sort.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}objet.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEnnemi}{Ennemi}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pointDeVie;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pvMax;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ puissance;\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ vector<int>\ tabInd\_Sort;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \textcolor{comment}{//\ Constructeur}}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classEnnemi}{Ennemi}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Destructeur}}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classEnnemi}{\string~Ennemi}}();}
+\DoxyCodeLine{00023\ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEnnemi_aba42c6530ff24109a415077b20e7b570}{getPointDeVieEnnemi}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEnnemi_ad3cfe3c988ab2b304d60efcba9013ddc}{getPVmaxEnnemi}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnnemi_a38a37415e7cd9c4982609f93f0b3d052}{setPointDeVieEnnemi}}(\textcolor{keywordtype}{int}\ pv);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnnemi_af0b41af7589f75d351a6b9e5308ef526}{setPVmaxEnnemi}}(\textcolor{keywordtype}{int}\ pv);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnnemi_abffd0f47add1d37acbfccc566c7eaaae}{updatePVEnn}}(\textcolor{keywordtype}{float}\ pv);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Getter\ pour\ puissance}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ getPuissanceEnnemi()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnnemi_a1331d90b60b50ea77451afaf28aef287}{setPuissanceEnnemi}}(\textcolor{keywordtype}{int}\ power);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEnnemi_a1b91134255357bcbb55c6e1e7b534e55}{addSort}}(\textcolor{keywordtype}{int}\ sort);}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEnnemi_af9204db42be5a105f6d18db10ff57a94}{getSort}}(\textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEnnemi_a6574378019b660d81233450e455d6975}{getSsize}}();}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEnnemi_a59758d62e451886f14e971892e987f8e}{nbEnne}}();}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEnnemi_aa1075580f019d5bd8277d69774e167c3}{posXEnne}}(\textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEnnemi_a0a17b3d8dd1bceac683edb38c22debd3}{posYEnne}}(\textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//void\ attaquerJoueur();\ Plutôt\ une\ fonction\ qui\ sera\ dans\ combat}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//test\ }}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ testRegression();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

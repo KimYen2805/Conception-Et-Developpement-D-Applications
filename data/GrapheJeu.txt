@@ -33,9 +33,10 @@ Dans la direction oppose, quelqu'un vous fait signe de s'approcher.
 1 Grimoire
 
 6 grimoire d
-3
-Les sorts existant sont Agidyne et Kougaon, peut-etre en découvrirez-vous d'autre.
-Agidyne peut prendre une valeur au debut du mot, indiquant l'ennemi a attaquer, epuisant du mana. Ex: 1Agidyne
+4 
+Les sorts existant sont Agidyne et Kougaon, peut-etre en decouvrirez-vous d'autre.
+Agidyne peut prendre une valeur au debut du mot, indiquant l'ennemi a attaquer, epuisant du mana. 
+Ex: 1Agidyne
 Kougaon vous soigne en échange d'une portion de mana.
 1 Combattre
 
@@ -46,9 +47,12 @@ Vous succombez finalement aux coups de vos adversaires...
 
 8 victoire1 d
 2
-Bon les combats sont ce qu'ils sont mais avec plus de sorts disponible, les possibilités n'en seront que plus diverses.
+Bon les combats sont ce qu'ils sont mais avec plus de sorts disponible, les possibilites n'en seront que plus diverses.
 En attendant, celui qui semble etre votre ami vous remercie d'etre arrive a temps et vous dirigez vers le village proche.
 1 Village
+
+9 village d
+2
 
 
 11
@@ -63,3 +67,4 @@ En attendant, celui qui semble etre votre ami vous remercie d'etre arrive a temp
 4 1
 5 6
 6 3
+8

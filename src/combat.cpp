@@ -133,6 +133,8 @@ int Combat::isFight(Joueur& j) const{
         {
             if(ennGroup[i].getPointDeVieEnnemi()>0) return -1;//Un ennemi vie encore, le combat n'est pas terminé
         }
+        j.setPVMAXJoueur(j.getPVMAXJoueur()+10);
+        j.setMAXMana(j.getMAXMana()+2);
         return 0;//si les ennemi perdent, avance au neoud de victoire
     } 
 }
@@ -161,4 +163,7 @@ int Combat::groupSize(){
 }
 int Combat::getPVEnn_i(int i){
     return ennGroup[i].getPointDeVieEnnemi();
+}
+int Combat::getPVmaxEnn_i(int i){
+    return ennGroup[i].getPVmaxEnnemi();
 }

@@ -175,9 +175,9 @@ void Affichage::barres(Joueur joueur , Combat* c, SDL_Renderer* renderer)
     for (int i=0; i<c->groupSize();i++)
 	{   
         SDL_Rect rePoE; 
-        rePoE.x =e.posXEnne(i)+50; 
+        rePoE.x =e.posXEnne(i); 
 		rePoE.y =e.posYEnne(i);
-		rePoE.w = c->getPVEnn_i(i)*100/30;
+		rePoE.w = c->getPVEnn_i(i)*100/c->getPVmaxEnn_i(i);
 		rePoE.h =15;
         SDL_SetRenderDrawColor(renderer,255,0,0,0);
         SDL_RenderFillRect(renderer, &rePoE);
@@ -420,7 +420,6 @@ void Affichage::playGame(SDL_Renderer* renderer) {
             vector<string> lignes;
             while (isValid == -1) 
             {
-                cout<<d->getTexte()<<endl;
                 lignes = { d->getTexte()+'\n'+ d->getRep()};
                 AfficherTexte(renderer, lignes, texteRectA);
                 handleInput(pTexte);
@@ -428,7 +427,6 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                 {
                     effacerEtAfficherTexte(renderer, texteRectA);
                     effacerTexte = false;
-                    cout<<"loup y es tu?"<<endl;
                 }
                 isValid = d->rep(pTexte);
                 
@@ -500,6 +498,7 @@ void Affichage::playGame(SDL_Renderer* renderer) {
                     effacerTexte = false;
                 }
             }
+            cout<<"combat fini "<<c->isFight(joueur)<<endl;
             Jeu.getGraphe().parcoursGraphe(c->isFight(joueur));
         }
         
@@ -507,8 +506,8 @@ void Affichage::playGame(SDL_Renderer* renderer) {
     }
 
     d = (Dialogue*)noeud;
-     vector<string> messageV = { "Win" };
-    AfficherTexte(renderer, messageV, { 350, 320, 100, 50 }); //Dialogue de fin
+    //vector<string> messageV = { "Win" };
+    //AfficherTexte(renderer, messageV, { 350, 320, 100, 50 }); //Dialogue de fin
     handleInput(pTexte);
     if (effacerTexte) {
         effacerEtAfficherTexte(renderer, texteRectA);

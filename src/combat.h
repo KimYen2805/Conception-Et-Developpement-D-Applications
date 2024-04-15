@@ -83,6 +83,7 @@ public:
     void affStatSDL(Joueur& j, vector<string>& lignes);
     int groupSize();
     int getPVEnn_i(int i);
+    int getPVmaxEnn_i(int i);
 
 };
 

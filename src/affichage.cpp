@@ -93,13 +93,9 @@ Affichage::~Affichage()
    SDL_FreeSurface( tempSurface);
 
    SDL_DestroyTexture(textTexture);
-    SDL_FreeSurface(textSurface);//
-    
-    SDL_DestroyTexture(textInputTexture);
-    SDL_FreeSurface(textInputSurface);
+    SDL_FreeSurface(textSurface);
 
 TTF_CloseFont(font); 
-    TTF_CloseFont(fontSaisie); 
     // Libère la police
     SDL_DestroyRenderer(renderer); // Libère le renderer
     SDL_DestroyWindow(window); // Libère la fenêtre
@@ -528,11 +524,9 @@ void Affichage::AfficherJeu(Joueur joueur, Ennemi ennemi) {
         // Affichage des éléments du jeu
         AfficherFond();
           AfficherInfo(joueur, ennemi, renderer);
-       //dessinerPersonnage(joueur, ennemi); 
        
         handleInput(pTexte);
          playGame(renderer);
-      //  barres(joueur,renderer);  
         // Affichage à l'écran
        SDL_RenderPresent(renderer);
 

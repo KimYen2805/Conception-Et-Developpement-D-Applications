@@ -75,7 +75,7 @@ Vous trouvez un livre qui contient un sort qui vous etait inconnu, il se lit Mak
 Il coute un quart de votre vie actuelle pour infliger 3 fois la vie perdue a l'ennemi
 0
 
-15
+16
 0 2
 0 1
 2 3
@@ -90,4 +90,5 @@ Il coute un quart de votre vie actuelle pour infliger 3 fois la vie perdue a l'e
 6 9
 8 10
 9 3
+10 11
 10 11

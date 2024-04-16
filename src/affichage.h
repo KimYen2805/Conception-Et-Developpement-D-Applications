@@ -34,25 +34,14 @@ class Affichage {
 
     SDL_Rect posFond; /**< Position de l'image de fond */
 
-    bool textInputActive = false; /**< Indicateur d'entrée de texte */
 
     TTF_Font* font; /**< Police de caractères */
-    TTF_Font *fontSaisie; /**< Police de caractères pour la saisie */
 
     SDL_Color textColorInfo; /**< Couleur du texte */
     SDL_Color rectColor; /**< Couleur du rectangle */
-
-    SDL_Rect inputRect; /**< Rectangle de saisie */
-    string inputText; /**< Texte saisi */
-    SDL_Surface* textInputSurface; /**< Surface de texte saisi */
-    SDL_Texture* textInputTexture; /**< Texture de texte saisi */
-
-    bool renderText = false; /**< Indicateur d'affichage de texte */
-    //bool besoinDeNettoyer = false; /**< Indicateur de besoin de nettoyage */
      Noeud* n;
      vector<Noeud*> sommets;
     vector<pair<Noeud*,Noeud*>> aretes;
-//bool quitter = false;
 string pTexte;
 bool effacerTexte = false; 
 
@@ -96,23 +85,49 @@ bool effacerTexte = false;
          * @param lignes Vecteur contenant les lignes de texte à afficher.
         */
         void AfficherTexte(SDL_Renderer* renderer,const vector<string>& lignes, const SDL_Rect& rect);
-        /**
-         * @brief Affiche les informations du joueur et de l'ennemi.
-         * @param joueur Objet représentant le joueur.
-         * @param ennemi Objet représentant l'ennemi.
-        */
-        void AfficherInfo(Joueur j, Ennemi enne, SDL_Renderer *renderer);
-       
-     //   void GererEvenements();
-       void effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& rect);
-    //void AfficherTexteSaisie();
+       /**
+ * Affiche les informations sur le joueur et l'ennemi à l'écran.
+ * 
+ * @param j Le joueur
+ * @param ennemi L'ennemi
+ * @param renderer Le moteur de rendu SDL pour le dessin
+ */
+void AfficherInfo(Joueur j, Ennemi ennemi, SDL_Renderer *renderer);
 
-    void chargerGrapeJeu();
-  void handleInput(string &pTexte);
-     void playGame(SDL_Renderer* renderer);
+/**
+ * Efface le texte actuel à l'écran et affiche un nouveau texte à la position spécifiée.
+ * 
+ * @param renderer Le moteur de rendu SDL pour le dessin
+ * @param rect Le rectangle spécifiant la position et la taille du texte
+ */
+void effacerEtAfficherTexte(SDL_Renderer* renderer, const SDL_Rect& rect);
 
-      //jeu 
-        void AfficherJeu(Joueur j, Ennemi ennemi);
+/**
+ * Charge le graphe de jeu.
+ */
+void chargerGrapeJeu();
+
+/**
+ * Gère la saisie du texte par l'utilisateur.
+ * 
+ * @param pTexte La chaîne de texte saisie par l'utilisateur
+ */
+void handleInput(string &pTexte);
+
+/**
+ * Joue le jeu.
+ * 
+ * @param renderer Le moteur de rendu SDL pour le dessin
+ */
+void playGame(SDL_Renderer* renderer);
+
+/**
+ * Affiche le jeu avec le joueur et l'ennemi.
+ * 
+ * @param j Le joueur
+ * @param ennemi L'ennemi
+ */
+void AfficherJeu(Joueur j, Ennemi ennemi);
  };
 
 #endif
